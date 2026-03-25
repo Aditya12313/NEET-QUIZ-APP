@@ -1,0 +1,536 @@
+{
+  "subjects": [
+    {
+      "id": "botany",
+      "name": "Botany",
+      "emoji": "🌿",
+      "chapters": [
+        {
+          "id": "cell-structure",
+          "title": "Cell: Structure and Function",
+          "notes": [
+            {
+              "concept": "The plasma membrane is selectively permeable and encloses cell contents.",
+              "fact": "Fluid mosaic model: phospholipid bilayer with proteins embedded.",
+              "tip": "Think: boundary + transport + signaling.",
+              "verified": true
+            },
+            {
+              "concept": "Nucleus controls cellular activities through genetic material.",
+              "fact": "Nuclear envelope has pores for exchange of materials.",
+              "tip": "Nucleolus is the site of rRNA synthesis.",
+              "verified": true
+            },
+            {
+              "concept": "Ribosomes are non-membranous particles for protein synthesis.",
+              "fact": "80S ribosomes occur in eukaryotic cytoplasm; 70S in prokaryotes and organelles.",
+              "tip": "Svedberg units are not additive.",
+              "verified": true
+            },
+            {
+              "concept": "Endoplasmic reticulum forms a membrane network in cytoplasm.",
+              "fact": "RER helps protein synthesis; SER helps lipid synthesis and detoxification.",
+              "tip": "Rough = ribosomes present.",
+              "verified": true
+            },
+            {
+              "concept": "Golgi apparatus modifies, packages, and secretes biomolecules.",
+              "fact": "Cisternae are flattened sacs arranged in stacks.",
+              "tip": "Golgi is central to secretion in eukaryotic cells.",
+              "verified": true
+            },
+            {
+              "concept": "Mitochondria are sites of aerobic respiration.",
+              "fact": "Inner membrane forms cristae and encloses matrix containing enzymes.",
+              "tip": "Mitochondria have their own DNA and ribosomes.",
+              "verified": true
+            },
+            {
+              "concept": "Plastids are found in plant cells and carry pigments or food reserves.",
+              "fact": "Chloroplasts have thylakoids arranged as grana.",
+              "tip": "Leucoplasts are colorless storage plastids.",
+              "verified": true
+            },
+            {
+              "concept": "Cell cycle includes interphase and M phase.",
+              "fact": "Mitosis proceeds as prophase, metaphase, anaphase, telophase.",
+              "tip": "PMAT is a high-yield sequence for revision.",
+              "verified": true
+            }
+          ],
+          "quiz": [
+            {
+              "question": "According to the fluid mosaic model, the plasma membrane is primarily made of:",
+              "options": ["Cellulose and lignin", "Phospholipid bilayer with proteins", "Only proteins", "Only carbohydrates"],
+              "correctAnswer": 1,
+              "explanation": "NCERT describes membrane as a phospholipid bilayer with proteins embedded in it.",
+              "verified": true
+            },
+            {
+              "question": "Nucleolus is mainly associated with:",
+              "options": ["Lipid synthesis", "rRNA synthesis and ribosome assembly", "ATP production", "DNA replication only"],
+              "correctAnswer": 1,
+              "explanation": "Nucleolus is the site of rRNA synthesis and assembly of ribosomal subunits.",
+              "verified": true
+            },
+            {
+              "question": "Ribosomes in eukaryotic cytoplasm are:",
+              "options": ["60S", "70S", "80S", "100S"],
+              "correctAnswer": 2,
+              "explanation": "Cytoplasmic ribosomes in eukaryotes are 80S.",
+              "verified": true
+            },
+            {
+              "question": "Rough endoplasmic reticulum is directly linked with:",
+              "options": ["Lipid synthesis", "Photosynthesis", "Protein synthesis", "Cell wall synthesis"],
+              "correctAnswer": 2,
+              "explanation": "RER has ribosomes and assists in protein synthesis.",
+              "verified": true
+            },
+            {
+              "question": "Golgi apparatus is best known for:",
+              "options": ["DNA packaging", "Modification and packaging of proteins", "ATP formation", "Nitrogen fixation"],
+              "correctAnswer": 1,
+              "explanation": "Golgi modifies, packages, and dispatches cellular products.",
+              "verified": true
+            },
+            {
+              "question": "Cristae are found in:",
+              "options": ["Nucleus", "Golgi body", "Mitochondria", "Ribosome"],
+              "correctAnswer": 2,
+              "explanation": "Cristae are infoldings of the inner mitochondrial membrane.",
+              "verified": true
+            },
+            {
+              "question": "Pigments for photosynthesis are present in:",
+              "options": ["Leucoplast", "Chloroplast", "Mitochondrion", "Lysosome"],
+              "correctAnswer": 1,
+              "explanation": "Chloroplast contains chlorophyll and related pigments.",
+              "verified": true
+            },
+            {
+              "question": "The correct sequence of mitotic phases is:",
+              "options": ["Prophase, Anaphase, Metaphase, Telophase", "Prophase, Metaphase, Anaphase, Telophase", "Metaphase, Prophase, Anaphase, Telophase", "Anaphase, Prophase, Telophase, Metaphase"],
+              "correctAnswer": 1,
+              "explanation": "NCERT sequence for mitosis is PMAT.",
+              "verified": true
+            },
+            {
+              "question": "Cell wall in plants is mainly made of:",
+              "options": ["Cellulose", "Peptidoglycan", "Chitin", "Pectin only"],
+              "correctAnswer": 0,
+              "explanation": "Primary plant cell wall is mainly cellulose with other components.",
+              "verified": true
+            },
+            {
+              "question": "Svedberg unit is related to:",
+              "options": ["Molecular weight directly", "Sedimentation coefficient", "Osmotic pressure", "Membrane potential"],
+              "correctAnswer": 1,
+              "explanation": "Svedberg value indicates sedimentation behavior, not direct additive mass.",
+              "verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "emoji": "🧪",
+      "chapters": [
+        {
+          "id": "chemical-bonding",
+          "title": "Chemical Bonding and Molecular Structure",
+          "notes": [
+            {
+              "concept": "A chemical bond forms by transfer or sharing of valence electrons.",
+              "fact": "Ionic bond forms by electron transfer; covalent bond by sharing.",
+              "tip": "Check valence shell configuration first.",
+              "verified": true
+            },
+            {
+              "concept": "Octet rule explains stability for many main-group compounds.",
+              "fact": "Atoms tend to attain noble gas configuration in bonding.",
+              "tip": "Remember exceptions like incomplete octet and expanded octet.",
+              "verified": true
+            },
+            {
+              "concept": "Lewis structures represent valence electrons as dots.",
+              "fact": "Total valence electron count is the first step in Lewis structure.",
+              "tip": "Place least electronegative atom at center (except H).",
+              "verified": true
+            },
+            {
+              "concept": "VSEPR predicts molecular shape from electron pair repulsion.",
+              "fact": "Lone pair-lone pair repulsion is strongest.",
+              "tip": "Repulsion order: LP-LP > LP-BP > BP-BP.",
+              "verified": true
+            },
+            {
+              "concept": "Hybridization mixes orbitals to form equivalent hybrid orbitals.",
+              "fact": "sp, sp2, sp3 correspond to linear, trigonal planar, tetrahedral electron geometry.",
+              "tip": "Steric number helps identify hybridization quickly.",
+              "verified": true
+            },
+            {
+              "concept": "Sigma bonds form by head-on overlap; pi bonds by sidewise overlap.",
+              "fact": "Single bond = one sigma; double bond = one sigma + one pi.",
+              "tip": "All multiple bonds contain exactly one sigma bond.",
+              "verified": true
+            },
+            {
+              "concept": "Bond polarity depends on electronegativity difference.",
+              "fact": "Dipole moment is a vector quantity.",
+              "tip": "Molecular symmetry can cancel bond dipoles.",
+              "verified": true
+            },
+            {
+              "concept": "Hydrogen bond is a strong intermolecular force in specific compounds.",
+              "fact": "Occurs when H is bonded to N, O, or F and interacts with lone pair.",
+              "tip": "Hydrogen bonding raises boiling points in many molecules.",
+              "verified": true
+            }
+          ],
+          "quiz": [
+            {
+              "question": "Ionic bond is formed by:",
+              "options": ["Sharing of electrons", "Transfer of electrons", "Overlapping of orbitals only", "Hydrogen bonding"],
+              "correctAnswer": 1,
+              "explanation": "Ionic bond involves transfer of electrons and electrostatic attraction.",
+              "verified": true
+            },
+            {
+              "question": "Central atom in Lewis structures is usually:",
+              "options": ["Most electronegative atom", "Hydrogen", "Least electronegative atom (except H)", "Always oxygen"],
+              "correctAnswer": 2,
+              "explanation": "General NCERT guideline places less electronegative atom at center.",
+              "verified": true
+            },
+            {
+              "question": "Repulsion strength in VSEPR follows:",
+              "options": ["BP-BP > LP-BP > LP-LP", "LP-LP > LP-BP > BP-BP", "LP-BP > BP-BP > LP-LP", "All equal"],
+              "correctAnswer": 1,
+              "explanation": "Lone pairs occupy more space and repel more strongly.",
+              "verified": true
+            },
+            {
+              "question": "Hybridization for methane (CH4) carbon is:",
+              "options": ["sp", "sp2", "sp3", "dsp2"],
+              "correctAnswer": 2,
+              "explanation": "CH4 has tetrahedral arrangement with sp3 hybridized carbon.",
+              "verified": true
+            },
+            {
+              "question": "A double bond consists of:",
+              "options": ["2 sigma", "1 sigma + 1 pi", "2 pi", "1 pi only"],
+              "correctAnswer": 1,
+              "explanation": "One sigma bond forms first; additional overlap gives one pi bond.",
+              "verified": true
+            },
+            {
+              "question": "Dipole moment is:",
+              "options": ["Scalar quantity", "Vector quantity", "Always zero", "Independent of shape"],
+              "correctAnswer": 1,
+              "explanation": "Dipole moment has magnitude and direction.",
+              "verified": true
+            },
+            {
+              "question": "Hydrogen bond is strongest when hydrogen is attached to:",
+              "options": ["C or S", "Na or K", "N, O, or F", "Cl or Br only"],
+              "correctAnswer": 2,
+              "explanation": "High electronegativity and small size of N/O/F favor H-bonding.",
+              "verified": true
+            },
+            {
+              "question": "Molecular shape of CO2 is:",
+              "options": ["Bent", "Trigonal planar", "Linear", "Tetrahedral"],
+              "correctAnswer": 2,
+              "explanation": "Central carbon has two electron domains and no lone pair, giving linear shape.",
+              "verified": true
+            },
+            {
+              "question": "Among NH3 and BF3, the molecule with incomplete octet at central atom is:",
+              "options": ["NH3", "BF3", "Both", "Neither"],
+              "correctAnswer": 1,
+              "explanation": "Boron in BF3 has only six electrons around it.",
+              "verified": true
+            },
+            {
+              "question": "In H2O, the electron pair geometry around oxygen is:",
+              "options": ["Linear", "Trigonal planar", "Tetrahedral", "Octahedral"],
+              "correctAnswer": 2,
+              "explanation": "Two bond pairs and two lone pairs correspond to tetrahedral electron pair geometry.",
+              "verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physics",
+      "name": "Physics",
+      "emoji": "⚛️",
+      "chapters": [
+        {
+          "id": "laws-of-motion",
+          "title": "Laws of Motion",
+          "notes": [
+            {
+              "concept": "First law defines inertia and frames Newtonian mechanics.",
+              "fact": "A body remains at rest or in uniform straight-line motion unless acted upon by external unbalanced force.",
+              "tip": "Net external force zero means no acceleration.",
+              "verified": true
+            },
+            {
+              "concept": "Second law links force with rate of change of momentum.",
+              "fact": "For constant mass, F = ma.",
+              "tip": "Use vector form for direction-sensitive problems.",
+              "verified": true
+            },
+            {
+              "concept": "Third law states forces occur in equal and opposite pairs.",
+              "fact": "Action and reaction act on different bodies.",
+              "tip": "They do not cancel each other because bodies differ.",
+              "verified": true
+            },
+            {
+              "concept": "Linear momentum is product of mass and velocity.",
+              "fact": "Momentum is conserved in an isolated system.",
+              "tip": "Use conservation when external impulse is negligible.",
+              "verified": true
+            },
+            {
+              "concept": "Friction opposes relative motion or tendency of motion.",
+              "fact": "Maximum static friction is fs(max) = mu_s N.",
+              "tip": "Static friction self-adjusts up to its maximum value.",
+              "verified": true
+            },
+            {
+              "concept": "Kinetic friction acts when surfaces are sliding.",
+              "fact": "fk = mu_k N and typically mu_k < mu_s.",
+              "tip": "Direction is opposite to relative sliding velocity.",
+              "verified": true
+            },
+            {
+              "concept": "Pseudo force appears in non-inertial frames.",
+              "fact": "Magnitude equals m*a_frame and acts opposite frame acceleration.",
+              "tip": "Add pseudo force only in accelerated reference frames.",
+              "verified": true
+            },
+            {
+              "concept": "Circular motion requires centripetal force toward center.",
+              "fact": "Centripetal force magnitude is mv^2/r.",
+              "tip": "This is net radial force, not a new independent force type.",
+              "verified": true
+            }
+          ],
+          "quiz": [
+            {
+              "question": "Newton's first law is also called law of:",
+              "options": ["Momentum", "Inertia", "Gravitation", "Elasticity"],
+              "correctAnswer": 1,
+              "explanation": "It expresses the tendency of bodies to resist change in state of motion.",
+              "verified": true
+            },
+            {
+              "question": "For constant mass, Newton's second law gives:",
+              "options": ["F = mv", "F = ma", "F = m/a", "F = a/m"],
+              "correctAnswer": 1,
+              "explanation": "Rate of change of momentum reduces to ma for constant mass.",
+              "verified": true
+            },
+            {
+              "question": "Action and reaction forces:",
+              "options": ["Act on same body", "Always cancel each other on one body", "Act on different bodies", "Exist only in collisions"],
+              "correctAnswer": 2,
+              "explanation": "Third-law pair acts on two interacting bodies.",
+              "verified": true
+            },
+            {
+              "question": "Unit of linear momentum is:",
+              "options": ["kg m s^-1", "N s^-2", "kg m^2 s^-1", "N m"],
+              "correctAnswer": 0,
+              "explanation": "Momentum p = mv has SI unit kg m s^-1.",
+              "verified": true
+            },
+            {
+              "question": "Maximum static friction is given by:",
+              "options": ["mu_k N", "mu_s N", "N/mu_s", "mu_s/mu_k"],
+              "correctAnswer": 1,
+              "explanation": "At limiting equilibrium, static friction reaches mu_s N.",
+              "verified": true
+            },
+            {
+              "question": "Kinetic friction coefficient compared to static friction coefficient is usually:",
+              "options": ["Greater", "Equal", "Smaller", "Unrelated"],
+              "correctAnswer": 2,
+              "explanation": "Typically mu_k < mu_s for same surfaces.",
+              "verified": true
+            },
+            {
+              "question": "Pseudo force in an accelerating frame acts:",
+              "options": ["Along frame acceleration", "Opposite frame acceleration", "Toward origin always", "Along velocity"],
+              "correctAnswer": 1,
+              "explanation": "Pseudo force is m*a_frame opposite to frame acceleration.",
+              "verified": true
+            },
+            {
+              "question": "Centripetal force direction is:",
+              "options": ["Tangential", "Away from center", "Toward center", "Vertical always"],
+              "correctAnswer": 2,
+              "explanation": "It is radial and directed inward.",
+              "verified": true
+            },
+            {
+              "question": "In isolated systems, total momentum:",
+              "options": ["Increases", "Decreases", "Remains conserved", "Becomes zero"],
+              "correctAnswer": 2,
+              "explanation": "Conservation of momentum holds when net external force is zero.",
+              "verified": true
+            },
+            {
+              "question": "If net external force is zero, acceleration is:",
+              "options": ["Constant non-zero", "Zero", "Infinite", "Depends on mass only"],
+              "correctAnswer": 1,
+              "explanation": "From F = ma, zero net force implies zero acceleration.",
+              "verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zoology",
+      "name": "Zoology",
+      "emoji": "🧬",
+      "chapters": [
+        {
+          "id": "breathing-exchange",
+          "title": "Breathing and Exchange of Gases",
+          "notes": [
+            {
+              "concept": "Breathing includes inspiration and expiration; respiration is cellular oxidation.",
+              "fact": "Breathing is a physical process, while respiration is biochemical.",
+              "tip": "Differentiate ventilation from cellular respiration in MCQs.",
+              "verified": true
+            },
+            {
+              "concept": "Human respiratory tract ends in alveoli for gas exchange.",
+              "fact": "Alveolar walls are thin and richly supplied with capillaries.",
+              "tip": "Large surface area supports rapid diffusion.",
+              "verified": true
+            },
+            {
+              "concept": "Oxygen transport in blood is mainly through hemoglobin.",
+              "fact": "About 97% O2 is carried as oxyhemoglobin in RBCs.",
+              "tip": "A small fraction dissolves directly in plasma.",
+              "verified": true
+            },
+            {
+              "concept": "CO2 transport occurs in three forms in blood.",
+              "fact": "Major fraction is transported as bicarbonate ions.",
+              "tip": "Carbonic anhydrase in RBCs speeds conversion.",
+              "verified": true
+            },
+            {
+              "concept": "Inspiration occurs when diaphragm contracts and flattens.",
+              "fact": "Thoracic volume increases and intrapulmonary pressure falls.",
+              "tip": "Air moves from higher to lower pressure.",
+              "verified": true
+            },
+            {
+              "concept": "Expiration at rest is mostly passive.",
+              "fact": "Relaxation of diaphragm and external intercostals reduces thoracic volume.",
+              "tip": "Forced expiration recruits abdominal muscles.",
+              "verified": true
+            },
+            {
+              "concept": "Respiratory pigments increase oxygen carrying capacity.",
+              "fact": "Hemoglobin has high affinity for oxygen in lungs and releases in tissues.",
+              "tip": "Affinity shifts with pO2, pCO2, and pH (Bohr effect context).",
+              "verified": true
+            },
+            {
+              "concept": "Neural regulation of breathing centers in medulla and pons.",
+              "fact": "Chemoreceptors monitor CO2 and H+ changes to regulate ventilation.",
+              "tip": "Rise in CO2 strongly stimulates respiration.",
+              "verified": true
+            }
+          ],
+          "quiz": [
+            {
+              "question": "Site of gaseous exchange in human lungs is:",
+              "options": ["Trachea", "Bronchi", "Alveoli", "Larynx"],
+              "correctAnswer": 2,
+              "explanation": "Alveoli provide thin respiratory surface for diffusion.",
+              "verified": true
+            },
+            {
+              "question": "Major transport form of oxygen in blood is:",
+              "options": ["Dissolved in plasma", "As bicarbonate", "As oxyhemoglobin", "Bound to platelets"],
+              "correctAnswer": 2,
+              "explanation": "Most oxygen binds to hemoglobin in RBCs.",
+              "verified": true
+            },
+            {
+              "question": "Most carbon dioxide is transported as:",
+              "options": ["Carbaminohemoglobin", "Bicarbonate ions", "Dissolved gas", "Carbon monoxide"],
+              "correctAnswer": 1,
+              "explanation": "Majority of CO2 is carried in bicarbonate form.",
+              "verified": true
+            },
+            {
+              "question": "During inspiration, diaphragm:",
+              "options": ["Relaxes and domes up", "Contracts and flattens", "Remains unchanged", "Contracts and domes up"],
+              "correctAnswer": 1,
+              "explanation": "Contraction flattens diaphragm, increasing thoracic volume.",
+              "verified": true
+            },
+            {
+              "question": "Normal quiet expiration is generally:",
+              "options": ["Active muscular process", "Passive process", "Always forced", "Absent in adults"],
+              "correctAnswer": 1,
+              "explanation": "It mostly occurs due to elastic recoil and muscle relaxation.",
+              "verified": true
+            },
+            {
+              "question": "Respiratory rhythm in humans is primarily regulated by:",
+              "options": ["Cerebellum", "Medulla oblongata", "Hypothalamus", "Spinal cord only"],
+              "correctAnswer": 1,
+              "explanation": "Medullary respiratory centers set basic rhythm.",
+              "verified": true
+            },
+            {
+              "question": "Increase in blood CO2 usually causes breathing rate to:",
+              "options": ["Decrease", "Remain same", "Increase", "Stop"],
+              "correctAnswer": 2,
+              "explanation": "CO2 rise stimulates chemoreceptors and increases ventilation.",
+              "verified": true
+            },
+            {
+              "question": "External intercostal muscles aid in:",
+              "options": ["Inspiration", "Only forced expiration", "No role", "Digestion"],
+              "correctAnswer": 0,
+              "explanation": "Their contraction elevates ribs and expands thorax in inspiration.",
+              "verified": true
+            },
+            {
+              "question": "Breathing differs from cellular respiration because breathing is:",
+              "options": ["Biochemical ATP-releasing process", "Physical movement of air", "Mitochondrial oxidation", "Only in plants"],
+              "correctAnswer": 1,
+              "explanation": "Breathing is mechanical ventilation; respiration is biochemical oxidation.",
+              "verified": true
+            },
+            {
+              "question": "Gas diffusion across alveolar membrane depends directly on:",
+              "options": ["Pressure gradient", "Bone marrow activity", "Blood group", "Heart valves"],
+              "correctAnswer": 0,
+              "explanation": "Diffusion follows partial pressure gradients across the membrane.",
+              "verified": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
