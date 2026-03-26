@@ -1,27 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Sora', 'sans-serif'],
-        body: ['Nunito Sans', 'sans-serif'],
+        serif: ['"EB Garamond"', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      boxShadow: {
-        calm: '0 14px 40px rgba(91, 70, 128, 0.12)',
-      },
-      keyframes: {
-        floatIn: {
-          '0%': { opacity: 0, transform: 'translateY(12px)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
-        },
-      },
-      animation: {
-        floatIn: 'floatIn 0.55s ease-out',
+      colors: {
+        paper: '#faf8f5',
+        ink: '#1c1a17',
+        muted: '#6b6459',
+        rule: '#e2ddd7',
+        accent: '#3b5a8a',
       },
     },
   },
   plugins: [],
 }
-

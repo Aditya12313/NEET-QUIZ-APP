@@ -3,397 +3,130 @@
     {
       "id": "botany",
       "name": "Botany",
-      "emoji": "🌿",
-      "chapters": [
+      "units": [
         {
-          "id": "cell-structure",
-          "title": "Cell: Structure and Function",
-          "notes": [
+          "id": "bot-u1",
+          "name": "Unit I — Diversity in the Living World",
+          "chapters": [
             {
-              "concept": "The plasma membrane is selectively permeable and encloses cell contents.",
-              "fact": "Fluid mosaic model: phospholipid bilayer with proteins embedded.",
-              "tip": "Think: boundary + transport + signaling.",
-              "verified": true
+              "id": "living-world",
+              "title": "Chapter 1: The Living World",
+              "notes": [
+                { "concept": "Living organisms share cellular organisation, growth, reproduction, metabolism and response to stimuli.", "fact": "Metabolism is the defining criterion of life; no metabolic activity means no life.", "tip": "Homeostasis maintains constant internal environment." },
+                { "concept": "Taxonomy involves characterisation, identification, nomenclature and classification.", "fact": "Systematic position of an organism is called its taxonomic category.", "tip": "Taxonomy and systematics are related but not synonymous." },
+                { "concept": "Binomial nomenclature uses genus + species names in Latin, proposed by Carolus Linnaeus.", "fact": "Generic name starts with a capital; species name with a small letter. Both are italicised.", "tip": "'Mangifera indica' — Mangifera is genus, indica is species." },
+                { "concept": "Taxonomic hierarchy: Kingdom → Phylum → Class → Order → Family → Genus → Species.", "fact": "Species is the basic unit of classification.", "tip": "Mnemonic: King Philip Came Over For Good Soup." },
+                { "concept": "A taxon is a group of similar organisms at a given rank in the hierarchy.", "fact": "The higher the taxon, the fewer characters it shares with others.", "tip": "All members of a genus share more characters than members of the same family." }
+              ],
+              "quiz": [
+                { "question": "Binomial nomenclature was introduced by:", "options": ["Aristotle", "Carolus Linnaeus", "Ernst Mayr", "A.P. de Candolle"], "correctAnswer": 1, "explanation": "Carolus Linnaeus proposed binomial nomenclature in 'Species Plantarum' (1753)." },
+                { "question": "The basic unit of classification is:", "options": ["Genus", "Class", "Species", "Order"], "correctAnswer": 2, "explanation": "Species is the lowest and most fundamental unit of classification." },
+                { "question": "Which is NOT a defining property of living organisms?", "options": ["Metabolism", "Growth", "Consciousness", "Reproduction"], "correctAnswer": 2, "explanation": "Consciousness is not always used as a definitive criterion; NCERT focuses on metabolism." },
+                { "question": "In the name 'Mangifera indica', 'indica' represents:", "options": ["Family", "Genus", "Species", "Order"], "correctAnswer": 2, "explanation": "The second word in binomial nomenclature is the specific epithet (species)." },
+                { "question": "Correct sequence from broadest to narrowest taxon:", "options": ["Family, Order, Class", "Kingdom, Phylum, Class", "Order, Family, Genus", "Both b and c"], "correctAnswer": 3, "explanation": "Correct hierarchy: Kingdom → Phylum → Class → Order → Family → Genus → Species." }
+              ]
             },
             {
-              "concept": "Nucleus controls cellular activities through genetic material.",
-              "fact": "Nuclear envelope has pores for exchange of materials.",
-              "tip": "Nucleolus is the site of rRNA synthesis.",
-              "verified": true
-            },
-            {
-              "concept": "Ribosomes are non-membranous particles for protein synthesis.",
-              "fact": "80S ribosomes occur in eukaryotic cytoplasm; 70S in prokaryotes and organelles.",
-              "tip": "Svedberg units are not additive.",
-              "verified": true
-            },
-            {
-              "concept": "Endoplasmic reticulum forms a membrane network in cytoplasm.",
-              "fact": "RER helps protein synthesis; SER helps lipid synthesis and detoxification.",
-              "tip": "Rough = ribosomes present.",
-              "verified": true
-            },
-            {
-              "concept": "Golgi apparatus modifies, packages, and secretes biomolecules.",
-              "fact": "Cisternae are flattened sacs arranged in stacks.",
-              "tip": "Golgi is central to secretion in eukaryotic cells.",
-              "verified": true
-            },
-            {
-              "concept": "Mitochondria are sites of aerobic respiration.",
-              "fact": "Inner membrane forms cristae and encloses matrix containing enzymes.",
-              "tip": "Mitochondria have their own DNA and ribosomes.",
-              "verified": true
-            },
-            {
-              "concept": "Plastids are found in plant cells and carry pigments or food reserves.",
-              "fact": "Chloroplasts have thylakoids arranged as grana.",
-              "tip": "Leucoplasts are colorless storage plastids.",
-              "verified": true
-            },
-            {
-              "concept": "Cell cycle includes interphase and M phase.",
-              "fact": "Mitosis proceeds as prophase, metaphase, anaphase, telophase.",
-              "tip": "PMAT is a high-yield sequence for revision.",
-              "verified": true
-            }
-          ],
-          "quiz": [
-            {
-              "question": "According to the fluid mosaic model, the plasma membrane is primarily made of:",
-              "options": ["Cellulose and lignin", "Phospholipid bilayer with proteins", "Only proteins", "Only carbohydrates"],
-              "correctAnswer": 1,
-              "explanation": "NCERT describes membrane as a phospholipid bilayer with proteins embedded in it.",
-              "verified": true
-            },
-            {
-              "question": "Nucleolus is mainly associated with:",
-              "options": ["Lipid synthesis", "rRNA synthesis and ribosome assembly", "ATP production", "DNA replication only"],
-              "correctAnswer": 1,
-              "explanation": "Nucleolus is the site of rRNA synthesis and assembly of ribosomal subunits.",
-              "verified": true
-            },
-            {
-              "question": "Ribosomes in eukaryotic cytoplasm are:",
-              "options": ["60S", "70S", "80S", "100S"],
-              "correctAnswer": 2,
-              "explanation": "Cytoplasmic ribosomes in eukaryotes are 80S.",
-              "verified": true
-            },
-            {
-              "question": "Rough endoplasmic reticulum is directly linked with:",
-              "options": ["Lipid synthesis", "Photosynthesis", "Protein synthesis", "Cell wall synthesis"],
-              "correctAnswer": 2,
-              "explanation": "RER has ribosomes and assists in protein synthesis.",
-              "verified": true
-            },
-            {
-              "question": "Golgi apparatus is best known for:",
-              "options": ["DNA packaging", "Modification and packaging of proteins", "ATP formation", "Nitrogen fixation"],
-              "correctAnswer": 1,
-              "explanation": "Golgi modifies, packages, and dispatches cellular products.",
-              "verified": true
-            },
-            {
-              "question": "Cristae are found in:",
-              "options": ["Nucleus", "Golgi body", "Mitochondria", "Ribosome"],
-              "correctAnswer": 2,
-              "explanation": "Cristae are infoldings of the inner mitochondrial membrane.",
-              "verified": true
-            },
-            {
-              "question": "Pigments for photosynthesis are present in:",
-              "options": ["Leucoplast", "Chloroplast", "Mitochondrion", "Lysosome"],
-              "correctAnswer": 1,
-              "explanation": "Chloroplast contains chlorophyll and related pigments.",
-              "verified": true
-            },
-            {
-              "question": "The correct sequence of mitotic phases is:",
-              "options": ["Prophase, Anaphase, Metaphase, Telophase", "Prophase, Metaphase, Anaphase, Telophase", "Metaphase, Prophase, Anaphase, Telophase", "Anaphase, Prophase, Telophase, Metaphase"],
-              "correctAnswer": 1,
-              "explanation": "NCERT sequence for mitosis is PMAT.",
-              "verified": true
-            },
-            {
-              "question": "Cell wall in plants is mainly made of:",
-              "options": ["Cellulose", "Peptidoglycan", "Chitin", "Pectin only"],
-              "correctAnswer": 0,
-              "explanation": "Primary plant cell wall is mainly cellulose with other components.",
-              "verified": true
-            },
-            {
-              "question": "Svedberg unit is related to:",
-              "options": ["Molecular weight directly", "Sedimentation coefficient", "Osmotic pressure", "Membrane potential"],
-              "correctAnswer": 1,
-              "explanation": "Svedberg value indicates sedimentation behavior, not direct additive mass.",
-              "verified": true
+              "id": "plant-kingdom",
+              "title": "Chapter 3: Plant Kingdom",
+              "notes": [
+                { "concept": "Plants are classified into Algae, Bryophytes, Pteridophytes, Gymnosperms and Angiosperms.", "fact": "Algae are the simplest photosynthetic organisms, found in aquatic habitats.", "tip": "Algae have chlorophyll but lack vascular tissue." },
+                { "concept": "Bryophytes are amphibians of the plant kingdom — need water for reproduction.", "fact": "They have no vascular tissue; dominant phase is gametophyte.", "tip": "Examples: Marchantia (liverwort), Moss (Funaria)." },
+                { "concept": "Pteridophytes are first vascular land plants with distinct roots, stem and leaves.", "fact": "Dominant phase is sporophyte; gametophyte is small and independent.", "tip": "Ferns are pteridophytes. They do not produce seeds." },
+                { "concept": "Gymnosperms bear naked seeds; not enclosed in fruit. Pollen is carried by wind.", "fact": "Cycas, Pinus and Gnetum are examples. They are mostly evergreen.", "tip": "Gymnosperm = naked seed; angiosperm = covered seed." },
+                { "concept": "Angiosperms have seeds enclosed in fruits; largest group of plants.", "fact": "Divided into monocots (one cotyledon) and dicots (two cotyledons).", "tip": "Monocots: parallel venation; dicots: reticulate venation." }
+              ],
+              "quiz": [
+                { "question": "Bryophytes are called amphibians of the plant kingdom because:", "options": ["They live only in water", "They need water for sexual reproduction", "They have gills", "They lack chlorophyll"], "correctAnswer": 1, "explanation": "Water is required for transfer of male gametes, hence amphibious nature." },
+                { "question": "Which plant group has the dominant sporophyte phase?", "options": ["Algae", "Bryophytes", "Pteridophytes", "None"], "correctAnswer": 2, "explanation": "Pteridophytes have dominant sporophyte; gametophyte is reduced." },
+                { "question": "Naked seeds are a feature of:", "options": ["Angiosperms", "Pteridophytes", "Gymnosperms", "Bryophytes"], "correctAnswer": 2, "explanation": "Gymnosperms bear seeds not enclosed in fruits." },
+                { "question": "Parallel venation is found in:", "options": ["Dicots", "Gymnosperms", "Monocots", "Bryophytes"], "correctAnswer": 2, "explanation": "Monocots have parallel venation; dicots have reticulate venation." },
+                { "question": "Vascular tissue first appeared in:", "options": ["Algae", "Bryophytes", "Pteridophytes", "Gymnosperms"], "correctAnswer": 2, "explanation": "Pteridophytes are the first vascular plants in evolution." }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "chemistry",
-      "name": "Chemistry",
-      "emoji": "🧪",
-      "chapters": [
+        },
         {
-          "id": "chemical-bonding",
-          "title": "Chemical Bonding and Molecular Structure",
-          "notes": [
+          "id": "bot-u3",
+          "name": "Unit III — Cell: Structure and Functions",
+          "chapters": [
             {
-              "concept": "A chemical bond forms by transfer or sharing of valence electrons.",
-              "fact": "Ionic bond forms by electron transfer; covalent bond by sharing.",
-              "tip": "Check valence shell configuration first.",
-              "verified": true
+              "id": "cell-unit-of-life",
+              "title": "Chapter 8: Cell – The Unit of Life",
+              "notes": [
+                { "concept": "Cell theory states: all living organisms are composed of cells and cells arise from pre-existing cells.", "fact": "Proposed by Schleiden and Schwann; modified by Virchow.", "tip": "Virchow added: 'Omnis cellula e cellula' — every cell from a cell." },
+                { "concept": "Prokaryotic cells lack membrane-bound nucleus and organelles; eukaryotic cells have both.", "fact": "Prokaryotes include bacteria and cyanobacteria; all others are eukaryotes.", "tip": "Prokaryotes: 70S ribosomes; Eukaryotes: 80S ribosomes in cytoplasm." },
+                { "concept": "Plasma membrane is a fluid mosaic of phospholipids and proteins (Singer-Nicholson model).", "fact": "Membrane is selectively permeable; proteins act as channels, carriers and receptors.", "tip": "Cholesterol in animal membranes maintains fluidity." },
+                { "concept": "Nucleus contains chromatin, nucleolus and is bounded by nuclear envelope with pores.", "fact": "Nucleolus is site of rRNA synthesis and ribosome assembly.", "tip": "Nuclear envelope is double-layered; continuous with ER." },
+                { "concept": "Mitochondria are double-membrane organelles; inner membrane forms cristae; matrix has enzymes.", "fact": "Mitochondria have their own circular DNA and 70S ribosomes.", "tip": "Called 'powerhouse of the cell'; site of aerobic respiration." }
+              ],
+              "quiz": [
+                { "question": "Cell theory was modified to include that cells arise from pre-existing cells by:", "options": ["Schleiden", "Schwann", "Virchow", "Hooke"], "correctAnswer": 2, "explanation": "Rudolf Virchow added this crucial modification to cell theory." },
+                { "question": "Fluid mosaic model of plasma membrane was given by:", "options": ["Watson and Crick", "Singer and Nicholson", "Schleiden and Schwann", "Brown and Altman"], "correctAnswer": 1, "explanation": "Singer and Nicholson proposed the fluid mosaic model in 1972." },
+                { "question": "Ribosomes in eukaryotic cytoplasm are:", "options": ["55S", "70S", "80S", "60S"], "correctAnswer": 2, "explanation": "Cytoplasmic ribosomes in eukaryotes are 80S (60S + 40S subunits)." },
+                { "question": "Site of rRNA synthesis within the nucleus is the:", "options": ["Nuclear pore", "Chromatin", "Nucleolus", "Nuclear envelope"], "correctAnswer": 2, "explanation": "Nucleolus is the site of rRNA synthesis and ribosome biogenesis." },
+                { "question": "Inner membrane of mitochondria forms:", "options": ["Grana", "Cristae", "Cisternae", "Thylakoids"], "correctAnswer": 1, "explanation": "Cristae increase the surface area for oxidative phosphorylation." }
+              ]
             },
             {
-              "concept": "Octet rule explains stability for many main-group compounds.",
-              "fact": "Atoms tend to attain noble gas configuration in bonding.",
-              "tip": "Remember exceptions like incomplete octet and expanded octet.",
-              "verified": true
-            },
-            {
-              "concept": "Lewis structures represent valence electrons as dots.",
-              "fact": "Total valence electron count is the first step in Lewis structure.",
-              "tip": "Place least electronegative atom at center (except H).",
-              "verified": true
-            },
-            {
-              "concept": "VSEPR predicts molecular shape from electron pair repulsion.",
-              "fact": "Lone pair-lone pair repulsion is strongest.",
-              "tip": "Repulsion order: LP-LP > LP-BP > BP-BP.",
-              "verified": true
-            },
-            {
-              "concept": "Hybridization mixes orbitals to form equivalent hybrid orbitals.",
-              "fact": "sp, sp2, sp3 correspond to linear, trigonal planar, tetrahedral electron geometry.",
-              "tip": "Steric number helps identify hybridization quickly.",
-              "verified": true
-            },
-            {
-              "concept": "Sigma bonds form by head-on overlap; pi bonds by sidewise overlap.",
-              "fact": "Single bond = one sigma; double bond = one sigma + one pi.",
-              "tip": "All multiple bonds contain exactly one sigma bond.",
-              "verified": true
-            },
-            {
-              "concept": "Bond polarity depends on electronegativity difference.",
-              "fact": "Dipole moment is a vector quantity.",
-              "tip": "Molecular symmetry can cancel bond dipoles.",
-              "verified": true
-            },
-            {
-              "concept": "Hydrogen bond is a strong intermolecular force in specific compounds.",
-              "fact": "Occurs when H is bonded to N, O, or F and interacts with lone pair.",
-              "tip": "Hydrogen bonding raises boiling points in many molecules.",
-              "verified": true
-            }
-          ],
-          "quiz": [
-            {
-              "question": "Ionic bond is formed by:",
-              "options": ["Sharing of electrons", "Transfer of electrons", "Overlapping of orbitals only", "Hydrogen bonding"],
-              "correctAnswer": 1,
-              "explanation": "Ionic bond involves transfer of electrons and electrostatic attraction.",
-              "verified": true
-            },
-            {
-              "question": "Central atom in Lewis structures is usually:",
-              "options": ["Most electronegative atom", "Hydrogen", "Least electronegative atom (except H)", "Always oxygen"],
-              "correctAnswer": 2,
-              "explanation": "General NCERT guideline places less electronegative atom at center.",
-              "verified": true
-            },
-            {
-              "question": "Repulsion strength in VSEPR follows:",
-              "options": ["BP-BP > LP-BP > LP-LP", "LP-LP > LP-BP > BP-BP", "LP-BP > BP-BP > LP-LP", "All equal"],
-              "correctAnswer": 1,
-              "explanation": "Lone pairs occupy more space and repel more strongly.",
-              "verified": true
-            },
-            {
-              "question": "Hybridization for methane (CH4) carbon is:",
-              "options": ["sp", "sp2", "sp3", "dsp2"],
-              "correctAnswer": 2,
-              "explanation": "CH4 has tetrahedral arrangement with sp3 hybridized carbon.",
-              "verified": true
-            },
-            {
-              "question": "A double bond consists of:",
-              "options": ["2 sigma", "1 sigma + 1 pi", "2 pi", "1 pi only"],
-              "correctAnswer": 1,
-              "explanation": "One sigma bond forms first; additional overlap gives one pi bond.",
-              "verified": true
-            },
-            {
-              "question": "Dipole moment is:",
-              "options": ["Scalar quantity", "Vector quantity", "Always zero", "Independent of shape"],
-              "correctAnswer": 1,
-              "explanation": "Dipole moment has magnitude and direction.",
-              "verified": true
-            },
-            {
-              "question": "Hydrogen bond is strongest when hydrogen is attached to:",
-              "options": ["C or S", "Na or K", "N, O, or F", "Cl or Br only"],
-              "correctAnswer": 2,
-              "explanation": "High electronegativity and small size of N/O/F favor H-bonding.",
-              "verified": true
-            },
-            {
-              "question": "Molecular shape of CO2 is:",
-              "options": ["Bent", "Trigonal planar", "Linear", "Tetrahedral"],
-              "correctAnswer": 2,
-              "explanation": "Central carbon has two electron domains and no lone pair, giving linear shape.",
-              "verified": true
-            },
-            {
-              "question": "Among NH3 and BF3, the molecule with incomplete octet at central atom is:",
-              "options": ["NH3", "BF3", "Both", "Neither"],
-              "correctAnswer": 1,
-              "explanation": "Boron in BF3 has only six electrons around it.",
-              "verified": true
-            },
-            {
-              "question": "In H2O, the electron pair geometry around oxygen is:",
-              "options": ["Linear", "Trigonal planar", "Tetrahedral", "Octahedral"],
-              "correctAnswer": 2,
-              "explanation": "Two bond pairs and two lone pairs correspond to tetrahedral electron pair geometry.",
-              "verified": true
+              "id": "cell-cycle",
+              "title": "Chapter 10: Cell Cycle and Cell Division",
+              "notes": [
+                { "concept": "Cell cycle has two phases: Interphase (S, G1, G2) and M phase (mitosis/meiosis).", "fact": "DNA replication occurs during S phase of interphase.", "tip": "G1 and G2 are gap phases for growth and preparation." },
+                { "concept": "Mitosis produces two genetically identical diploid daughter cells.", "fact": "Phases: Prophase → Metaphase → Anaphase → Telophase (PMAT).", "tip": "Mitosis maintains chromosome number; involved in growth and repair." },
+                { "concept": "In metaphase, chromosomes align at the metaphase plate (cell equator).", "fact": "Spindle fibres attach to centromeres of chromosomes.", "tip": "Best stage to study chromosome morphology and count." },
+                { "concept": "Meiosis produces four haploid cells; includes two divisions (Meiosis I and II).", "fact": "Crossing over during prophase I (pachytene) creates genetic variation.", "tip": "Meiosis I is reductional; meiosis II is equational." },
+                { "concept": "Cytokinesis in animals occurs by cleavage furrow; in plants by cell plate formation.", "fact": "Cell plate forms from Golgi-derived vesicles at cell equator.", "tip": "Cytokinesis follows mitosis but is technically separate." }
+              ],
+              "quiz": [
+                { "question": "DNA replication occurs during which phase of interphase?", "options": ["G1", "G2", "S phase", "M phase"], "correctAnswer": 2, "explanation": "DNA synthesis (replication) happens in S (synthesis) phase." },
+                { "question": "Correct order of mitotic phases:", "options": ["MPAT", "PMAT", "TAPF", "AMPT"], "correctAnswer": 1, "explanation": "Prophase, Metaphase, Anaphase, Telophase — PMAT." },
+                { "question": "Crossing over in meiosis occurs during:", "options": ["Leptotene", "Zygotene", "Pachytene", "Diplotene"], "correctAnswer": 2, "explanation": "Chiasmata form and crossing over occurs during pachytene of prophase I." },
+                { "question": "Meiosis I is called reductional division because:", "options": ["Cells become smaller", "Chromosome number is halved", "DNA is destroyed", "Cytoplasm divides"], "correctAnswer": 1, "explanation": "Homologous chromosomes separate, reducing chromosome number from 2n to n." },
+                { "question": "Cell plate in plant cytokinesis forms from vesicles of:", "options": ["ER", "Golgi apparatus", "Ribosomes", "Lysosomes"], "correctAnswer": 1, "explanation": "Golgi-derived vesicles fuse at the equatorial plate to form the cell plate." }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "physics",
-      "name": "Physics",
-      "emoji": "⚛️",
-      "chapters": [
+        },
         {
-          "id": "laws-of-motion",
-          "title": "Laws of Motion",
-          "notes": [
+          "id": "bot-u4",
+          "name": "Unit IV — Plant Physiology",
+          "chapters": [
             {
-              "concept": "First law defines inertia and frames Newtonian mechanics.",
-              "fact": "A body remains at rest or in uniform straight-line motion unless acted upon by external unbalanced force.",
-              "tip": "Net external force zero means no acceleration.",
-              "verified": true
+              "id": "photosynthesis",
+              "title": "Chapter 11: Photosynthesis in Higher Plants",
+              "notes": [
+                { "concept": "Photosynthesis converts CO2 and H2O into glucose using light energy, releasing O2.", "fact": "Occurs in chloroplasts; light reactions in thylakoids, dark reactions in stroma.", "tip": "Overall equation: 6CO2 + 6H2O → C6H12O6 + 6O2." },
+                { "concept": "Light reactions capture solar energy and produce ATP, NADPH and O2 (from water splitting).", "fact": "Photosystem I absorbs 700 nm; Photosystem II absorbs 680 nm.", "tip": "Water splits at PSII — this releases O2 (photolysis)." },
+                { "concept": "Calvin cycle (C3 cycle) fixes CO2 into organic compounds in stroma.", "fact": "RuBisCO enzyme fixes CO2; first stable product is 3-phosphoglycerate (3-PGA).", "tip": "Calvin cycle: CO2 fixation → reduction → regeneration of RuBP." },
+                { "concept": "C4 plants have Kranz anatomy and avoid photorespiration by concentrating CO2.", "fact": "First product in C4 cycle is oxaloacetate (4-carbon), formed in mesophyll cells.", "tip": "Examples: maize, sugarcane, sorghum. Better adapted to hot climates." },
+                { "concept": "Photorespiration in C3 plants wastes energy; RuBisCO acts as oxygenase.", "fact": "Occurs in chloroplast, peroxisome and mitochondria; no ATP produced.", "tip": "C4 and CAM plants minimise photorespiration." }
+              ],
+              "quiz": [
+                { "question": "Light reactions of photosynthesis occur in the:", "options": ["Stroma", "Thylakoid membrane", "Matrix", "Cytoplasm"], "correctAnswer": 1, "explanation": "Thylakoid membranes contain the photosystems and electron carriers for light reactions." },
+                { "question": "Water is split during photosynthesis at:", "options": ["PSI", "PSII", "Calvin cycle", "Stroma"], "correctAnswer": 1, "explanation": "Photolysis of water occurs at PSII, releasing O2, H+ and electrons." },
+                { "question": "First stable product of Calvin cycle (C3 pathway) is:", "options": ["Oxaloacetate", "Pyruvate", "3-Phosphoglycerate", "Glucose"], "correctAnswer": 2, "explanation": "RuBisCO fixes CO2 to RuBP, forming 3-PGA as first stable product." },
+                { "question": "Kranz anatomy is characteristic of:", "options": ["C2 plants", "C3 plants", "C4 plants", "CAM plants"], "correctAnswer": 2, "explanation": "C4 plants have a wreath-like arrangement of bundle sheath cells called Kranz anatomy." },
+                { "question": "RuBisCO is the enzyme responsible for:", "options": ["Water splitting", "CO2 fixation", "ATP synthesis", "Starch breakdown"], "correctAnswer": 1, "explanation": "Ribulose bisphosphate carboxylase-oxygenase (RuBisCO) fixes CO2 in Calvin cycle." }
+              ]
             },
             {
-              "concept": "Second law links force with rate of change of momentum.",
-              "fact": "For constant mass, F = ma.",
-              "tip": "Use vector form for direction-sensitive problems.",
-              "verified": true
-            },
-            {
-              "concept": "Third law states forces occur in equal and opposite pairs.",
-              "fact": "Action and reaction act on different bodies.",
-              "tip": "They do not cancel each other because bodies differ.",
-              "verified": true
-            },
-            {
-              "concept": "Linear momentum is product of mass and velocity.",
-              "fact": "Momentum is conserved in an isolated system.",
-              "tip": "Use conservation when external impulse is negligible.",
-              "verified": true
-            },
-            {
-              "concept": "Friction opposes relative motion or tendency of motion.",
-              "fact": "Maximum static friction is fs(max) = mu_s N.",
-              "tip": "Static friction self-adjusts up to its maximum value.",
-              "verified": true
-            },
-            {
-              "concept": "Kinetic friction acts when surfaces are sliding.",
-              "fact": "fk = mu_k N and typically mu_k < mu_s.",
-              "tip": "Direction is opposite to relative sliding velocity.",
-              "verified": true
-            },
-            {
-              "concept": "Pseudo force appears in non-inertial frames.",
-              "fact": "Magnitude equals m*a_frame and acts opposite frame acceleration.",
-              "tip": "Add pseudo force only in accelerated reference frames.",
-              "verified": true
-            },
-            {
-              "concept": "Circular motion requires centripetal force toward center.",
-              "fact": "Centripetal force magnitude is mv^2/r.",
-              "tip": "This is net radial force, not a new independent force type.",
-              "verified": true
-            }
-          ],
-          "quiz": [
-            {
-              "question": "Newton's first law is also called law of:",
-              "options": ["Momentum", "Inertia", "Gravitation", "Elasticity"],
-              "correctAnswer": 1,
-              "explanation": "It expresses the tendency of bodies to resist change in state of motion.",
-              "verified": true
-            },
-            {
-              "question": "For constant mass, Newton's second law gives:",
-              "options": ["F = mv", "F = ma", "F = m/a", "F = a/m"],
-              "correctAnswer": 1,
-              "explanation": "Rate of change of momentum reduces to ma for constant mass.",
-              "verified": true
-            },
-            {
-              "question": "Action and reaction forces:",
-              "options": ["Act on same body", "Always cancel each other on one body", "Act on different bodies", "Exist only in collisions"],
-              "correctAnswer": 2,
-              "explanation": "Third-law pair acts on two interacting bodies.",
-              "verified": true
-            },
-            {
-              "question": "Unit of linear momentum is:",
-              "options": ["kg m s^-1", "N s^-2", "kg m^2 s^-1", "N m"],
-              "correctAnswer": 0,
-              "explanation": "Momentum p = mv has SI unit kg m s^-1.",
-              "verified": true
-            },
-            {
-              "question": "Maximum static friction is given by:",
-              "options": ["mu_k N", "mu_s N", "N/mu_s", "mu_s/mu_k"],
-              "correctAnswer": 1,
-              "explanation": "At limiting equilibrium, static friction reaches mu_s N.",
-              "verified": true
-            },
-            {
-              "question": "Kinetic friction coefficient compared to static friction coefficient is usually:",
-              "options": ["Greater", "Equal", "Smaller", "Unrelated"],
-              "correctAnswer": 2,
-              "explanation": "Typically mu_k < mu_s for same surfaces.",
-              "verified": true
-            },
-            {
-              "question": "Pseudo force in an accelerating frame acts:",
-              "options": ["Along frame acceleration", "Opposite frame acceleration", "Toward origin always", "Along velocity"],
-              "correctAnswer": 1,
-              "explanation": "Pseudo force is m*a_frame opposite to frame acceleration.",
-              "verified": true
-            },
-            {
-              "question": "Centripetal force direction is:",
-              "options": ["Tangential", "Away from center", "Toward center", "Vertical always"],
-              "correctAnswer": 2,
-              "explanation": "It is radial and directed inward.",
-              "verified": true
-            },
-            {
-              "question": "In isolated systems, total momentum:",
-              "options": ["Increases", "Decreases", "Remains conserved", "Becomes zero"],
-              "correctAnswer": 2,
-              "explanation": "Conservation of momentum holds when net external force is zero.",
-              "verified": true
-            },
-            {
-              "question": "If net external force is zero, acceleration is:",
-              "options": ["Constant non-zero", "Zero", "Infinite", "Depends on mass only"],
-              "correctAnswer": 1,
-              "explanation": "From F = ma, zero net force implies zero acceleration.",
-              "verified": true
+              "id": "respiration-plants",
+              "title": "Chapter 12: Respiration in Plants",
+              "notes": [
+                { "concept": "Respiration breaks down glucose to release energy as ATP; occurs in all living cells.", "fact": "Aerobic respiration yields ~36–38 ATP per glucose; anaerobic yields only 2 ATP.", "tip": "Glycolysis occurs in cytoplasm; Krebs cycle in mitochondrial matrix." },
+                { "concept": "Glycolysis converts glucose (6C) to 2 pyruvate (3C) with net gain of 2 ATP and 2 NADH.", "fact": "Occurs in cytoplasm; does not require oxygen.", "tip": "EMP pathway = Embden-Meyerhof-Parnas = Glycolysis." },
+                { "concept": "In aerobic conditions, pyruvate enters mitochondria and is decarboxylated to Acetyl-CoA.", "fact": "Pyruvate dehydrogenase complex links glycolysis to Krebs cycle.", "tip": "1 glucose → 2 Acetyl-CoA entering Krebs cycle." },
+                { "concept": "Krebs cycle (TCA cycle) completely oxidises Acetyl-CoA, generating NADH, FADH2, ATP and CO2.", "fact": "Occurs in mitochondrial matrix; produces 3 NADH, 1 FADH2, 1 ATP per turn.", "tip": "Runs twice per glucose (two pyruvates)." },
+                { "concept": "Fermentation is anaerobic respiration; yields ethanol + CO2 (yeast) or lactic acid (muscle).", "fact": "Only 2 ATP produced; NAD+ is regenerated to allow glycolysis to continue.", "tip": "Fermentation does not occur in mitochondria." }
+              ],
+              "quiz": [
+                { "question": "Glycolysis occurs in:", "options": ["Mitochondria", "Nucleus", "Cytoplasm", "Chloroplast"], "correctAnswer": 2, "explanation": "Glycolysis takes place in the cytoplasm and does not require oxygen." },
+                { "question": "Net ATP gain from glycolysis per glucose molecule is:", "options": ["4", "2", "38", "8"], "correctAnswer": 1, "explanation": "4 ATP formed minus 2 ATP used = net 2 ATP per glucose in glycolysis." },
+                { "question": "Krebs cycle occurs in:", "options": ["Cytoplasm", "Thylakoid", "Mitochondrial matrix", "Nucleus"], "correctAnswer": 2, "explanation": "TCA cycle reactions take place in the mitochondrial matrix." },
+                { "question": "End product of fermentation in yeast is:", "options": ["Lactic acid", "Acetyl-CoA", "Ethanol and CO2", "Pyruvate"], "correctAnswer": 2, "explanation": "Yeast ferments pyruvate to ethanol and CO2 under anaerobic conditions." },
+                { "question": "Pyruvate is formed at the end of:", "options": ["Krebs cycle", "Glycolysis", "Oxidative phosphorylation", "Beta-oxidation"], "correctAnswer": 1, "explanation": "Glycolysis ends with the formation of 2 molecules of pyruvate from glucose." }
+              ]
             }
           ]
         }
@@ -402,131 +135,268 @@
     {
       "id": "zoology",
       "name": "Zoology",
-      "emoji": "🧬",
-      "chapters": [
+      "units": [
         {
-          "id": "breathing-exchange",
-          "title": "Breathing and Exchange of Gases",
-          "notes": [
+          "id": "zoo-u5",
+          "name": "Unit V — Human Physiology",
+          "chapters": [
             {
-              "concept": "Breathing includes inspiration and expiration; respiration is cellular oxidation.",
-              "fact": "Breathing is a physical process, while respiration is biochemical.",
-              "tip": "Differentiate ventilation from cellular respiration in MCQs.",
-              "verified": true
+              "id": "breathing",
+              "title": "Chapter 14: Breathing and Exchange of Gases",
+              "notes": [
+                { "concept": "Breathing is the physical movement of air in and out of lungs; respiration is biochemical oxidation.", "fact": "Normal breathing rate in adults: 12–16 breaths per minute.", "tip": "Never confuse breathing (ventilation) with cellular respiration in MCQs." },
+                { "concept": "Alveoli are functional units of the lung; thin walls allow efficient gas exchange by diffusion.", "fact": "Total surface area of alveoli: ~6500 cm2; maximises diffusion.", "tip": "Alveolar walls are one cell thick and richly vascularised." },
+                { "concept": "About 97% of O2 is transported as oxyhaemoglobin in RBCs; 3% dissolved in plasma.", "fact": "Each Hb molecule can carry 4 O2 molecules (one per haem group).", "tip": "Bohr effect: increased CO2 or H+ decreases Hb-O2 affinity." },
+                { "concept": "CO2 is transported mainly as bicarbonate ions (70%), some as carbaminohaemoglobin (23%).", "fact": "Carbonic anhydrase in RBCs catalyses: CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3-.", "tip": "Only 7% of CO2 is dissolved directly in plasma." },
+                { "concept": "Respiratory rhythm is generated by the medullary respiratory centre (dorsal and ventral groups).", "fact": "Pneumotaxic centre in pons moderates the rhythm; chemoreceptors respond to CO2/H+.", "tip": "Rise in pCO2 is the strongest stimulus to increase ventilation." }
+              ],
+              "quiz": [
+                { "question": "Major site of gas exchange in human lungs:", "options": ["Trachea", "Bronchioles", "Alveoli", "Larynx"], "correctAnswer": 2, "explanation": "Alveoli have thin walls and rich capillary supply for efficient diffusion." },
+                { "question": "Percentage of O2 transported as oxyhaemoglobin:", "options": ["70%", "23%", "7%", "97%"], "correctAnswer": 3, "explanation": "About 97% of oxygen is carried bound to haemoglobin as oxyhaemoglobin." },
+                { "question": "Most CO2 is transported in blood as:", "options": ["Dissolved gas", "Carbaminohaemoglobin", "Bicarbonate ions", "Carbonic acid"], "correctAnswer": 2, "explanation": "~70% CO2 is carried as bicarbonate ions (HCO3-) in plasma." },
+                { "question": "Bohr effect describes:", "options": ["Increased O2 affinity at high CO2", "Decreased O2 affinity at high CO2", "O2 release in lungs", "CO2 transport"], "correctAnswer": 1, "explanation": "High pCO2 and low pH shift the O2-Hb dissociation curve right, releasing more O2." },
+                { "question": "Primary centre controlling respiratory rhythm is in:", "options": ["Cerebellum", "Hypothalamus", "Medulla oblongata", "Cerebrum"], "correctAnswer": 2, "explanation": "Medullary respiratory centre generates the basic breathing rhythm." }
+              ]
             },
             {
-              "concept": "Human respiratory tract ends in alveoli for gas exchange.",
-              "fact": "Alveolar walls are thin and richly supplied with capillaries.",
-              "tip": "Large surface area supports rapid diffusion.",
-              "verified": true
-            },
-            {
-              "concept": "Oxygen transport in blood is mainly through hemoglobin.",
-              "fact": "About 97% O2 is carried as oxyhemoglobin in RBCs.",
-              "tip": "A small fraction dissolves directly in plasma.",
-              "verified": true
-            },
-            {
-              "concept": "CO2 transport occurs in three forms in blood.",
-              "fact": "Major fraction is transported as bicarbonate ions.",
-              "tip": "Carbonic anhydrase in RBCs speeds conversion.",
-              "verified": true
-            },
-            {
-              "concept": "Inspiration occurs when diaphragm contracts and flattens.",
-              "fact": "Thoracic volume increases and intrapulmonary pressure falls.",
-              "tip": "Air moves from higher to lower pressure.",
-              "verified": true
-            },
-            {
-              "concept": "Expiration at rest is mostly passive.",
-              "fact": "Relaxation of diaphragm and external intercostals reduces thoracic volume.",
-              "tip": "Forced expiration recruits abdominal muscles.",
-              "verified": true
-            },
-            {
-              "concept": "Respiratory pigments increase oxygen carrying capacity.",
-              "fact": "Hemoglobin has high affinity for oxygen in lungs and releases in tissues.",
-              "tip": "Affinity shifts with pO2, pCO2, and pH (Bohr effect context).",
-              "verified": true
-            },
-            {
-              "concept": "Neural regulation of breathing centers in medulla and pons.",
-              "fact": "Chemoreceptors monitor CO2 and H+ changes to regulate ventilation.",
-              "tip": "Rise in CO2 strongly stimulates respiration.",
-              "verified": true
+              "id": "neural-control",
+              "title": "Chapter 18: Neural Control and Coordination",
+              "notes": [
+                { "concept": "Neurons are structural and functional units of the nervous system; consist of cell body, dendrites and axon.", "fact": "Myelinated neurons conduct impulse faster than non-myelinated ones.", "tip": "Saltatory conduction occurs in myelinated fibres (node to node)." },
+                { "concept": "Resting membrane potential is -70 mV; inside is negative relative to outside.", "fact": "Maintained by Na+/K+ ATPase pump: pumps 3 Na+ out and 2 K+ in.", "tip": "K+ leaks out freely; Na+ channels are mostly closed at rest." },
+                { "concept": "Action potential: stimulus causes Na+ influx (depolarisation), then K+ efflux (repolarisation).", "fact": "Threshold stimulus must be reached; follows all-or-none law.", "tip": "Refractory period prevents backward travel of impulse." },
+                { "concept": "Synapse is the junction between neurons; neurotransmitters carry signal across synaptic cleft.", "fact": "Acetylcholine and noradrenaline are common neurotransmitters.", "tip": "Presynaptic membrane releases; postsynaptic membrane receives." },
+                { "concept": "Human brain has three main parts: forebrain (cerebrum, thalamus, hypothalamus), midbrain and hindbrain.", "fact": "Cerebrum: thinking and voluntary actions; cerebellum: balance and coordination.", "tip": "Hypothalamus regulates body temperature, hunger, sleep (thermostat of body)." }
+              ],
+              "quiz": [
+                { "question": "Resting membrane potential of a neuron is:", "options": ["+70 mV", "-70 mV", "0 mV", "-90 mV"], "correctAnswer": 1, "explanation": "The inside of the neuron is approximately -70 mV relative to outside at rest." },
+                { "question": "Na+/K+ pump transports:", "options": ["3 Na+ in, 2 K+ out", "2 Na+ out, 3 K+ in", "3 Na+ out, 2 K+ in", "Equal Na+ and K+"], "correctAnswer": 2, "explanation": "The pump actively moves 3 Na+ out and 2 K+ in, maintaining the resting potential." },
+                { "question": "Neurotransmitters are released from:", "options": ["Postsynaptic membrane", "Dendrites", "Presynaptic membrane", "Myelin sheath"], "correctAnswer": 2, "explanation": "Presynaptic vesicles fuse with the membrane and release neurotransmitters into the cleft." },
+                { "question": "Which brain region controls balance and coordination?", "options": ["Cerebrum", "Hypothalamus", "Medulla", "Cerebellum"], "correctAnswer": 3, "explanation": "Cerebellum coordinates muscular movements and maintains posture." },
+                { "question": "Saltatory conduction is seen in:", "options": ["Non-myelinated fibres", "Myelinated fibres", "Dendrites only", "Smooth muscle"], "correctAnswer": 1, "explanation": "Impulse jumps between nodes of Ranvier in myelinated fibres, speeding conduction." }
+              ]
             }
-          ],
-          "quiz": [
+          ]
+        },
+        {
+          "id": "zoo-u7",
+          "name": "Unit VII — Genetics and Evolution",
+          "chapters": [
             {
-              "question": "Site of gaseous exchange in human lungs is:",
-              "options": ["Trachea", "Bronchi", "Alveoli", "Larynx"],
-              "correctAnswer": 2,
-              "explanation": "Alveoli provide thin respiratory surface for diffusion.",
-              "verified": true
+              "id": "inheritance",
+              "title": "Chapter 4: Principles of Inheritance and Variation",
+              "notes": [
+                { "concept": "Mendel's Law of Segregation: alleles separate during gamete formation; each gamete carries one allele.", "fact": "Monohybrid cross ratio: 3:1 (phenotypic) and 1:2:1 (genotypic).", "tip": "Law of Segregation = Law of Purity of Gametes." },
+                { "concept": "Law of Independent Assortment: genes on different chromosomes assort independently.", "fact": "Dihybrid cross gives 9:3:3:1 phenotypic ratio.", "tip": "This law does not hold for linked genes (same chromosome)." },
+                { "concept": "Dominance: one allele masks expression of the other. Incomplete dominance gives intermediate phenotype.", "fact": "In snapdragon, Rr gives pink (incomplete dominance); 1:2:1 phenotypic ratio.", "tip": "Codominance: both alleles express equally, e.g. AB blood group." },
+                { "concept": "Sex determination in humans: males are XY, females are XX; sex determined by father.", "fact": "Autosomes: 22 pairs; sex chromosomes: 1 pair (XX or XY).", "tip": "Haemophilia is X-linked recessive; more common in males." },
+                { "concept": "Mutation is a sudden heritable change in DNA. Point mutations affect single nucleotides.", "fact": "Chromosomal mutations include deletion, duplication, inversion and translocation.", "tip": "Sickle cell anaemia is caused by a single base substitution (point mutation)." }
+              ],
+              "quiz": [
+                { "question": "Monohybrid cross phenotypic ratio (F2) is:", "options": ["1:1", "1:2:1", "3:1", "9:3:3:1"], "correctAnswer": 2, "explanation": "F2 generation of a monohybrid cross gives 3 dominant : 1 recessive phenotype." },
+                { "question": "Dihybrid cross F2 phenotypic ratio is:", "options": ["3:1", "1:2:1", "9:3:3:1", "1:1:1:1"], "correctAnswer": 2, "explanation": "Two independently assorting gene pairs give 9:3:3:1 in F2." },
+                { "question": "Incomplete dominance is seen in:", "options": ["Pea flower colour", "ABO blood group", "Snapdragon flower colour", "Human eye colour"], "correctAnswer": 2, "explanation": "Antirrhinum (snapdragon) shows incomplete dominance — Rr gives pink." },
+                { "question": "Sex of human offspring is determined by:", "options": ["Mother's X chromosome", "Father's sex chromosome", "Autosomes", "Mitochondrial DNA"], "correctAnswer": 1, "explanation": "Father contributes either X (→girl) or Y (→boy), determining sex." },
+                { "question": "Sickle cell anaemia is caused by:", "options": ["Chromosomal deletion", "Point mutation in beta-globin gene", "Extra chromosome", "Frame shift mutation"], "correctAnswer": 1, "explanation": "A single base substitution (GAG→GTG) changes glutamate to valine in beta-globin." }
+              ]
             },
             {
-              "question": "Major transport form of oxygen in blood is:",
-              "options": ["Dissolved in plasma", "As bicarbonate", "As oxyhemoglobin", "Bound to platelets"],
-              "correctAnswer": 2,
-              "explanation": "Most oxygen binds to hemoglobin in RBCs.",
-              "verified": true
+              "id": "molecular-basis",
+              "title": "Chapter 5: Molecular Basis of Inheritance",
+              "notes": [
+                { "concept": "DNA double helix: two antiparallel strands held by hydrogen bonds between complementary bases.", "fact": "A pairs with T (2 H-bonds); G pairs with C (3 H-bonds). Proposed by Watson and Crick (1953).", "tip": "Chargaff's rule: A=T and G=C in any DNA sample." },
+                { "concept": "DNA replication is semi-conservative: each new DNA has one old and one new strand.", "fact": "Proved by Meselson and Stahl experiment using 15N and 14N isotopes.", "tip": "DNA polymerase adds nucleotides only in 5'→3' direction." },
+                { "concept": "Transcription: DNA template is used to synthesise mRNA in nucleus by RNA polymerase.", "fact": "Template strand is read 3'→5'; mRNA is synthesised 5'→3'.", "tip": "In prokaryotes, transcription and translation occur simultaneously." },
+                { "concept": "Translation: mRNA codons are read by ribosomes; tRNA anticodons bring amino acids.", "fact": "Start codon: AUG (methionine). Stop codons: UAA, UAG, UGA.", "tip": "Genetic code is degenerate (multiple codons for same amino acid) and universal." },
+                { "concept": "Lac operon: an inducible operon in E. coli controlled by presence/absence of lactose.", "fact": "Regulator gene produces repressor; lactose acts as inducer, removing repressor.", "tip": "Lac operon = structural genes z, y, a + promoter + operator." }
+              ],
+              "quiz": [
+                { "question": "Number of hydrogen bonds between Adenine and Thymine:", "options": ["1", "2", "3", "4"], "correctAnswer": 1, "explanation": "A-T pairs are held by 2 hydrogen bonds; G-C pairs by 3." },
+                { "question": "Semi-conservative replication of DNA was experimentally proved by:", "options": ["Watson and Crick", "Meselson and Stahl", "Hershey and Chase", "Griffith"], "correctAnswer": 1, "explanation": "Meselson and Stahl used heavy and light nitrogen isotopes to prove semi-conservative replication." },
+                { "question": "Start codon in translation is:", "options": ["UAA", "UAG", "AUG", "UGA"], "correctAnswer": 2, "explanation": "AUG codes for methionine and serves as the start codon." },
+                { "question": "In the lac operon, lactose acts as:", "options": ["Repressor", "Inducer", "Polymerase", "Promoter"], "correctAnswer": 1, "explanation": "Lactose (allolactose) binds and inactivates the repressor, allowing transcription." },
+                { "question": "Genetic code is said to be degenerate because:", "options": ["One codon codes multiple amino acids", "Multiple codons code for the same amino acid", "Codons overlap", "Code differs in organisms"], "correctAnswer": 1, "explanation": "Most amino acids are encoded by more than one codon — the code is degenerate." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "units": [
+        {
+          "id": "chem-xi",
+          "name": "Class XI — Physical and Inorganic Chemistry",
+          "chapters": [
+            {
+              "id": "basic-concepts",
+              "title": "Unit 1: Some Basic Concepts of Chemistry",
+              "notes": [
+                { "concept": "Mole concept: 1 mole = 6.022 × 10²³ particles (Avogadro's number).", "fact": "1 mole of any substance has mass equal to its molar mass in grams.", "tip": "Molar mass of H2O = 18 g/mol; 1 mole H2O = 18 g." },
+                { "concept": "Empirical formula gives simplest whole-number ratio of atoms; molecular formula gives actual number.", "fact": "Molecular formula = n × Empirical formula; n = Molar mass / Empirical formula mass.", "tip": "Glucose empirical = CH2O; molecular = C6H12O6." },
+                { "concept": "Laws of chemical combination: Law of conservation of mass, constant proportions, multiple proportions.", "fact": "Lavoisier stated mass is conserved in chemical reactions.", "tip": "Law of constant proportions: a pure compound always has same elemental ratio by mass." },
+                { "concept": "Stoichiometry uses mole ratios from balanced equations to calculate amounts of reactants/products.", "fact": "Limiting reagent is fully consumed first and determines amount of product formed.", "tip": "Always identify the limiting reagent in excess-reactant problems." },
+                { "concept": "Molarity (M) = moles of solute / volume of solution in litres.", "fact": "Molality (m) = moles of solute / mass of solvent in kg; independent of temperature.", "tip": "Molarity changes with temperature; molality does not." }
+              ],
+              "quiz": [
+                { "question": "Avogadro's number is:", "options": ["6.022 × 10²⁰", "6.022 × 10²³", "6.022 × 10²⁶", "6.022 × 10¹⁸"], "correctAnswer": 1, "explanation": "One mole of any substance contains 6.022 × 10²³ particles." },
+                { "question": "Empirical formula of glucose (C6H12O6) is:", "options": ["C6H12O6", "C2H4O2", "CH2O", "C3H6O3"], "correctAnswer": 2, "explanation": "Simplest whole-number ratio of C:H:O = 1:2:1, giving CH2O." },
+                { "question": "Limiting reagent in a reaction is:", "options": ["Present in excess", "Consumed first, limits product", "Has highest molar mass", "Always the first listed"], "correctAnswer": 1, "explanation": "Limiting reagent is completely consumed and determines maximum yield." },
+                { "question": "Molarity is defined as:", "options": ["Moles per kg solvent", "Moles per litre solution", "Mass per litre", "Moles per moles"], "correctAnswer": 1, "explanation": "Molarity (M) = moles of solute / volume of solution in litres." },
+                { "question": "Which is independent of temperature?", "options": ["Molarity", "Normality", "Molality", "Volume"], "correctAnswer": 2, "explanation": "Molality uses mass (not volume) of solvent, so it is unaffected by temperature changes." }
+              ]
             },
             {
-              "question": "Most carbon dioxide is transported as:",
-              "options": ["Carbaminohemoglobin", "Bicarbonate ions", "Dissolved gas", "Carbon monoxide"],
-              "correctAnswer": 1,
-              "explanation": "Majority of CO2 is carried in bicarbonate form.",
-              "verified": true
+              "id": "chemical-bonding-chem",
+              "title": "Unit 4: Chemical Bonding and Molecular Structure",
+              "notes": [
+                { "concept": "Ionic bond: formed by transfer of electrons; electrostatic attraction between ions.", "fact": "Ionic compounds have high melting points and conduct electricity in molten/aqueous state.", "tip": "Electronegativity difference > 1.7 generally indicates ionic character." },
+                { "concept": "Covalent bond: formed by sharing of electron pairs between atoms.", "fact": "Lewis structures represent shared and lone pairs as dots/lines.", "tip": "Formal charge = Valence electrons – Lone pair electrons – ½ Bonding electrons." },
+                { "concept": "VSEPR theory: electron pairs repel each other; shape minimises repulsion.", "fact": "Lone pair repulsion > bond pair repulsion; lone pairs compress bond angles.", "tip": "NH3 is trigonal pyramidal; H2O is bent — due to lone pairs." },
+                { "concept": "Hybridisation: mixing of orbitals to form equivalent hybrid orbitals.", "fact": "sp = linear; sp2 = trigonal planar; sp3 = tetrahedral geometry.", "tip": "Count sigma bonds + lone pairs on central atom to determine hybridisation." },
+                { "concept": "Hydrogen bonding: H bonded to highly electronegative atom (N, O, F) interacts with lone pair.", "fact": "H-bonding causes anomalously high boiling points in H2O, HF, NH3.", "tip": "Intramolecular H-bonds (within molecule) vs intermolecular (between molecules)." }
+              ],
+              "quiz": [
+                { "question": "Ionic bonds are generally formed when electronegativity difference is:", "options": ["< 0.5", "0.5–1.7", "> 1.7", "Exactly 1.0"], "correctAnswer": 2, "explanation": "Large electronegativity difference (>1.7) leads to electron transfer and ionic bond formation." },
+                { "question": "Shape of H2O molecule is:", "options": ["Linear", "Trigonal planar", "Bent/V-shape", "Tetrahedral"], "correctAnswer": 2, "explanation": "Two lone pairs on O compress the H-O-H angle to ~104.5°, giving a bent shape." },
+                { "question": "Hybridisation of carbon in CH4 is:", "options": ["sp", "sp2", "sp3", "dsp2"], "correctAnswer": 2, "explanation": "Carbon forms 4 sigma bonds in methane; sp3 hybridisation gives tetrahedral geometry." },
+                { "question": "Hydrogen bonding is strongest in which compound?", "options": ["CH4", "HCl", "H2O", "H2S"], "correctAnswer": 2, "explanation": "O is highly electronegative and small in size, making water's H-bonds strongest." },
+                { "question": "VSEPR model is used to predict:", "options": ["Bond energy", "Reaction rate", "Molecular geometry", "Orbital energy"], "correctAnswer": 2, "explanation": "VSEPR predicts 3D shape of molecules based on electron pair repulsion." }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem-xii",
+          "name": "Class XII — Organic Chemistry",
+          "chapters": [
+            {
+              "id": "haloalkanes",
+              "title": "Unit 6: Haloalkanes and Haloarenes",
+              "notes": [
+                { "concept": "Haloalkanes: alkanes with one or more H replaced by halogen; named as haloalkanes (IUPAC).", "fact": "C-X bond is polar (X is more electronegative); carbon is electrophilic.", "tip": "Reactivity of halogens: R-F < R-Cl < R-Br < R-I (leaving group ability)." },
+                { "concept": "SN2 reaction: one-step, bimolecular nucleophilic substitution; inversion of configuration.", "fact": "Favoured by primary substrates and strong nucleophiles in polar aprotic solvents.", "tip": "SN2 gives Walden inversion — complete inversion of configuration at chiral centre." },
+                { "concept": "SN1 reaction: two-step; forms carbocation intermediate; racemisation occurs.", "fact": "Favoured by tertiary substrates and polar protic solvents.", "tip": "Stability of carbocation: 3° > 2° > 1° > methyl." },
+                { "concept": "Elimination reactions (E2, E1) compete with substitution; strong base favours elimination.", "fact": "Saytzeff's rule: major product has more substituted double bond.", "tip": "Bulky bases favour less substituted (Hofmann) product." },
+                { "concept": "Freons (chlorofluorocarbons) are used in refrigerants; deplete stratospheric ozone.", "fact": "CFCs release Cl• radicals that catalytically destroy ozone molecules.", "tip": "DDT is a polyhalogen compound; persistent organic pollutant." }
+              ],
+              "quiz": [
+                { "question": "SN2 reaction involves:", "options": ["Carbocation intermediate", "Two steps", "Complete inversion of configuration", "Racemisation"], "correctAnswer": 2, "explanation": "SN2 is a concerted, one-step reaction giving complete inversion (Walden inversion)." },
+                { "question": "SN1 reaction is favoured by:", "options": ["Primary substrates", "Strong nucleophiles", "Polar aprotic solvents", "Tertiary substrates"], "correctAnswer": 3, "explanation": "Tertiary carbocations are more stable; tertiary substrates favour SN1." },
+                { "question": "Saytzeff's rule predicts:", "options": ["Major product of nucleophilic substitution", "More substituted alkene as major elimination product", "Rate of SN2 reaction", "Stability of carbocations"], "correctAnswer": 1, "explanation": "In elimination reactions, the more substituted (stable) alkene is the major product." },
+                { "question": "Ozone layer depletion is mainly caused by:", "options": ["CO2", "SO2", "CFCs", "NO2"], "correctAnswer": 2, "explanation": "CFCs release Cl• radicals that destroy ozone molecules catalytically." },
+                { "question": "Leaving group ability in haloalkanes follows the order:", "options": ["F > Cl > Br > I", "I > Br > Cl > F", "Cl > F > I > Br", "Br > F > I > Cl"], "correctAnswer": 1, "explanation": "Larger halogens are better leaving groups because their C-X bonds are weaker." }
+              ]
             },
             {
-              "question": "During inspiration, diaphragm:",
-              "options": ["Relaxes and domes up", "Contracts and flattens", "Remains unchanged", "Contracts and domes up"],
-              "correctAnswer": 1,
-              "explanation": "Contraction flattens diaphragm, increasing thoracic volume.",
-              "verified": true
+              "id": "biomolecules",
+              "title": "Unit 10: Biomolecules",
+              "notes": [
+                { "concept": "Carbohydrates: polyhydroxy aldehydes or ketones; classified as mono-, di- and polysaccharides.", "fact": "Glucose is an aldohexose; fructose is a ketohexose. Both molecular formula C6H12O6.", "tip": "Sucrose = glucose + fructose; Maltose = glucose + glucose; Lactose = glucose + galactose." },
+                { "concept": "Proteins are polymers of amino acids linked by peptide bonds.", "fact": "20 standard amino acids; classified by R-group as acidic, basic, neutral or aromatic.", "tip": "Primary structure = amino acid sequence; secondary = α-helix/β-pleated sheet." },
+                { "concept": "Enzymes are biological catalysts; mostly proteins; lower activation energy.", "fact": "Lock and key model (Fischer) vs induced fit model (Koshland) explain enzyme action.", "tip": "Active site is the region where substrate binds; highly specific." },
+                { "concept": "Nucleic acids: DNA and RNA; monomers are nucleotides (base + sugar + phosphate).", "fact": "DNA has deoxyribose and bases A, T, G, C; RNA has ribose and A, U, G, C.", "tip": "DNA stores genetic info; mRNA, tRNA, rRNA carry out protein synthesis." },
+                { "concept": "Vitamins are essential organic compounds needed in small amounts; classified as fat-soluble (A, D, E, K) and water-soluble (B, C).", "fact": "Deficiency of Vitamin C causes scurvy; Vitamin D causes rickets.", "tip": "Fat-soluble vitamins can be stored; water-soluble must be taken regularly." }
+              ],
+              "quiz": [
+                { "question": "Glucose and fructose are:", "options": ["Disaccharides", "Epimers", "Isomers with formula C6H12O6", "Polysaccharides"], "correctAnswer": 2, "explanation": "Both are monosaccharides with the same molecular formula C6H12O6 (structural isomers)." },
+                { "question": "Peptide bond is formed between:", "options": ["Two carboxyl groups", "Amino group and carboxyl group", "Two amino groups", "Two R-groups"], "correctAnswer": 1, "explanation": "Peptide bond forms by condensation between –COOH of one and –NH2 of another amino acid." },
+                { "question": "Which model of enzyme action accounts for flexibility of active site?", "options": ["Lock and key", "Induced fit", "Fluid mosaic", "Operon model"], "correctAnswer": 1, "explanation": "Induced fit model (Koshland) proposes that the active site changes shape upon substrate binding." },
+                { "question": "RNA differs from DNA in having:", "options": ["Adenine", "Deoxyribose sugar", "Uracil instead of thymine", "Phosphate groups"], "correctAnswer": 2, "explanation": "RNA contains uracil (U) instead of thymine (T) and uses ribose instead of deoxyribose." },
+                { "question": "Deficiency of Vitamin C causes:", "options": ["Rickets", "Night blindness", "Scurvy", "Beri-beri"], "correctAnswer": 2, "explanation": "Vitamin C (ascorbic acid) deficiency causes scurvy, characterised by bleeding gums." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physics",
+      "name": "Physics",
+      "units": [
+        {
+          "id": "phy-xi",
+          "name": "Class XI — Mechanics",
+          "chapters": [
+            {
+              "id": "laws-of-motion-phy",
+              "title": "Chapter 4: Laws of Motion",
+              "notes": [
+                { "concept": "Newton's First Law: a body at rest or in uniform motion stays so unless acted on by net external force.", "fact": "Defines inertia — tendency to resist change in state of motion.", "tip": "Net force = 0 does NOT mean body is at rest; it can be moving with constant velocity." },
+                { "concept": "Newton's Second Law: F = dp/dt; for constant mass, F = ma.", "fact": "Force is a vector; SI unit is Newton (kg m s⁻²).", "tip": "Always draw free body diagram before applying Newton's laws." },
+                { "concept": "Newton's Third Law: every action has equal and opposite reaction acting on different bodies.", "fact": "Action-reaction forces are equal in magnitude, opposite in direction but on different bodies.", "tip": "They do NOT cancel each other because they act on different objects." },
+                { "concept": "Linear momentum p = mv; impulse = F × Δt = change in momentum.", "fact": "In an isolated system, total linear momentum is conserved.", "tip": "Use impulse-momentum theorem when force acts for short time (collisions)." },
+                { "concept": "Friction: static friction adjusts up to fs(max) = μs N; kinetic friction fk = μk N.", "fact": "μk < μs for same surface; kinetic friction is roughly constant.", "tip": "Friction acts tangentially against direction of relative motion or its tendency." }
+              ],
+              "quiz": [
+                { "question": "Newton's First Law is also called the law of:", "options": ["Action-reaction", "Inertia", "Momentum", "Gravitation"], "correctAnswer": 1, "explanation": "First law defines inertia — resistance to change in state of motion." },
+                { "question": "SI unit of force is:", "options": ["Joule", "Pascal", "Newton", "Watt"], "correctAnswer": 2, "explanation": "1 Newton = 1 kg m s⁻²; it is the SI unit of force." },
+                { "question": "Action and reaction forces in Newton's Third Law:", "options": ["Act on the same body", "Cancel each other", "Act on different bodies", "Are not equal"], "correctAnswer": 2, "explanation": "Third law pairs act on two different interacting bodies, so they cannot cancel." },
+                { "question": "Impulse equals:", "options": ["Force × displacement", "Force × time", "Mass × acceleration", "Mass × velocity²"], "correctAnswer": 1, "explanation": "Impulse J = F × Δt = Δp (change in momentum)." },
+                { "question": "Compared to static friction, kinetic friction is:", "options": ["Greater", "Equal", "Smaller", "Zero"], "correctAnswer": 2, "explanation": "μk < μs; kinetic friction is less than maximum static friction for same surfaces." }
+              ]
             },
             {
-              "question": "Normal quiet expiration is generally:",
-              "options": ["Active muscular process", "Passive process", "Always forced", "Absent in adults"],
-              "correctAnswer": 1,
-              "explanation": "It mostly occurs due to elastic recoil and muscle relaxation.",
-              "verified": true
+              "id": "work-energy",
+              "title": "Chapter 5: Work, Energy and Power",
+              "notes": [
+                { "concept": "Work done W = F·d·cosθ; work is scalar; SI unit is Joule.", "fact": "Work is zero if force is perpendicular to displacement (θ = 90°).", "tip": "Negative work: force and displacement are in opposite directions (θ = 180°)." },
+                { "concept": "Kinetic energy KE = ½mv²; depends on mass and speed.", "fact": "Work-energy theorem: net work done = change in kinetic energy.", "tip": "KE is always ≥ 0; it cannot be negative." },
+                { "concept": "Potential energy is energy stored by virtue of position or configuration.", "fact": "Gravitational PE = mgh; elastic PE = ½kx².", "tip": "PE is defined only for conservative forces." },
+                { "concept": "Law of conservation of mechanical energy: KE + PE = constant (no non-conservative forces).", "fact": "Total mechanical energy is conserved only when friction/air resistance are absent.", "tip": "At maximum height, KE = 0; at ground, PE = 0 (projectile)." },
+                { "concept": "Power P = Work/time = F·v; SI unit is Watt (J/s).", "fact": "1 horsepower = 746 W.", "tip": "Instantaneous power P = F·v·cosθ." }
+              ],
+              "quiz": [
+                { "question": "Work done is zero when angle between F and d is:", "options": ["0°", "45°", "90°", "180°"], "correctAnswer": 2, "explanation": "W = Fd cosθ; cos 90° = 0, so no work is done." },
+                { "question": "Work-energy theorem states that net work equals:", "options": ["Change in PE", "Change in KE", "Total energy", "Power"], "correctAnswer": 1, "explanation": "Net work done on a body equals its change in kinetic energy." },
+                { "question": "Gravitational potential energy is:", "options": ["½mv²", "mgh", "½kx²", "Fv"], "correctAnswer": 1, "explanation": "Gravitational PE = mgh, where m = mass, g = acceleration due to gravity, h = height." },
+                { "question": "SI unit of power is:", "options": ["Joule", "Newton", "Watt", "Pascal"], "correctAnswer": 2, "explanation": "Power = Work/time; 1 Watt = 1 Joule/second." },
+                { "question": "Mechanical energy is conserved when:", "options": ["Friction is present", "Only kinetic energy changes", "No non-conservative forces act", "Speed is constant"], "correctAnswer": 2, "explanation": "In absence of non-conservative forces (friction etc.), total mechanical energy is constant." }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "phy-xii",
+          "name": "Class XII — Electricity and Magnetism",
+          "chapters": [
+            {
+              "id": "electric-charges",
+              "title": "Chapter 1: Electric Charges and Fields",
+              "notes": [
+                { "concept": "Electric charge is a fundamental property of matter; SI unit is Coulomb (C).", "fact": "Charge is quantised: q = ne where e = 1.6 × 10⁻¹⁹ C and n is an integer.", "tip": "Charge is conserved: total charge of an isolated system is constant." },
+                { "concept": "Coulomb's law: F = kq₁q₂/r²; force between two point charges.", "fact": "k = 1/4πε₀ = 9 × 10⁹ N m² C⁻².", "tip": "Force is along the line joining charges; like charges repel, unlike attract." },
+                { "concept": "Electric field E = F/q₀; field at a point is force per unit positive test charge.", "fact": "E due to point charge: E = kq/r² directed away from positive charge.", "tip": "Electric field lines never intersect; density of lines indicates field strength." },
+                { "concept": "Electric flux φ = E·A·cosθ; SI unit is N m² C⁻¹.", "fact": "Gauss's law: total flux through closed surface = q_enclosed / ε₀.", "tip": "Gauss's law is most useful for symmetric charge distributions." },
+                { "concept": "Electric dipole: equal and opposite charges separated by distance 2a; dipole moment p = q × 2a.", "fact": "Dipole moment is a vector pointing from negative to positive charge.", "tip": "In uniform field, net force on dipole is zero but torque exists." }
+              ],
+              "quiz": [
+                { "question": "SI unit of electric charge is:", "options": ["Ampere", "Coulomb", "Volt", "Farad"], "correctAnswer": 1, "explanation": "Coulomb (C) is the SI unit of electric charge." },
+                { "question": "Value of Coulomb's constant k is:", "options": ["9 × 10⁶", "9 × 10⁹ N m² C⁻²", "8.85 × 10⁻¹²", "1.6 × 10⁻¹⁹"], "correctAnswer": 1, "explanation": "k = 1/4πε₀ ≈ 9 × 10⁹ N m² C⁻²." },
+                { "question": "Gauss's law relates electric flux to:", "options": ["Charge on surface", "Enclosed charge", "Field at surface", "Area of surface"], "correctAnswer": 1, "explanation": "Total electric flux through a closed surface equals q_enclosed / ε₀." },
+                { "question": "Electric field lines:", "options": ["Can intersect", "Are closed loops", "Never intersect", "Are always straight"], "correctAnswer": 2, "explanation": "Field lines cannot intersect because the field has a unique direction at each point." },
+                { "question": "Electric dipole moment direction is:", "options": ["From +q to -q", "From -q to +q", "Perpendicular to dipole axis", "Along external field"], "correctAnswer": 1, "explanation": "By convention, dipole moment vector points from negative to positive charge." }
+              ]
             },
             {
-              "question": "Respiratory rhythm in humans is primarily regulated by:",
-              "options": ["Cerebellum", "Medulla oblongata", "Hypothalamus", "Spinal cord only"],
-              "correctAnswer": 1,
-              "explanation": "Medullary respiratory centers set basic rhythm.",
-              "verified": true
-            },
-            {
-              "question": "Increase in blood CO2 usually causes breathing rate to:",
-              "options": ["Decrease", "Remain same", "Increase", "Stop"],
-              "correctAnswer": 2,
-              "explanation": "CO2 rise stimulates chemoreceptors and increases ventilation.",
-              "verified": true
-            },
-            {
-              "question": "External intercostal muscles aid in:",
-              "options": ["Inspiration", "Only forced expiration", "No role", "Digestion"],
-              "correctAnswer": 0,
-              "explanation": "Their contraction elevates ribs and expands thorax in inspiration.",
-              "verified": true
-            },
-            {
-              "question": "Breathing differs from cellular respiration because breathing is:",
-              "options": ["Biochemical ATP-releasing process", "Physical movement of air", "Mitochondrial oxidation", "Only in plants"],
-              "correctAnswer": 1,
-              "explanation": "Breathing is mechanical ventilation; respiration is biochemical oxidation.",
-              "verified": true
-            },
-            {
-              "question": "Gas diffusion across alveolar membrane depends directly on:",
-              "options": ["Pressure gradient", "Bone marrow activity", "Blood group", "Heart valves"],
-              "correctAnswer": 0,
-              "explanation": "Diffusion follows partial pressure gradients across the membrane.",
-              "verified": true
+              "id": "current-electricity",
+              "title": "Chapter 3: Current Electricity",
+              "notes": [
+                { "concept": "Electric current I = dq/dt; SI unit is Ampere; conventional current flows from + to −.", "fact": "Ohm's law: V = IR; valid for ohmic conductors at constant temperature.", "tip": "Resistance R = ρL/A; increases with length, decreases with cross-section area." },
+                { "concept": "Resistivity ρ of a material determines its resistance; metals have low ρ, insulators have high ρ.", "fact": "For metals, ρ increases with temperature; for semiconductors, ρ decreases with temperature.", "tip": "Nichrome has high resistivity; used in heating elements." },
+                { "concept": "In series, total resistance R = R₁ + R₂ + …; current is same through each.", "fact": "In parallel, 1/R = 1/R₁ + 1/R₂ + …; voltage is same across each.", "tip": "Parallel combination always gives resistance less than the smallest individual resistance." },
+                { "concept": "Kirchhoff's Current Law (KCL): sum of currents at a junction = 0.", "fact": "Kirchhoff's Voltage Law (KVL): sum of EMFs and potential drops in a closed loop = 0.", "tip": "KCL: conservation of charge; KVL: conservation of energy." },
+                { "concept": "EMF of a cell is work done per unit charge; internal resistance causes potential drop.", "fact": "Terminal voltage V = ε − Ir during discharge; V = ε + Ir during charging.", "tip": "Cell acts as external resistor during charging." }
+              ],
+              "quiz": [
+                { "question": "Ohm's law states that current is:", "options": ["Proportional to R", "Inversely proportional to V", "Proportional to V at constant R", "Independent of V"], "correctAnswer": 2, "explanation": "V = IR; at constant resistance, current is proportional to voltage." },
+                { "question": "Resistivity of metal with increasing temperature:", "options": ["Decreases", "Remains same", "Increases", "First increases then decreases"], "correctAnswer": 2, "explanation": "Increased thermal vibrations impede electron flow, raising resistivity." },
+                { "question": "In parallel combination of resistors:", "options": ["Current is same in each", "Voltage is same across each", "Total R is sum", "R increases"], "correctAnswer": 1, "explanation": "All parallel resistors share the same potential difference across their terminals." },
+                { "question": "Kirchhoff's Current Law is based on:", "options": ["Conservation of energy", "Conservation of charge", "Ohm's law", "Faraday's law"], "correctAnswer": 1, "explanation": "KCL states that charge is conserved at any junction; total in = total out." },
+                { "question": "Terminal voltage of a cell during discharge is:", "options": ["ε + Ir", "ε − Ir", "ε / r", "Ir only"], "correctAnswer": 1, "explanation": "During discharge, internal resistance causes a drop: V = ε − Ir." }
+              ]
             }
           ]
         }
