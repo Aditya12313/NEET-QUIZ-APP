@@ -1,243 +1,547 @@
-import { useMemo, useState } from 'react'
-import content from './data/neetContent.json'
+import { useMemo, useState, useEffect, useCallback } from 'react'
+import content from './data/neetContent.js'
+import { adaptChapter } from './utils/chapterAdapter.js'
+
+const API = 'http://localhost:5000/api'
 
 const SUBJECTS = [
-  { id: 'botany',   label: 'Botany' },
-  { id: 'zoology',  label: 'Zoology' },
-  { id: 'chemistry',label: 'Chemistry' },
-  { id: 'physics',  label: 'Physics' },
+  { id: 'biology',   label: 'Biology',   emoji: '🧬' },
+  { id: 'chemistry', label: 'Chemistry', emoji: '⚗️' },
+  { id: 'physics',   label: 'Physics',   emoji: '⚡' },
 ]
 
+const MOTIVATIONAL = [
+  "You're doing well, Hitashi. Keep going.",
+  "Consistency beats intensity. You've got this.",
+  "One chapter at a time — you're building a topper's foundation.",
+  "Every concept you revise is a mark secured.",
+  "Take a short break if needed — then come back stronger.",
+]
+
+const TABS = ['Concepts', 'Patterns', 'Formulas', 'Insights', 'Mistakes', 'Quick Revision']
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem('neet_progress') || '{}') } catch { return {} }
+}
+function saveProgress(p) {
+  try { localStorage.setItem('neet_progress', JSON.stringify(p)) } catch {}
+}
+
 export default function App() {
-  const [view, setView]               = useState('landing')
-  const [subjectId, setSubjectId]     = useState(null)
-  const [unitId, setUnitId]           = useState(null)
-  const [chapterId, setChapterId]     = useState(null)
-  const [noteIndex, setNoteIndex]     = useState(0)
-  const [quizIndex, setQuizIndex]     = useState(0)
-  const [picked, setPicked]           = useState(null)
-  const [revealed, setRevealed]       = useState(false)
-  const [score, setScore]             = useState(0)
-  const [done, setDone]               = useState({})   // chapterKey → score
+  const [view,         setView]        = useState('landing')
+  const [subjectId,    setSubjectId]   = useState(null)
+  const [unitId,       setUnitId]      = useState(null)
+  const [chapterId,    setChapterId]   = useState(null)
+  const [activeTab,    setActiveTab]   = useState(0)
+  const [quizQ,        setQuizQ]       = useState([])
+  const [quizIdx,      setQuizIdx]     = useState(0)
+  const [picked,       setPicked]      = useState(null)
+  const [revealed,     setRevealed]    = useState(false)
+  const [sessionScore, setScore]       = useState(0)
+  const [progress,     setProgress]    = useState(loadProgress)
+  const [revision,     setRevision]    = useState(null)
+  const [revLoading,   setRevLoading]  = useState(false)
+  const [quizLoading,  setQuizLoading] = useState(false)
+  const [motiIdx]                      = useState(() => Math.floor(Math.random() * MOTIVATIONAL.length))
+  const [sidebarOpen,  setSidebarOpen] = useState(false)
 
-  const subjectData = useMemo(
-    () => content.subjects.find(s => s.id === subjectId) ?? null,
-    [subjectId]
-  )
-  const unitData = useMemo(
-    () => subjectData?.units.find(u => u.id === unitId) ?? null,
-    [subjectData, unitId]
-  )
-  const chapterData = useMemo(
-    () => unitData?.chapters.find(c => c.id === chapterId) ?? null,
-    [unitData, chapterId]
-  )
+  useEffect(() => { saveProgress(progress) }, [progress])
 
-  const notes = chapterData?.notes ?? []
-  const quiz  = chapterData?.quiz  ?? []
-  const q     = quiz[quizIndex]
+  const subjectData = useMemo(() => content.subjects.find(s => s.id === subjectId) ?? null, [subjectId])
+  const unitData    = useMemo(() => subjectData?.units.find(u => u.id === unitId) ?? null, [subjectData, unitId])
+  const chapterRaw  = useMemo(() => unitData?.chapters.find(c => c.id === chapterId) ?? null, [unitData, chapterId])
+  const chapterData = useMemo(() => adaptChapter(chapterRaw), [chapterRaw])
 
-  // ── navigation helpers ─────────────────────────────────────
-  function goSubjects()             { setView('subjects') }
-  function goUnits(sid)             { setSubjectId(sid); setUnitId(null); setView('units') }
-  function goChapters(uid)          { setUnitId(uid); setChapterId(null); setView('chapters') }
-  function goRevision(cid) {
-    setChapterId(cid); setNoteIndex(0)
-    setQuizIndex(0); setPicked(null); setRevealed(false); setScore(0)
-    setView('revision')
+  const chapterKey = subjectId && chapterId ? `${subjectId}:${chapterId}` : null
+  const cp         = chapterKey ? (progress[chapterKey] ?? {}) : {}
+
+  const getChapterProg = useCallback((sid, cid) => progress[`${sid}:${cid}`] ?? {}, [progress])
+
+  const markRevised = useCallback(() => {
+    if (!chapterKey) return
+    setProgress(p => ({ ...p, [chapterKey]: { ...p[chapterKey], revised: !p[chapterKey]?.revised } }))
+  }, [chapterKey])
+
+  function subjectStats(sid) {
+    const sub = content.subjects.find(s => s.id === sid)
+    if (!sub) return { total: 0, revised: 0 }
+    let total = 0, revised = 0
+    sub.units.forEach(u => u.chapters.forEach(c => {
+      total++
+      if (progress[`${sid}:${c.id}`]?.revised) revised++
+    }))
+    return { total, revised }
   }
-  function startQuiz() {
-    setQuizIndex(0); setPicked(null); setRevealed(false); setScore(0)
+
+  // ── Navigation ───────────────────────────────────────────────────────────
+  const goLanding   = () => setView('landing')
+  const goSubjects  = () => setView('subjects')
+  const goUnits     = sid => { setSubjectId(sid); setUnitId(null); setView('units') }
+  const goChapters  = uid => { setUnitId(uid); setChapterId(null); setView('chapters') }
+  const goChapter   = cid => { setChapterId(cid); setRevision(null); setView('chapter') }
+  const goRevision  = () => { setActiveTab(0); setView('revision') }
+
+  // ── Practice PYQs ────────────────────────────────────────────────────────
+  async function startQuiz() {
+    setQuizLoading(true)
+    let questions = []
+    try {
+      // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
+      const r = await fetch(`${API}/questions?chapter=${chapterId}&limit=20&t=${Date.now()}`)
+      if (r.ok) {
+        const data = await r.json()
+        questions = data.questions ?? []
+      }
+    } catch { /* offline */ }
+
+    setQuizLoading(false)
+    if (!questions.length) return
+    setQuizQ(questions)
+    setQuizIdx(0); setPicked(null); setRevealed(false); setScore(0)
     setView('quiz')
   }
+
+  // ── Generate Revision ────────────────────────────────────────────────────
+  async function generateRevision() {
+    setRevLoading(true)
+    try {
+      // Pre-fetch questions to ensure the backend auto-generates external mocks if DB is empty
+      await fetch(`${API}/questions?chapter=${chapterId}&limit=20`)
+
+      const r = await fetch(`${API}/revision`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chapter: chapterId }),
+      })
+      if (r.ok) {
+        const data = await r.json()
+        if (data.count > 0 || data.concepts?.length > 0) { 
+          setRevision(data); goRevision(); setRevLoading(false); return 
+        }
+      }
+    } catch { /* offline */ }
+    setRevision(null)
+    goRevision()
+    setRevLoading(false)
+  }
+
+  // ── Quiz logic ───────────────────────────────────────────────────────────
+  const q = quizQ[quizIdx]
+
   function submitAnswer() {
     if (picked === null || revealed) return
     if (picked === q.correctAnswer) setScore(s => s + 1)
     setRevealed(true)
   }
-  function nextQuestion() {
-    if (quizIndex < quiz.length - 1) {
-      setQuizIndex(i => i + 1); setPicked(null); setRevealed(false)
+
+  async function nextQuestion() {
+    const correct = picked === q.correctAnswer
+    const newScore = sessionScore + (correct ? 1 : 0)
+    if (quizIdx < quizQ.length - 1) {
+      setQuizIdx(i => i + 1); setPicked(null); setRevealed(false)
     } else {
-      const key = `${subjectId}:${chapterId}`
-      setDone(d => ({ ...d, [key]: score + (picked === q.correctAnswer ? 1 : 0) }))
+      const finalScore = revealed ? newScore : sessionScore
+      // Persist locally
+      if (chapterKey) {
+        setProgress(p => ({ ...p, [chapterKey]: { ...p[chapterKey], quizScore: finalScore, quizTotal: quizQ.length, lastAttempt: new Date().toISOString() } }))
+      }
+      // Submit to backend (fire-and-forget)
+      const weakTags = quizQ.filter((_, i) => i !== quizIdx || !correct).flatMap(qi => qi.tags ?? [])
+      try {
+        await fetch(`${API}/submit`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chapter: chapterId, score: finalScore, total: quizQ.length, weakTags }),
+        })
+      } catch { /* offline */ }
       setView('result')
     }
   }
 
-  const finalScore = score + (picked === q?.correctAnswer && revealed ? 0 : 0)
-  const resultScore = done[`${subjectId}:${chapterId}`] ?? score
+  // ── Revision content source (backend or local) ───────────────────────────
+  // ── Revision content source (backend + static local overrides) ───────────────────────
+  const revConcepts   = [...(chapterData?.concept_explanations ?? []), ...(revision?.concept_explanations ?? [])]
+  const revPatterns   = [...(chapterData?.key_patterns ?? []), ...(revision?.key_patterns ?? [])]
+  const revFormulas   = [...(chapterData?.formulas_relations ?? []), ...(revision?.formulas_relations ?? [])]
+  const revInsights   = [...(chapterData?.application_insights ?? []), ...(revision?.application_insights ?? [])]
+  const revMistakes   = [...(chapterData?.common_mistakes ?? []), ...(revision?.common_mistakes ?? [])]
+  const revQuick      = [...(chapterData?.quick_revision ?? []), ...(revision?.quick_revision ?? [])]
 
-  // ── shared wrapper ─────────────────────────────────────────
+  // ── Render ───────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-paper">
-      <div className="max-w-2xl mx-auto px-6 py-12">
+    <div className="app-shell">
 
-        {/* ── LANDING ───────────────────────────────────────── */}
-        {view === 'landing' && (
-          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-            <h1 className="font-serif text-5xl text-ink mb-3">Hi Hitashi</h1>
-            <p className="text-muted text-lg mb-10">Let's revise, chapter by chapter.</p>
-            <button className="btn-outline" onClick={goSubjects}>Start</button>
-          </div>
-        )}
+      {/* ── LEFT SIDEBAR ──────────────────────────────────────────────── */}
+      <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
+        <div className="sidebar-header">
+          <span className="text-lg font-serif text-ink">📘 NEET</span>
+          <button className="sidebar-close md:hidden" onClick={() => setSidebarOpen(false)}>✕</button>
+        </div>
 
-        {/* ── SUBJECTS ──────────────────────────────────────── */}
-        {view === 'subjects' && (
-          <div>
-            <button className="back-link mb-8" onClick={() => setView('landing')}>← Back</button>
-            <h2 className="font-serif text-3xl text-ink mb-1">Subjects</h2>
-            <p className="text-muted text-sm mb-8">Choose a subject to begin.</p>
-            <div className="space-y-0">
-              {SUBJECTS.map((s, i) => (
-                <div key={s.id} className="index-row" onClick={() => goUnits(s.id)}>
-                  <span className="text-ink">{i + 1}.&nbsp;&nbsp;{s.label}</span>
-                  <span className="text-muted text-sm">→</span>
+        {SUBJECTS.map(s => {
+          const sub = content.subjects.find(x => x.id === s.id)
+          return (
+            <div key={s.id} className="sidebar-subject">
+              <button
+                className={`sidebar-subject-btn ${subjectId === s.id ? 'sidebar-subject-active' : ''}`}
+                onClick={() => { goUnits(s.id); setSidebarOpen(false) }}
+              >
+                <span>{s.emoji}</span> {s.label}
+              </button>
+              {subjectId === s.id && sub?.units.map(u => (
+                <div key={u.id} className="sidebar-unit">
+                  <button
+                    className={`sidebar-unit-btn ${unitId === u.id ? 'sidebar-unit-active' : ''}`}
+                    onClick={() => { goChapters(u.id); setSidebarOpen(false) }}
+                  >
+                    {u.name}
+                  </button>
+                  {unitId === u.id && u.chapters.map(c => {
+                    const p2 = getChapterProg(s.id, c.id)
+                    return (
+                      <button
+                        key={c.id}
+                        className={`sidebar-chapter-btn ${chapterId === c.id ? 'sidebar-chapter-active' : ''}`}
+                        onClick={() => { setSubjectId(s.id); goChapter(c.id); setSidebarOpen(false) }}
+                      >
+                        <span className="flex-1 text-left">{c.title}</span>
+                        {p2.revised && <span className="text-green-500 text-xs">✓</span>}
+                      </button>
+                    )
+                  })}
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          )
+        })}
 
-        {/* ── UNITS ─────────────────────────────────────────── */}
-        {view === 'units' && subjectData && (
-          <div>
-            <button className="back-link mb-8" onClick={goSubjects}>← Subjects</button>
-            <h2 className="font-serif text-3xl text-ink mb-1">{subjectData.name}</h2>
-            <p className="text-muted text-sm mb-8">Select a unit.</p>
-            <div className="space-y-0">
-              {subjectData.units.map(u => (
-                <div key={u.id} className="index-row" onClick={() => goChapters(u.id)}>
-                  <span className="text-ink text-sm leading-snug max-w-[85%]">{u.name}</span>
-                  <span className="text-muted text-sm shrink-0">→</span>
-                </div>
-              ))}
+        <button className="sidebar-home-btn" onClick={() => { goLanding(); setSidebarOpen(false) }}>
+          ← Home
+        </button>
+      </aside>
+
+      {/* ── MAIN CONTENT ──────────────────────────────────────────────── */}
+      <main className="main-content">
+
+        {/* Mobile topbar */}
+        <div className="mobile-topbar md:hidden">
+          <button className="back-link" onClick={() => setSidebarOpen(true)}>☰ Menu</button>
+          <span className="font-serif text-ink text-sm">Hitashi · NEET</span>
+        </div>
+
+        <div className="content-inner">
+
+          {/* ── LANDING ───────────────────────────────────────────────── */}
+          {view === 'landing' && (
+            <div className="flex flex-col items-center justify-center min-h-[70vh] text-center">
+              <div className="mb-5 text-5xl">📘</div>
+              <h1 className="font-serif text-4xl text-ink mb-2">Hi, Hitashi</h1>
+              <p className="text-muted text-sm mb-1">Your personal NEET revision system.</p>
+              <p className="text-xs text-muted italic mb-10">{MOTIVATIONAL[motiIdx]}</p>
+              <button className="btn-primary px-8 py-3" onClick={goSubjects}>Begin Revision →</button>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ── CHAPTERS ──────────────────────────────────────── */}
-        {view === 'chapters' && unitData && (
-          <div>
-            <button className="back-link mb-8" onClick={() => setView('units')}>← {subjectData?.name}</button>
-            <h2 className="font-serif text-2xl text-ink mb-1">{unitData.name}</h2>
-            <p className="text-muted text-sm mb-8">Choose a chapter.</p>
-            <div className="space-y-0">
-              {unitData.chapters.map(c => {
-                const key = `${subjectId}:${c.id}`
-                const chDone = done[key]
-                return (
-                  <div key={c.id} className="index-row" onClick={() => goRevision(c.id)}>
-                    <span className="text-ink text-sm leading-snug max-w-[80%]">{c.title}</span>
-                    <span className="text-muted text-xs shrink-0">
-                      {chDone !== undefined ? `✓ ${chDone}/${c.quiz.length}` : '→'}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* ── REVISION NOTES ────────────────────────────────── */}
-        {view === 'revision' && chapterData && (
-          <div>
-            <button className="back-link mb-8" onClick={() => setView('chapters')}>← {unitData?.name}</button>
-            <p className="text-muted text-xs font-sans uppercase tracking-widest mb-1">Revision Notes</p>
-            <h2 className="font-serif text-2xl text-ink mb-6">{chapterData.title}</h2>
-
-            <div className="note-card min-h-[200px]">
-              <p className="text-ink text-base leading-relaxed">{notes[noteIndex]?.concept}</p>
-              <div className="fact-bar mt-5">
-                <span className="font-medium text-accent">Key fact: </span>
-                {notes[noteIndex]?.fact}
+          {/* ── SUBJECTS ──────────────────────────────────────────────── */}
+          {view === 'subjects' && (
+            <div>
+              <button className="back-link mb-6" onClick={goLanding}>← Home</button>
+              <h2 className="font-serif text-3xl text-ink mb-1">Subjects</h2>
+              <p className="text-muted text-sm mb-6">Select a subject to begin.</p>
+              <div className="grid gap-3">
+                {SUBJECTS.map(s => {
+                  const { total, revised } = subjectStats(s.id)
+                  const pct = total ? Math.round((revised / total) * 100) : 0
+                  return (
+                    <div key={s.id} className="subject-card" onClick={() => goUnits(s.id)}>
+                      <div className="flex items-center gap-4">
+                        <span className="text-3xl">{s.emoji}</span>
+                        <div className="flex-1">
+                          <p className="font-medium text-ink">{s.label}</p>
+                          <p className="text-xs text-muted">{revised}/{total} chapters revised</p>
+                          <div className="progress-track mt-2">
+                            <div className="progress-fill" style={{ width: `${pct}%` }} />
+                          </div>
+                        </div>
+                        <span className="text-muted text-sm">→</span>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
-              {notes[noteIndex]?.tip && (
-                <p className="mt-4 text-xs text-muted italic">{notes[noteIndex].tip}</p>
-              )}
             </div>
+          )}
 
-            <div className="flex items-center justify-between mt-6">
-              <span className="text-muted text-xs">{noteIndex + 1} / {notes.length}</span>
-              <div className="flex gap-3">
+          {/* ── UNITS ─────────────────────────────────────────────────── */}
+          {view === 'units' && subjectData && (
+            <div>
+              <button className="back-link mb-6" onClick={goSubjects}>← Subjects</button>
+              <h2 className="font-serif text-3xl text-ink mb-1">{subjectData.name}</h2>
+              <p className="text-muted text-sm mb-6">Select a unit.</p>
+              <div>
+                {subjectData.units.map((u, i) => (
+                  <div key={u.id} className="index-row" onClick={() => goChapters(u.id)}>
+                    <span className="flex gap-3 items-start text-ink text-sm max-w-[85%]">
+                      <span className="text-muted shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                      {u.name}
+                    </span>
+                    <span className="text-muted text-sm">→</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── CHAPTERS ──────────────────────────────────────────────── */}
+          {view === 'chapters' && unitData && (
+            <div>
+              <button className="back-link mb-6" onClick={() => setView('units')}>← {subjectData?.name}</button>
+              <h2 className="font-serif text-2xl text-ink mb-1">{unitData.name}</h2>
+              <p className="text-muted text-sm mb-6">Choose a chapter.</p>
+              <div>
+                {unitData.chapters.map((c, i) => {
+                  const p2 = getChapterProg(subjectId, c.id)
+                  return (
+                    <div key={c.id} className="index-row" onClick={() => goChapter(c.id)}>
+                      <span className="flex gap-3 items-start text-ink text-sm max-w-[75%]">
+                        <span className="text-muted shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                        {c.title}
+                      </span>
+                      <span className="flex items-center gap-2 shrink-0">
+                        {p2.revised && <span className="badge-revised">✓ Revised</span>}
+                        {p2.quizScore !== undefined && <span className="text-xs text-muted">{p2.quizScore}/{p2.quizTotal}</span>}
+                        {!p2.revised && p2.quizScore === undefined && <span className="text-muted text-sm">→</span>}
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* ── CHAPTER (two-button) ─────────────────────────────────── */}
+          {view === 'chapter' && chapterData && (
+            <div>
+              <button className="back-link mb-6" onClick={() => setView('chapters')}>← {unitData?.name}</button>
+              <div className="flex items-start justify-between mb-8">
+                <div>
+                  <p className="text-xs text-muted uppercase tracking-widest mb-1">Chapter</p>
+                  <h2 className="font-serif text-2xl text-ink">{chapterData.title}</h2>
+                </div>
                 <button
-                  className="btn-outline text-sm disabled:opacity-30"
-                  disabled={noteIndex === 0}
-                  onClick={() => setNoteIndex(i => i - 1)}
-                >← Prev</button>
-                {noteIndex < notes.length - 1
-                  ? <button className="btn-primary text-sm" onClick={() => setNoteIndex(i => i + 1)}>Next →</button>
-                  : <button className="btn-primary text-sm" onClick={startQuiz}>Start Quiz →</button>
+                  className={`mark-btn ${cp.revised ? 'mark-btn-done' : ''}`}
+                  onClick={markRevised}
+                >
+                  {cp.revised ? '✓ Revised' : 'Mark Revised'}
+                </button>
+              </div>
+
+              {cp.quizScore !== undefined && (
+                <div className="note-card mb-6 flex items-center gap-3">
+                  <span className="text-2xl">🎯</span>
+                  <div>
+                    <p className="text-sm text-ink font-medium">Last quiz: {cp.quizScore}/{cp.quizTotal}</p>
+                    <p className="text-xs text-muted">{new Date(cp.lastAttempt).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
+                <button className="chapter-action-btn" onClick={startQuiz} disabled={quizLoading}>
+                  <span className="text-2xl mb-2">📝</span>
+                  <span className="font-medium text-ink">{quizLoading ? 'Loading...' : 'Practice PYQs'}</span>
+                  <span className="text-xs text-muted mt-1">Dynamic from Database</span>
+                </button>
+                <button
+                  className="chapter-action-btn"
+                  onClick={generateRevision}
+                  disabled={revLoading}
+                >
+                  <span className="text-2xl mb-2">📖</span>
+                  <span className="font-medium text-ink">{revLoading ? 'Generating…' : 'Generate Revision'}</span>
+                  <span className="text-xs text-muted mt-1">Concepts · Formulas · Tips</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ── REVISION ─────────────────────────────────────────────── */}
+          {view === 'revision' && chapterData && (
+            <div>
+              <button className="back-link mb-5" onClick={() => setView('chapter')}>← {chapterData.title}</button>
+              <div className="flex items-start justify-between mb-5">
+                <div>
+                  <p className="text-xs text-muted uppercase tracking-widest mb-1">Revision Notes</p>
+                  <h2 className="font-serif text-2xl text-ink">{chapterData.title}</h2>
+                </div>
+                <button className={`mark-btn ${cp.revised ? 'mark-btn-done' : ''}`} onClick={markRevised}>
+                  {cp.revised ? '✓ Revised' : 'Mark Revised'}
+                </button>
+              </div>
+
+              <div className="tab-row mb-4">
+                {TABS.map((t, i) => (
+                  <button key={t} className={`tab-btn ${activeTab === i ? 'tab-active' : ''}`} onClick={() => setActiveTab(i)}>{t}</button>
+                ))}
+              </div>
+
+              <div className="note-card">
+                {activeTab === 0 && (
+                  <ul className="space-y-4">
+                    {revConcepts.map((c, i) => (
+                      <li key={i} className="bg-slate-50 border p-3 rounded-lg">
+                        <strong className="block text-ink text-sm mb-1">{c.title}</strong>
+                        <span className="text-muted text-sm block leading-relaxed">{c.description}</span>
+                      </li>
+                    ))}
+                    {!revConcepts.length && <li className="text-muted text-sm">No concept explanations available.</li>}
+                  </ul>
+                )}
+                {activeTab === 1 && (
+                  <ul className="space-y-3">
+                    {revPatterns.map((p, i) => (
+                      <li key={i} className="flex gap-3 text-sm leading-relaxed p-2 bg-blue-50/50 rounded border-l-2 border-blue-400">
+                        <span className="text-ink">{p}</span>
+                      </li>
+                    ))}
+                    {!revPatterns.length && <li className="text-muted text-sm">No patterns found.</li>}
+                  </ul>
+                )}
+                {activeTab === 2 && (
+                  <ul className="space-y-3">
+                    {revFormulas.map((f, i) => (
+                      <li key={i} className="flex flex-col gap-1 text-sm leading-relaxed p-3 bg-white border rounded">
+                        <span className="text-ink text-indigo-700 font-mono font-medium">{f.formula}</span>
+                        <span className="text-muted text-xs">{f.meaning}</span>
+                      </li>
+                    ))}
+                    {!revFormulas.length && <li className="text-muted text-sm">No formulas found in PYQs.</li>}
+                  </ul>
+                )}
+                {activeTab === 3 && (
+                  <ul className="space-y-3">
+                    {revInsights.map((ins, i) => (
+                      <li key={i} className="flex gap-3 text-sm leading-relaxed p-2 bg-emerald-50/50 rounded border-l-2 border-emerald-400">
+                        <span className="text-ink">{ins}</span>
+                      </li>
+                    ))}
+                    {!revInsights.length && <li className="text-muted text-sm">No application insights available.</li>}
+                  </ul>
+                )}
+                {activeTab === 4 && (
+                  <ul className="space-y-4">
+                    {revMistakes.map((m, i) => (
+                      <li key={i} className="p-3 bg-red-50/30 rounded border border-red-100">
+                        <strong className="block text-sm text-red-600 mb-1">⚠️ {m.mistake}</strong>
+                        <span className="text-xs text-muted block leading-relaxed">{m.why}</span>
+                      </li>
+                    ))}
+                    {!revMistakes.length && <li className="text-muted text-sm">No common mistakes available.</li>}
+                  </ul>
+                )}
+                {activeTab === 5 && (
+                  <ul className="space-y-3 marker:text-ink list-disc pl-5">
+                    {revQuick.map((q, i) => (
+                      <li key={i} className="text-sm leading-relaxed text-ink pl-1">
+                        {q}
+                      </li>
+                    ))}
+                    {!revQuick.length && <li className="text-muted text-sm">No quick facts found.</li>}
+                  </ul>
+                )}
+              </div>
+
+              <div className="flex justify-between mt-5">
+                <button className="btn-outline text-sm" onClick={() => setActiveTab(t => Math.max(0, t - 1))} disabled={activeTab === 0}>← Prev</button>
+                {activeTab < TABS.length - 1
+                  ? <button className="btn-primary text-sm" onClick={() => setActiveTab(t => Math.min(TABS.length - 1, t + 1))}>Next →</button>
+                  : <button className="btn-primary text-sm" onClick={startQuiz}>Take Quiz →</button>
                 }
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ── QUIZ ──────────────────────────────────────────── */}
-        {view === 'quiz' && q && (
-          <div>
-            <button className="back-link mb-8" onClick={() => setView('revision')}>← Notes</button>
-            <p className="text-muted text-xs font-sans uppercase tracking-widest mb-1">Quiz</p>
-            <h2 className="font-serif text-2xl text-ink mb-6">{chapterData?.title}</h2>
-
-            <p className="text-muted text-xs mb-4">Question {quizIndex + 1} of {quiz.length}</p>
-
-            <div className="border border-rule rounded p-5 mb-5 bg-white">
-              <p className="text-ink font-medium leading-snug">{q.question}</p>
-            </div>
-
-            <div className="space-y-2 mb-5">
-              {q.options.map((opt, i) => {
-                let cls = 'option-btn'
-                if (revealed) {
-                  if (i === q.correctAnswer) cls += ' option-correct'
-                  else if (i === picked)     cls += ' option-wrong'
-                } else if (i === picked) cls += ' option-selected'
-                return (
-                  <button key={i} className={cls} disabled={revealed}
-                    onClick={() => setPicked(i)}>
-                    <span className="text-muted mr-2">{['A','B','C','D'][i]}.</span> {opt}
+          {/* ── QUIZ ─────────────────────────────────────────────────── */}
+          {view === 'quiz' && q && (
+            <div>
+              <button className="back-link mb-5" onClick={() => setView('chapter')}>← Back</button>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-xs text-muted uppercase tracking-widest mb-1">Quiz · PYQs</p>
+                  <h2 className="font-serif text-xl text-ink">{chapterData?.title}</h2>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button 
+                    className="text-xs btn-outline py-1 px-3 border border-slate-200 text-slate-500 hover:text-ink transition-colors"
+                    onClick={startQuiz}
+                    disabled={quizLoading}
+                  >
+                    {quizLoading ? '↻ Loading...' : '↻ New Questions'}
                   </button>
-                )
-              })}
-            </div>
-
-            {!revealed ? (
-              <button className="btn-primary" disabled={picked === null} onClick={submitAnswer}>
-                Submit
-              </button>
-            ) : (
-              <div className="mt-4">
-                <p className="text-sm text-muted italic mb-4">{q.explanation}</p>
-                <button className="btn-outline" onClick={nextQuestion}>
-                  {quizIndex < quiz.length - 1 ? 'Next Question →' : 'Finish Quiz'}
-                </button>
+                  <span className="text-muted text-sm">{quizIdx + 1}/{quizQ.length}</span>
+                </div>
               </div>
-            )}
-          </div>
-        )}
-
-        {/* ── RESULT ────────────────────────────────────────── */}
-        {view === 'result' && (
-          <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
-            <p className="text-muted text-xs uppercase tracking-widest mb-3">Result</p>
-            <h2 className="font-serif text-4xl text-ink mb-2">{resultScore} / {quiz.length}</h2>
-            <p className="text-muted mb-10">
-              {resultScore === quiz.length
-                ? 'Perfect score, Hitashi.'
-                : resultScore >= Math.ceil(quiz.length / 2)
-                  ? 'Good work. Keep going.'
-                  : 'Revise once more and try again.'}
-            </p>
-            <div className="flex gap-3">
-              <button className="btn-outline" onClick={() => goRevision(chapterId)}>Revise Again</button>
-              <button className="btn-primary" onClick={() => setView('chapters')}>Back to Chapters</button>
+              <div className="progress-track mb-5">
+                <div className="progress-fill" style={{ width: `${(quizIdx / quizQ.length) * 100}%` }} />
+              </div>
+              {q.year && <p className="text-xs text-muted mb-2">NEET {q.year}</p>}
+              <div className="border border-rule rounded-xl p-5 mb-4 bg-white">
+                <p className="text-ink font-medium leading-snug text-sm">{q.question}</p>
+              </div>
+              <div className="space-y-2 mb-4">
+                {q.options.map((opt, i) => {
+                  let cls = 'option-btn'
+                  if (revealed) {
+                    if (i === q.correctAnswer) cls += ' option-correct'
+                    else if (i === picked) cls += ' option-wrong'
+                  } else if (i === picked) cls += ' option-selected'
+                  return (
+                    <button key={i} className={cls} disabled={revealed} onClick={() => setPicked(i)}>
+                      <span className="option-letter">{['A','B','C','D'][i]}</span>
+                      {opt}
+                    </button>
+                  )
+                })}
+              </div>
+              {!revealed
+                ? <button className="btn-primary" disabled={picked === null} onClick={submitAnswer}>Submit Answer</button>
+                : (
+                  <div className="explanation-card mt-3">
+                    <p className="text-xs font-medium text-muted uppercase tracking-wider mb-1">Explanation</p>
+                    <p className="text-sm text-ink leading-relaxed">{q.explanation}</p>
+                    <button className="btn-outline mt-4 text-sm" onClick={nextQuestion}>
+                      {quizIdx < quizQ.length - 1 ? 'Next Question →' : 'Finish Quiz'}
+                    </button>
+                  </div>
+                )
+              }
             </div>
-          </div>
-        )}
+          )}
 
-      </div>
+          {/* ── RESULT ───────────────────────────────────────────────── */}
+          {view === 'result' && (
+            <div className="flex flex-col items-center justify-center min-h-[55vh] text-center">
+              <p className="text-xs text-muted uppercase tracking-widest mb-4">Result</p>
+              <h2 className="font-serif text-5xl text-ink mb-2">
+                {cp.quizScore ?? 0} <span className="text-muted text-3xl">/ {cp.quizTotal ?? quizQ.length}</span>
+              </h2>
+              <p className="text-muted mt-3 mb-2">
+                {(cp.quizScore ?? 0) === (cp.quizTotal ?? quizQ.length)
+                  ? '🎯 Perfect, Hitashi! Outstanding.'
+                  : (cp.quizScore ?? 0) >= Math.ceil((cp.quizTotal ?? quizQ.length) * 0.6)
+                    ? "👍 Good work. A little more revision and you'll ace it."
+                    : '📖 Revise the notes again — you can improve this.'}
+              </p>
+              <p className="text-xs text-muted italic mb-10">{MOTIVATIONAL[(motiIdx + 1) % MOTIVATIONAL.length]}</p>
+              <div className="flex gap-3">
+                <button className="btn-outline" onClick={() => setView('revision')}>Revise Notes</button>
+                <button className="btn-primary" onClick={() => setView('chapters')}>Back to Chapters</button>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </main>
     </div>
   )
 }

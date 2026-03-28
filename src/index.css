@@ -5,76 +5,181 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    color-scheme: light;
-  }
-
-  html {
-    background-color: #faf8f5;
-  }
-
-  body {
-    @apply m-0 font-sans antialiased bg-paper text-ink;
-  }
-
-  * {
-    @apply box-border;
-  }
-
-  h1, h2, h3 {
-    @apply font-serif;
-  }
+  :root { color-scheme: light; }
+  html  { background-color: #faf8f5; }
+  body  { @apply m-0 font-sans antialiased bg-paper text-ink; }
+  *     { @apply box-border; }
+  h1, h2, h3 { @apply font-serif; }
 }
 
 @layer components {
-  /* Book-style horizontal rule */
-  .divider {
-    @apply border-t border-rule my-6;
+
+  /* ── Two-column shell ───────────────────────── */
+  .app-shell {
+    @apply flex min-h-screen bg-paper;
   }
 
-  /* Plain nav back link */
+  /* ── Sidebar ────────────────────────────────── */
+  .sidebar {
+    @apply hidden md:flex flex-col w-64 shrink-0 border-r border-rule bg-white
+           h-screen sticky top-0 overflow-y-auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e2ddd7 transparent;
+  }
+  /* Mobile overlay sidebar */
+  @media (max-width: 767px) {
+    .sidebar-open {
+      @apply flex fixed inset-0 z-50 w-72 shadow-xl;
+    }
+  }
+  .sidebar-header {
+    @apply flex items-center justify-between px-5 py-5 border-b border-rule;
+  }
+  .sidebar-close {
+    @apply text-muted hover:text-ink transition-colors cursor-pointer;
+  }
+  .sidebar-subject {
+    @apply border-b border-rule;
+  }
+  .sidebar-subject-btn {
+    @apply w-full flex items-center gap-2 px-5 py-3 text-sm text-ink
+           hover:bg-stone-50 transition-colors cursor-pointer text-left;
+  }
+  .sidebar-subject-active {
+    @apply font-medium text-accent bg-stone-50;
+  }
+  .sidebar-unit {
+    @apply pl-4 bg-stone-50;
+  }
+  .sidebar-unit-btn {
+    @apply w-full text-left px-4 py-2 text-xs text-muted font-medium
+           hover:text-ink transition-colors cursor-pointer;
+  }
+  .sidebar-unit-active {
+    @apply text-ink;
+  }
+  .sidebar-chapter-btn {
+    @apply w-full flex items-center gap-1 pl-6 pr-3 py-1.5 text-xs text-muted
+           hover:text-ink transition-colors cursor-pointer;
+  }
+  .sidebar-chapter-active {
+    @apply text-accent font-medium;
+  }
+  .sidebar-home-btn {
+    @apply mt-auto px-5 py-4 text-xs text-muted hover:text-ink transition-colors
+           cursor-pointer text-left border-t border-rule;
+  }
+
+  /* ── Main panel ─────────────────────────────── */
+  .main-content {
+    @apply flex-1 min-w-0 overflow-y-auto;
+  }
+  .mobile-topbar {
+    @apply flex items-center justify-between px-5 py-3 border-b border-rule bg-white sticky top-0 z-10;
+  }
+  .content-inner {
+    @apply max-w-2xl mx-auto px-5 py-10;
+  }
+
+  /* ── Chapter action cards ───────────────────── */
+  .chapter-action-btn {
+    @apply flex flex-col items-center justify-center gap-1 border border-rule rounded-xl
+           p-6 bg-white hover:border-accent hover:shadow-sm transition-all cursor-pointer
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* ── Navigation ─────────────────────────────── */
   .back-link {
-    @apply inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors;
+    @apply inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors cursor-pointer;
   }
 
-  /* Index-style list item row */
+  /* ── Subject Card ───────────────────────────── */
+  .subject-card {
+    @apply border border-rule rounded-xl p-5 bg-white cursor-pointer
+           hover:border-accent hover:shadow-sm transition-all;
+  }
+
+  /* ── Index List Row ─────────────────────────── */
   .index-row {
-    @apply flex items-center justify-between py-3 border-b border-rule cursor-pointer hover:text-accent transition-colors;
+    @apply flex items-center justify-between py-4 border-b border-rule
+           cursor-pointer hover:text-accent transition-colors;
   }
 
-  /* Revision note card */
+  /* ── Progress Bar ───────────────────────────── */
+  .progress-track {
+    @apply w-full h-1.5 bg-rule rounded-full overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full bg-accent rounded-full transition-all duration-500;
+  }
+
+  /* ── Badges ─────────────────────────────────── */
+  .badge-revised {
+    @apply text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-medium;
+  }
+
+  /* ── Mark Revised Button ────────────────────── */
+  .mark-btn {
+    @apply shrink-0 text-xs px-3 py-1.5 rounded-full border border-rule
+           text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer;
+  }
+  .mark-btn-done {
+    @apply bg-green-50 border-green-400 text-green-700;
+  }
+
+  /* ── Tabs ───────────────────────────────────── */
+  .tab-row {
+    @apply flex gap-1 overflow-x-auto pb-1;
+    scrollbar-width: none;
+  }
+  .tab-row::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    @apply shrink-0 text-xs px-3 py-1.5 rounded-full border border-rule
+           text-muted hover:text-accent hover:border-accent transition-colors cursor-pointer whitespace-nowrap;
+  }
+  .tab-active {
+    @apply bg-ink text-paper border-ink;
+  }
+
+  /* ── Note Card ──────────────────────────────── */
   .note-card {
-    @apply border border-rule rounded bg-white p-6 leading-relaxed;
+    @apply border border-rule rounded-xl bg-white p-6 min-h-[180px];
   }
 
-  /* Fact highlight bar */
-  .fact-bar {
-    @apply mt-4 pl-3 border-l-2 border-accent text-sm text-muted;
+  /* ── NCERT Quote ────────────────────────────── */
+  .ncert-quote {
+    @apply border-l-2 border-yellow-400 pl-3 py-1 text-sm text-ink italic leading-relaxed;
   }
 
-  /* Quiz option button */
+  /* ── Quiz Option ────────────────────────────── */
   .option-btn {
-    @apply w-full text-left px-4 py-3 border border-rule rounded text-sm hover:border-accent hover:text-accent transition-colors;
+    @apply w-full text-left px-4 py-3 border border-rule rounded-lg text-sm
+           hover:border-accent hover:text-accent transition-colors flex items-center gap-3 cursor-pointer;
+  }
+  .option-letter {
+    @apply w-6 h-6 rounded-full bg-rule text-muted text-xs flex items-center justify-center shrink-0 font-medium;
+  }
+  .option-correct { @apply border-green-500 bg-green-50 text-green-800; }
+  .option-correct .option-letter { @apply bg-green-200 text-green-800; }
+  .option-wrong   { @apply border-red-400 bg-red-50 text-red-800; }
+  .option-wrong   .option-letter { @apply bg-red-200 text-red-800; }
+  .option-selected { @apply border-accent text-accent; }
+  .option-selected .option-letter { @apply bg-accent text-paper; }
+
+  /* ── Explanation ────────────────────────────── */
+  .explanation-card {
+    @apply border border-rule rounded-xl bg-amber-50 p-5;
   }
 
-  .option-correct {
-    @apply border-green-600 bg-green-50 text-green-800;
-  }
-
-  .option-wrong {
-    @apply border-red-500 bg-red-50 text-red-800;
-  }
-
-  .option-selected {
-    @apply border-accent text-accent;
-  }
-
-  /* Plain outlined button */
+  /* ── Buttons ────────────────────────────────── */
   .btn-outline {
-    @apply px-5 py-2 border border-ink text-sm font-medium hover:bg-ink hover:text-paper transition-colors rounded;
+    @apply px-5 py-2 border border-ink text-sm font-medium rounded-lg
+           hover:bg-ink hover:text-paper transition-colors cursor-pointer
+           disabled:opacity-30 disabled:cursor-not-allowed;
   }
-
   .btn-primary {
-    @apply px-5 py-2 bg-ink text-paper text-sm font-medium hover:bg-stone-700 transition-colors rounded;
+    @apply px-5 py-2 bg-ink text-paper text-sm font-medium rounded-lg
+           hover:bg-stone-700 transition-colors cursor-pointer
+           disabled:opacity-40 disabled:cursor-not-allowed;
   }
 }
