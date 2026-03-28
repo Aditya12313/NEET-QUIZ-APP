@@ -9,6 +9,7 @@ import revisionRoutes  from './routes/revision.js'
 
 const app  = express()
 const PORT = process.env.PORT || 5000
+const MAX_PORT_RETRIES = Number(process.env.PORT_RETRY_ATTEMPTS || 10)
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors())
@@ -32,7 +33,34 @@ mongoose
   .connect(MONGO_URI)
   .then(() => {
     console.log(`✅ MongoDB connected: ${MONGO_URI}`)
-    app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`))
+
+    const startServer = (initialPort) => {
+      const basePort = Number(initialPort)
+      let retries = 0
+
+      const tryListen = (portToTry) => {
+        const server = app.listen(portToTry, () => {
+          console.log(`🚀 Server running on http://localhost:${portToTry}`)
+        })
+
+        server.on('error', (err) => {
+          if (err.code === 'EADDRINUSE' && retries < MAX_PORT_RETRIES) {
+            retries += 1
+            const nextPort = portToTry + 1
+            console.warn(`⚠️ Port ${portToTry} is in use. Retrying on ${nextPort}...`)
+            tryListen(nextPort)
+            return
+          }
+
+          console.error('❌ Server failed to start:', err.message)
+          process.exit(1)
+        })
+      }
+
+      tryListen(basePort)
+    }
+
+    startServer(PORT)
   })
   .catch(err => {
     console.error('❌ MongoDB connection failed:', err.message)

@@ -1,71 +1,163 @@
-// Physics — Unit 20: Experimental Skills
+// Physics - Unit 20: Electronic Devices
 
-const expSkills = {
-  id: 'experimental-skills',
-  title: 'Chapter 20: Experimental Skills',
-  notes: [
+const electronicDevices = {
+  id: 'electronic-devices',
+  title: 'Chapter 20: Electronic Devices',
+  concept_explanations: [
     {
-      concept: 'Vernier Calipers & Screw Gauge: LC of vernier = 1 MSD - 1 VSD. LC of screw gauge = Pitch / No. of circular divs. Zero Error: Positive when instrument reads + without object (subtract to correct). Negative when reads - without object (add to correct).',
-      fact: 'Pitch is the linear distance moved by the spindle of the screw gauge for ONE complete rotation of its circular scale.',
-      tip: 'Real measurement = Main Scale Reading + (Coinciding Division * Least Count) - Zero Error (with sign).',
+      title: 'Semiconductor Basics',
+      description: 'Semiconductors have conductivity between conductors and insulators. Common examples are silicon (Si) and germanium (Ge).'
     },
     {
-      concept: 'Simple Pendulum & Elasticity: Measuring dissipation of energy by plotting (Amplitude)² vs time. The graph is exponential decay, indicating energy loss to air drag. Young\'s modulus of wire: use Searle\'s apparatus. Y = (MgL) / (πr²l). Extension l measured by micrometers.',
-      fact: 'In Searle\'s, using an identical reference wire cancels out thermal expansion effects!',
-      tip: 'Time period of pendulum T = 2π√(L/g). Plotting L vs T² yields a straight line passing through the origin. Slope = g / 4π².',
+      title: 'Intrinsic and Extrinsic Semiconductors',
+      description: 'Intrinsic semiconductor is pure. Extrinsic semiconductor is doped to increase conductivity.'
     },
     {
-      concept: 'Surface Tension, Viscosity & Specific Heat: Capillary rise h = 2T/(rρg)*cosθ. For water in glass, θ≈0. Viscosity via Stokes\' law: drop a small ball in viscous liquid, constant terminal velocity v_t gives coefficient η. Specific heat: Method of mixtures (Coffee-cup calorimetry).',
-      fact: 'Heat lost by hot body = Heat gained by cold body + Heat gained by calorimeter. m1c1(T1-T) = m2c2(T-T2) + W(T-T2), where W is water equivalent.',
-      tip: 'Adding detergent to water lowers its surface tension, which is why capillary rise is less for soapy water compared to pure water.',
+      title: 'Doping and Carrier Types',
+      description: 'Doping introduces impurities. n-type has excess electrons (majority carriers: electrons). p-type has excess holes (majority carriers: holes).'
     },
     {
-      concept: 'Electrical Experiments: Meter Bridge is an application of Wheatstone bridge. Balance length l. Unknown res X = R (100-l)/l. Ohm\'s law verification: Plot V vs I, slope gives resistance. Finding internal resistance r of cell via meter bridge/potentiometer.',
-      fact: 'For precise Meter Bridge measurements, null point should be near middle (50 cm) to minimize end-resistance errors and percentage errors.',
-      tip: 'Half Deflection method for galvanometer: Figure of merit (k = I/θ). Resistance of galvanometer (G) is found without needing another ammeter or full Wheatstone setup.',
+      title: 'p-n Junction and Depletion Region',
+      description: 'p-n junction is boundary of p and n materials. Depletion region has no free carriers and behaves like a potential barrier.'
     },
     {
-      concept: 'Optics & Semi-Conductor Experiments: Optics bench used to find f of convex/concave mirror/lens. Parallax method is used to locate images without screen. Traveling microscope used for glass slab refractive index (Real depth / Apparent depth).',
-      fact: 'For p-n junction diode forward characteristic curve: mA ammeter is used, voltage is small (cut-in ~0.7V). For reverse: µA ammeter is used, breakdown occurs at higher voltage (Zener).',
-      tip: 'Resistor colour code identification directly aids in experimental matching (BB ROY of Great Britain...). To identify an LED mixed with a diode: LED body is transparent/colored plastic encapsulant, normal diode is opaque cylindrical component.',
+      title: 'Forward and Reverse Biasing',
+      description: 'Forward bias (p to positive, n to negative) reduces depletion width and allows current. Reverse bias increases depletion width and only tiny current flows.'
     },
+    {
+      title: 'Diode and Rectifier',
+      description: 'Diode has low resistance in forward bias and high resistance in reverse bias. Rectifiers convert AC to DC (half-wave and full-wave).'
+    },
+    {
+      title: 'Zener Diode and Transistor',
+      description: 'Zener diode works in reverse breakdown and is used for voltage regulation. Transistor (npn/pnp) allows small base current to control larger collector current and can amplify signals.'
+    },
+    {
+      title: 'Logic Gates and Universal Gates',
+      description: 'AND, OR, NOT are basic logic gates. NAND and NOR are universal gates used to realize all logic operations.'
+    }
+  ],
+  key_patterns: [
+    'Intrinsic vs extrinsic semiconductor conceptual comparisons.',
+    'p-n junction and depletion-region behavior in biasing setups.',
+    'Forward-vs-reverse diode characteristic interpretation.',
+    'Zener diode as voltage regulator conceptual questions.',
+    'Transistor current-control and amplification concept asks.',
+    'Truth-table based logic-gate output questions.',
+    'Carrier-type and doping based direct theory items.'
+  ],
+  formulas_relations: [
+    {
+      formula: 'n-type: majority carriers = electrons',
+      meaning: 'Result of donor doping in semiconductor.'
+    },
+    {
+      formula: 'p-type: majority carriers = holes',
+      meaning: 'Result of acceptor doping in semiconductor.'
+    },
+    {
+      formula: 'Forward bias: p to +, n to -',
+      meaning: 'Depletion region reduces and diode conducts strongly.'
+    },
+    {
+      formula: 'Reverse bias: p to -, n to +',
+      meaning: 'Depletion region widens and current is very small.'
+    },
+    {
+      formula: 'AND: output = 1 only if both inputs are 1',
+      meaning: 'Basic digital gate behavior.'
+    },
+    {
+      formula: 'OR: output = 1 if any input is 1',
+      meaning: 'Basic digital gate behavior.'
+    },
+    {
+      formula: 'NOT: output is logical complement of input',
+      meaning: 'Inverter operation.'
+    },
+    {
+      formula: 'NAND and NOR are universal gates',
+      meaning: 'Any digital logic function can be built from either one alone.'
+    }
+  ],
+  application_insights: [
+    'Short chapter but highly scoring in NEET with direct-theory style asks.',
+    'Most frequent asks: logic gates, p-n junction behavior, and Zener diode operation.',
+    'Truth-table questions are usually quick marks if gate fundamentals are clear.',
+    'Carrier-type understanding (electrons vs holes) is repeatedly tested.',
+    'Biasing direction is a common setup-based conceptual check.'
+  ],
+  common_mistakes: [
+    {
+      mistake: 'Confusing p-type and n-type semiconductors',
+      why: 'Majority carrier identification (holes vs electrons) is often reversed under exam pressure.'
+    },
+    {
+      mistake: 'Mixing forward and reverse bias connections',
+      why: 'Incorrect terminal polarity leads to wrong conclusion about current flow.'
+    },
+    {
+      mistake: 'Forgetting majority carriers',
+      why: 'Many direct MCQs are based only on carrier-type recall.'
+    },
+    {
+      mistake: 'Wrong logic-gate output',
+      why: 'AND/OR/NOT truth-table confusion causes avoidable mistakes.'
+    },
+    {
+      mistake: 'Ignoring Zener working region',
+      why: 'Zener diode functions as regulator in reverse breakdown, not normal forward operation.'
+    }
+  ],
+  quick_revision: [
+    'Semiconductor conductivity lies between conductor and insulator.',
+    'Intrinsic = pure, extrinsic = doped semiconductor.',
+    'n-type majority carrier: electron; p-type majority carrier: hole.',
+    'p-n junction forms a depletion region barrier.',
+    'Forward bias reduces depletion region and allows current.',
+    'Reverse bias widens depletion region and blocks current.',
+    'Rectifier converts AC to DC (half-wave/full-wave).',
+    'Zener diode is used as voltage regulator in reverse breakdown.',
+    'Transistor: small base current controls larger collector current.',
+    'NAND and NOR are universal gates.'
   ],
   quiz: [
     {
-      question: 'A student uses a screw gauge with 100 divisions on its circular scale and a pitch of 1 mm. The zero of the circular scale lies 3 divisions ABOVE the line of graduation (when closed). The Corrected Least Count and Zero Error respectively are:',
-      options: ['0.01 mm, -0.03 mm', '0.01 mm, +0.03 mm', '0.1 mm, -0.03 mm', '0.01 mm, -0.003 mm'],
-      correctAnswer: 0,
-      explanation: 'LC = Pitch / No. of divs = 1 mm / 100 = 0.01 mm. Since the zero of circular scale is ABOVE the reference line, the screw has already advanced effectively. It reads less. Wait... if the zero is ABOVE the line, it means you have pushed the scale past 0. It is a NEGATIVE zero error. Error = -3 * 0.01 mm = -0.03 mm.',
+      question: 'Majority carriers in n-type semiconductor are:',
+      options: ['holes', 'electrons', 'ions only', 'equal electrons and holes'],
+      correctAnswer: 1,
+      explanation: 'Donor doping provides extra electrons, so electrons are majority carriers.'
     },
     {
-      question: 'In the method of mixtures for specific heat capacity, what is meant by the "water equivalent" (W) of the calorimeter?',
-      options: ['The mass of water in the calorimeter', 'Volume of water inside', 'Mass of water which would absorb the same amount of heat as the calorimeter for the same temperature rise', 'Specific heat of water'],
+      question: 'In forward bias for p-n junction, connections are:',
+      options: ['p to negative, n to positive', 'p to positive, n to negative', 'both to positive', 'both to negative'],
+      correctAnswer: 1,
+      explanation: 'Forward bias means p side to positive terminal and n side to negative terminal.'
+    },
+    {
+      question: 'A Zener diode is mainly used as:',
+      options: ['rectifier only', 'voltage regulator', 'switch in forward bias only', 'light sensor'],
+      correctAnswer: 1,
+      explanation: 'Zener diode provides nearly constant voltage in reverse breakdown region.'
+    },
+    {
+      question: 'AND gate output is 1 when:',
+      options: ['any one input is 1', 'both inputs are 1', 'both inputs are 0', 'inputs are different'],
+      correctAnswer: 1,
+      explanation: 'AND operation gives HIGH output only if all inputs are HIGH.'
+    },
+    {
+      question: 'Universal logic gates are:',
+      options: ['AND and OR', 'NOT and OR', 'NAND and NOR', 'XOR and XNOR'],
       correctAnswer: 2,
-      explanation: 'Water equivalent W is the thermal capacity (mass × specific heat) of the calorimeter cup, expressed in terms of an equivalent mass of water that would behave thermally identically.',
-    },
-    {
-      question: 'Why is the null point in a Meter Bridge experiment ideally sought near the center (around 50 cm) of the wire?',
-      options: ['Because heating of wire makes null point jump if kept at ends', 'To minimize the effect of end resistance and contact resistances, achieving highest sensitivity', 'Because the resistance of wire is zero at the middle', 'To limit current flow into galvanometer'],
-      correctAnswer: 1,
-      explanation: 'Sensitivity of Wheatstone Bridge (Meter Bridge) is highest when all four arms have comparable resistances. This condition is met near the middle (50 cm) mark, minimizing percentage errors due to scale reading and end resistances.',
-    },
-    {
-      question: 'While plotting the forward characteristic curve of a generic p-n junction diode, which of the following combinations of meters is standard?',
-      options: ['Voltmeter in kV range, Ammeter in µA range', 'Voltmeter in V range, Ammeter in mA range', 'Voltmeter in mV range, Ammeter in A range', 'Voltmeter in V range, Ammeter in µA range'],
-      correctAnswer: 1,
-      explanation: 'In forward bias, current is quite large (in milliamperes), and barrier voltages are small (e.g., ~0.7 V for Si). So a standard Voltmeter (say 0-3V) and a Milli-ammeter (mA) are used.',
-    },
-    {
-      question: 'In an optics experiment using a convex lens, "parallax" between the image needle and the object needle is said to be removed when:',
-      options: ['They blur together', 'Moving your eye sideways causes them to move together without relative motion between them', 'They are completely out of focus', 'They appear to be of different colors'],
-      correctAnswer: 1,
-      explanation: 'No parallax between two needles means their tips are coincident in 3D space. When you move your eye horizontally, they shift exactly together against the background without moving relative to each other.',
-    },
-  ],
+      explanation: 'NAND and NOR alone can be used to construct any logic circuit.'
+    }
+  ]
 };
 
 export default {
   id: 'phy-u20',
-  name: 'Unit 20: Experimental Skills',
-  chapters: [expSkills],
+  name: 'Unit 20: Electronic Devices',
+  chapters: [electronicDevices],
 };
+

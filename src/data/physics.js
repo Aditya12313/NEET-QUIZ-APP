@@ -18,6 +18,8 @@ import unit17 from './physics/unit17.js';
 import unit18 from './physics/unit18.js';
 import unit19 from './physics/unit19.js';
 import unit20 from './physics/unit20.js';
+import unit21 from './physics/unit21.js';
+import unit22 from './physics/unit22.js';
 
 export const physicsSubject = {
   id: 'physics',
@@ -42,6 +44,8 @@ export const physicsSubject = {
     unit17,
     unit18,
     unit19,
-    unit20
+    unit20,
+    unit21,
+    unit22
   ],
 };

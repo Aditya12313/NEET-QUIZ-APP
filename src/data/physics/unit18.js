@@ -1,71 +1,155 @@
-// Physics — Unit 18: Atoms and Nuclei
+// Physics - Unit 18: Dual Nature of Matter and Radiation
 
-const atomsNuclei = {
-  id: 'atoms-nuclei',
-  title: 'Chapter 18: Atoms and Nuclei',
-  notes: [
+const dualNature = {
+  id: 'dual-nature',
+  title: 'Chapter 18: Dual Nature of Matter and Radiation',
+  concept_explanations: [
     {
-      concept: 'Rutherford\'s Model: Based on Alpha-particle scattering. Discoveries: Most of atom is empty space. Positive charge is concentrated at a tiny, dense core (nucleus) where mass is (~10^-15 m wide). Electron rapidly orbits the nucleus.',
-      fact: 'Flaw: According to classical electromagnetism, an accelerating charge (electron orbiting) MUST radiate energy, meaning it would spiral into the nucleus within 10^-8 s.',
-      tip: 'Distance of closest approach (r0) = 2kZe² / (½mv²). It estimates the size of the atomic nucleus.',
+      title: 'Dual Nature of Radiation',
+      description: 'Light shows wave nature (interference, diffraction) and particle nature (photoelectric effect).'
     },
     {
-      concept: 'Bohr\'s Model (Hydrogen-like species): Postulates: 1. Electrons orbit in stationary, non-radiating states. 2. Angular momentum is quantized: L = mvr = nh/2π. 3. Energy radiated only when dropping orbit: hν = E_i - E_f.',
-      fact: 'Radius of nth orbit: r_n = 0.529 * (n²/Z) Angstroms. Energy of electron: E_n = -13.6 * (Z²/n²) eV. Velocity v_n ∝ Z/n.',
-      tip: 'As n increases, absolute energy increases (becomes less negative), but the energy DIFFERENCES between subsequent levels DECREASE.',
+      title: 'Photon',
+      description: 'Photon is a packet of energy. Core relations: E = h*nu and E = hc/lambda.'
     },
     {
-      concept: 'Hydrogen Spectrum: Originates from electron transitions. Lyman (n→1, UV), Balmer (n→2, Visible), Paschen (n→3, IR), Brackett (n→4, IR), Pfund (n→5, IR).',
-      fact: 'Rydberg Formula: 1/λ = R * Z² * (1/n1² - 1/n2²). Rydberg constant R ≈ 1.097 × 10^7 m⁻¹.',
-      tip: 'Max wavelength means smallest energy transition (e.g. Balmer: n=3 to n=2). Min wavelength means largest transition (e.g. Balmer: n=∞ to n=2).',
+      title: 'Photoelectric Effect',
+      description: 'Electrons are emitted from a metal surface when light of suitable frequency falls on it. Key observations: instant emission, dependence on frequency, and threshold frequency.'
     },
     {
-      concept: 'The Nucleus: Composition: Protons (Z) and Neutrons (N). Mass number A = Z + N. Size of nucleus r = R0 * A^(1/3), where R0 = 1.2 fm (1.2 x 10^-15m). Therefore, nuclear density is CONSTANT for all stable atoms (~2.3 x 10^17 kg/m³).',
-      fact: 'Mass defect (Δm) = (Z*mp + N*mn) - M_nucleus. This missing mass is converted to Binding Energy holding the nucleus together.',
-      tip: 'Binding Energy (B.E.) = Δm * c². Expressed in MeV, 1 amu of mass defect = 931.5 MeV.',
+      title: 'Einstein Photoelectric Equation',
+      description: 'h*nu = phi + KEmax, where phi is work function. Maximum kinetic energy may also be written as KEmax = eV0.'
     },
     {
-      concept: 'Binding Energy Curve & Nuclear Reactions: B.E. per nucleon determines stability. Maximum stability around Iron (Fe-56, 8.8 MeV per nucleon).',
-      fact: 'Nuclear Fission: Heavy nuclei (A > 170) break apart into lighter ones. Used in nuclear reactors (U-235).',
-      tip: 'Nuclear Fusion: Light nuclei (A < 30) combine into a heavier one, releasing huge energy. Energy source of stars (H + H → He). Requires extreme high temperature to overcome Coulomb repulsion (thermonuclear).',
+      title: 'Threshold Frequency and Stopping Potential',
+      description: 'Threshold frequency relation is nu0 = phi/h. Stopping potential is minimum potential needed to stop photoelectrons.'
     },
+    {
+      title: 'Photoelectric Graphs',
+      description: 'KE vs frequency gives a straight line. Current vs voltage graph shows saturation current and cutoff (stopping potential).'
+    },
+    {
+      title: 'de Broglie Hypothesis',
+      description: 'Matter particles also exhibit wave nature. de Broglie wavelength is lambda = h/p = h/(mv). For electron accelerated through potential V: lambda = h/sqrt(2meV).'
+    },
+    {
+      title: 'Applications',
+      description: 'Wave nature of matter enables electron diffraction and technologies like electron microscope.'
+    }
+  ],
+  key_patterns: [
+    'Einstein photoelectric-equation based direct numerical and conceptual asks.',
+    'Kinetic energy and stopping potential relation questions (KEmax = eV0).',
+    'Threshold frequency and work-function relation checks.',
+    'de Broglie wavelength numericals using velocity or accelerating voltage.',
+    'Mixed unit-conversion numericals involving eV, joule, frequency, and wavelength.',
+    'Graph-based interpretation from KE-frequency and current-voltage plots.',
+    'Conceptual distinctions between intensity and frequency effects.'
+  ],
+  formulas_relations: [
+    {
+      formula: 'E = h*nu = hc/lambda',
+      meaning: 'Photon energy relations.'
+    },
+    {
+      formula: 'h*nu = phi + KEmax',
+      meaning: 'Einstein photoelectric equation.'
+    },
+    {
+      formula: 'KEmax = (1/2)mv^2 = eV0',
+      meaning: 'Maximum kinetic energy of photoelectrons and stopping-potential form.'
+    },
+    {
+      formula: 'nu0 = phi/h',
+      meaning: 'Threshold frequency relation.'
+    },
+    {
+      formula: 'lambda = h/p = h/(mv)',
+      meaning: 'General de Broglie wavelength relation.'
+    },
+    {
+      formula: 'lambda = h/sqrt(2meV)',
+      meaning: 'de Broglie wavelength for electron accelerated by potential V.'
+    }
+  ],
+  application_insights: [
+    'Very high-weightage NEET chapter with heavy formula usage.',
+    'Most asked topics are Einstein equation and de Broglie wavelength.',
+    'Typical NEET pattern is direct formula plus one conceptual distinction.',
+    'Graph-based interpretation can be solved quickly if slope/intercept meaning is known.',
+    'Intensity-frequency distinction is one of the most repeated trap zones.'
+  ],
+  common_mistakes: [
+    {
+      mistake: 'Confusing intensity with frequency',
+      why: 'Intensity controls number of emitted electrons, while maximum kinetic energy depends on frequency.'
+    },
+    {
+      mistake: 'Ignoring threshold-frequency condition',
+      why: 'No photoemission occurs if incident frequency is below threshold regardless of intensity.'
+    },
+    {
+      mistake: 'Wrong unit conversion between eV and joule',
+      why: 'Many numericals require consistent SI units for final calculation.'
+    },
+    {
+      mistake: 'Mixing de Broglie formulas',
+      why: 'Use lambda = h/(mv) generally and lambda = h/sqrt(2meV) for electron accelerated through V.'
+    },
+    {
+      mistake: 'Misreading photoelectric graphs',
+      why: 'Cutoff potential, saturation current, and threshold intercept each represent different physics.'
+    }
+  ],
+  quick_revision: [
+    'Light has dual nature: wave and particle.',
+    'Photon energy: E = h*nu = hc/lambda.',
+    'Photoelectric equation: h*nu = phi + KEmax.',
+    'KEmax = (1/2)mv^2 = eV0.',
+    'Threshold frequency: nu0 = phi/h.',
+    'Stopping potential is minimum potential to stop fastest electrons.',
+    'KE vs frequency graph is linear.',
+    'de Broglie: lambda = h/p = h/(mv).',
+    'Electron through V: lambda = h/sqrt(2meV).',
+    'Photoelectric effect: frequency is decisive, not intensity alone.'
   ],
   quiz: [
     {
-      question: 'Which of the spectral series of the hydrogen atom lies entirely in the visible region of the electromagnetic spectrum?',
-      options: ['Lyman series', 'Balmer series', 'Paschen series', 'Brackett series'],
+      question: 'Einstein photoelectric equation is:',
+      options: ['h*nu = phi + KEmax', 'h*nu = phi - KEmax', 'KEmax = phi - h*nu', 'h*nu = eV0 only'],
+      correctAnswer: 0,
+      explanation: 'Photon energy is used to overcome work function and give maximum kinetic energy.'
+    },
+    {
+      question: 'If stopping potential is V0, maximum kinetic energy of photoelectron is:',
+      options: ['KEmax = hV0', 'KEmax = eV0', 'KEmax = V0/e', 'KEmax = e/V0'],
       correctAnswer: 1,
-      explanation: 'The Balmer series involves transitions from higher energy levels down to n=2, emitting photons with wavelengths mostly clustered in the visible light range (approx. 400 nm - 700 nm).',
+      explanation: 'Stopping potential directly gives KEmax = eV0.'
     },
     {
-      question: 'According to Bohr\'s theory, the energy of an electron in the nth orbit of an H-atom is proportional to:',
-      options: ['n', 'n²', '1 / n', '1 / n²'],
-      correctAnswer: 3,
-      explanation: 'The total energy of an electron in a hydrogen-like atom is given by E_n = -13.6 Z² / n² eV. Therefore, Energy (E) is proportional to 1/n².',
-    },
-    {
-      question: 'As the mass number (A) of a nucleus increases, its nuclear density:',
-      options: ['Increases', 'Decreases', 'Remains roughly constant', 'Increases and then decreases'],
-      correctAnswer: 2,
-      explanation: 'Nuclear radius R = R0 A^(1/3). Volume = 4/3 π R³ = 4/3 π (R0³ A). Since mass of nucleus M ≈ A × (mass of nucleon), Density = Mass/Volume ≈ (A * m) / (4/3 π R0³ A) = m / (4/3 π R0³). Note that A cancels out! Hence, nuclear density is constant.',
-    },
-    {
-      question: 'The binding energy per nucleon is maximum for which of the following elements?',
-      options: ['Helium ($^4_2$He)', 'Iron ($^{56}_{26}$Fe)', 'Uranium ($^{235}_{92}$U)', 'Oxygen ($^{16}_8$O)'],
+      question: 'Threshold frequency relation is:',
+      options: ['nu0 = h/phi', 'nu0 = phi/h', 'nu0 = phi*lambda', 'nu0 = phi/e'],
       correctAnswer: 1,
-      explanation: 'On the binding energy per nucleon curve, the peak occurs roughly around mass number A=56. Therefore, Iron ($^{56}_{26}$Fe) is the most tightly bound and stable nucleus (approx 8.8 MeV/nucleon).',
+      explanation: 'At threshold, h*nu0 equals work function phi.'
     },
     {
-      question: 'In the Rutherford scattering experiment, the ratio of the thickness of gold foil to the distance of closest approach for an alpha particle is typically of the order of:',
-      options: ['10^0', '10^2', '10^4', '10^8'],
-      correctAnswer: 2,
-      explanation: 'Thickness of gold foil is typically ~10^-7 m. Distance of closest approach is ~10^-14 m to 10^-11 m depending on the alpha particle KE. Ratio ~ 10^-7 / 10^-11 = 10^4. Most important to know is the extreme scales involved!',
+      question: 'de Broglie wavelength of a particle is:',
+      options: ['lambda = p/h', 'lambda = h/p', 'lambda = h*p', 'lambda = p^2/h'],
+      correctAnswer: 1,
+      explanation: 'de Broglie proposed lambda = h/p.'
     },
-  ],
+    {
+      question: 'In photoelectric effect, increasing intensity at fixed frequency above threshold mainly increases:',
+      options: ['maximum kinetic energy', 'threshold frequency', 'number of emitted electrons', 'work function'],
+      correctAnswer: 2,
+      explanation: 'Intensity changes number of emitted electrons, not KEmax at fixed frequency.'
+    }
+  ]
 };
 
 export default {
   id: 'phy-u18',
-  name: 'Unit 18: Atoms and Nuclei',
-  chapters: [atomsNuclei],
+  name: 'Unit 18: Dual Nature of Matter and Radiation',
+  chapters: [dualNature],
 };
+

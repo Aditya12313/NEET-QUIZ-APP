@@ -1,34 +1,120 @@
-// Physics — Unit 13: Magnetic Effects of Current and Magnetism
+// Physics — Unit 13: Moving Charges and Magnetism
 
 const magnetism = {
   id: 'magnetism',
-  title: 'Chapter 13: Magnetic Effects of Current and Magnetism',
-  notes: [
+  title: 'Chapter 13: Moving Charges and Magnetism',
+  concept_explanations: [
     {
-      concept: 'Biot-Savart Law: Magnetic field dB due to a current element Idl is dB = (μ0/4π) * I(dl × r) / r³. Direction is given by magnetic compass or Right-Hand Rule.',
-      fact: 'For a circular coil carrying current I of radius R at distance x on its axis, B = (μ0 I R²) / 2(R² + x²)^(3/2). At center x=0, B = (μ0 I)/2R.',
-      tip: 'Ampere\'s Circuital Law is alternative: ∮B·dl = μ0 I_enclosed. For long straight wire: B = μ0 I / 2πr. Inside ideal long solenoid: B = μ0 nI.',
+      title: 'Magnetic Force on Moving Charge',
+      description: 'Vector form: F = q(v × B). Magnitude: F = qvB sin(theta). Direction is given by right-hand rule for positive charge and opposite for negative charge.'
     },
     {
-      concept: 'Force on Moving Charge: Lorentz Force F = q(v × B) + qE. If only magnetic field is present, F_m = qvB sinθ. Direction is given by Fleming\'s Left Hand Rule.',
-      fact: 'Magnetic force is always perpendicular to velocity, so work done by it is zero. Kinetic energy and speed remain constant.',
-      tip: 'If v is perpendicular to B (θ = 90°), path is circular (r = mv/qB). If v is at angle θ to B, path is helical (Pitch = v_cosθ * 2πm/qB).',
+      title: 'Motion in Uniform Magnetic Field',
+      description: 'If v is perpendicular to B, particle follows circular path with radius r = mv/(qB) and time period T = 2pi m/(qB). If velocity has a parallel component, motion becomes helical.'
     },
     {
-      concept: 'Force on a Current-Carrying Conductor: F = I(L × B). Two parallel current-carrying wires exert force on each other. F/L = (μ0 I1 I2) / 2πd.',
-      fact: 'Like currents (same direction) attract each other. Unlike currents (opposite direction) repel. This is used to define the SI unit Ampere.',
-      tip: 'Torque on current loop in uniform B field: τ = M × B = NIAB sinθ. This principle is used in Moving Coil Galvanometer.',
+      title: 'Force on Current-Carrying Conductor',
+      description: 'Magnitude of magnetic force is F = BIL sin(theta). Use vector form F = I(L × B) and apply direction rules carefully for sign-sensitive questions.'
     },
     {
-      concept: 'Moving Coil Galvanometer: Moving coil experiences torque. Deflection α I. Current Sensitivity = θ/I = NAB/k. Voltage Sensitivity = θ/V = NAB/kR.',
-      fact: 'Conversion to Ammeter: Connect low-value shunt resistance (S) in parallel. S = Ig * G / (I - Ig). Conversion to Voltmeter: Connect high resistance (R) in series. R = (V/Ig) - G.',
-      tip: 'An ideal ammeter has zero resistance, ideal voltmeter has infinite resistance.',
+      title: 'Magnetic Field due to Current',
+      description: 'Biot-Savart law: dB = (mu0/4pi) * (I dl sin(theta)/r^2). Key results: long wire B = mu0 I/(2pi r), circular loop center B = mu0 I/(2R), long solenoid B = mu0 nI.'
     },
     {
-      concept: 'Magnetism properties: Magnetic dipole moment (M) of a bar magnet = m * 2l. Magnetic field lines travel N to S outside, S to N inside. Torque on bar magnet in uniform field τ = M × B. Work done W = MB(cosθ1 - cosθ2).',
-      fact: 'Gauss\'s Law for Magnetism: ∮B·dA = 0, indicating magnetic monopoles do not exist.',
-      tip: 'Magnetic substances: Diamagnetic (-ve susceptibility, weakly repelled, e.g. Bi, Cu), Paramagnetic (+ve small susceptibility, weakly attracted, e.g. Al), Ferromagnetic (+ve large susceptibility, strongly attracted, e.g. Fe, Co, Ni). Curie temp: Ferromagnetic loses properties and becomes Paramagnetic.',
+      title: 'Ampere Circuital Law',
+      description: 'Integral form: closed integral B dot dl = mu0 I_enclosed. It is most useful for symmetrical current distributions like long wire, solenoid, and toroid.'
     },
+    {
+      title: 'Parallel Currents, Torque, and Galvanometer',
+      description: 'Force per unit length between wires: F/L = mu0 I1 I2/(2pi d). Same direction currents attract, opposite repel. Torque on loop: tau = NIAB sin(theta). Magnetic dipole moment: m = IA. Galvanometer works on torque proportional to current.'
+    }
+  ],
+  key_patterns: [
+    'Magnetic force numericals: find magnitude and direction using q(v × B).',
+    'Circular motion questions: calculate radius and time period; compare particles using m/q ratio.',
+    'Field calculation set: choose correct expression for straight wire, loop center, or solenoid.',
+    'Ampere law applications: identify symmetric path and enclosed current before integrating.',
+    'Current-conductor force: use BIL sin(theta) and vector direction rules.',
+    'Parallel wires: attraction vs repulsion and force-per-length comparisons.',
+    'Torque and magnetic dipole moment: NIAB sin(theta), m = IA, galvanometer principle.'
+  ],
+  formulas_relations: [
+    {
+      formula: 'F = q(v × B), |F| = qvB sin(theta)',
+      meaning: 'Magnetic force on a moving charge in a magnetic field.'
+    },
+    {
+      formula: 'r = mv/(qB), T = 2pi m/(qB)',
+      meaning: 'Radius and time period for v perpendicular to B.'
+    },
+    {
+      formula: 'F = BIL sin(theta)',
+      meaning: 'Force on current-carrying conductor in uniform magnetic field.'
+    },
+    {
+      formula: 'B = mu0 I/(2pi r)',
+      meaning: 'Field due to a long straight current-carrying wire.'
+    },
+    {
+      formula: 'B = mu0 I/(2R)',
+      meaning: 'Field at center of a circular loop.'
+    },
+    {
+      formula: 'B = mu0 nI',
+      meaning: 'Field inside a long ideal solenoid.'
+    },
+    {
+      formula: 'closed integral B dot dl = mu0 I_enclosed',
+      meaning: 'Ampere circuital law for symmetric systems.'
+    },
+    {
+      formula: 'F/L = mu0 I1 I2/(2pi d)',
+      meaning: 'Force per unit length between two long parallel currents.'
+    },
+    {
+      formula: 'tau = NIAB sin(theta), m = IA',
+      meaning: 'Torque on current loop and magnetic dipole moment.'
+    }
+  ],
+  application_insights: [
+    'High-weightage chapter in NEET with frequent formula-plus-direction combinations.',
+    'Most asked clusters: force on charge, circular motion, and field due to current.',
+    'In vector questions, direction logic often decides the final option even when magnitude is easy.',
+    'When expressions look similar, identify geometry first: wire vs loop vs solenoid.',
+    'For particle comparison questions, use proportionality r ∝ m/q and T ∝ m/q to save time.'
+  ],
+  common_mistakes: [
+    {
+      mistake: 'Wrong direction using right-hand rule',
+      why: 'Direction changes for negative charge/current orientation. Always check vector order in cross product.'
+    },
+    {
+      mistake: 'Confusing electric field behavior with magnetic field behavior',
+      why: 'Magnetic force depends on velocity and angle; electric force does not require motion.'
+    },
+    {
+      mistake: 'Forgetting v perpendicular B condition for circular path',
+      why: 'If there is a component parallel to B, trajectory is helical, not purely circular.'
+    },
+    {
+      mistake: 'Mixing formulas for wire, loop, and solenoid',
+      why: 'These formulas apply to different geometries and cannot be interchanged.'
+    },
+    {
+      mistake: 'Sign errors in force direction and ignoring sin(theta)',
+      why: 'Magnitude and direction both matter; many options differ only by sign or angle treatment.'
+    }
+  ],
+  quick_revision: [
+    'Magnetic force: F = qvB sin(theta), direction by right-hand rule.',
+    'v perpendicular B gives circular motion: r = mv/(qB), T = 2pi m/(qB).',
+    'Force on conductor: F = BIL sin(theta).',
+    'Long wire: B = mu0 I/(2pi r).',
+    'Loop center: B = mu0 I/(2R).',
+    'Solenoid: B = mu0 nI.',
+    'Parallel currents: same direction attract, opposite repel.',
+    'Torque on loop: tau = NIAB sin(theta), magnetic dipole moment m = IA.',
+    'Galvanometer principle: deflection torque proportional to current.'
   ],
   quiz: [
     {
@@ -66,6 +152,6 @@ const magnetism = {
 
 export default {
   id: 'phy-u13',
-  name: 'Unit 13: Magnetic Effects of Current and Magnetism',
+  name: 'Unit 13: Moving Charges and Magnetism',
   chapters: [magnetism],
 };

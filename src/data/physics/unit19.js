@@ -1,71 +1,171 @@
-// Physics — Unit 19: Electronic Devices
+// Physics - Unit 19: Atoms and Nuclei
 
-const electronicDevices = {
-  id: 'electronic-devices',
-  title: 'Chapter 19: Electronic Devices',
-  notes: [
+const atomsNuclei = {
+  id: 'atoms-nuclei',
+  title: 'Chapter 19: Atoms and Nuclei',
+  concept_explanations: [
     {
-      concept: 'Semiconductors: Band gap (Eg) < 3 eV. Intrinsic carriers (pure Si, Ge), holes and electrons are equal, ni = p = n. Extrinsic depends on doping. N-type (Group 15: P, As, Sb - pentavalent), majority carriers are electrons. P-type (Group 13: B, Al, In - trivalent), majority carriers are holes.',
-      fact: 'Mass Action Law: Even in extrinsic semiconductor, n_e * n_h = n_i² (at thermal equilibrium).',
-      tip: 'The mobility of electrons is always slightly GREATER than mobility of holes in semiconductors, making N-type conductivity generally better than P-type.',
+      title: 'Atomic Structure (Bohr Model)',
+      description: 'Bohr postulates: electrons revolve in fixed orbits, do not radiate energy in stationary orbits, and emit/absorb energy only during transitions.'
     },
     {
-      concept: 'P-N Junction: Diffusion of majorities creates a Depletion Region devoid of free carriers. This uncovers immobile ions (+ve on N side, -ve on P side) creating a Barrier Potential (0.7V for Si, 0.3V for Ge).',
-      fact: 'Forward Bias: P connected to positive, N to negative. Reduces barrier height, depletion width decreases, allows continuous current due to majorities.',
-      tip: 'Reverse Bias: P connected to negative. Increases barrier height, depletion region widens, minimal current flows only due to minority carriers (Reverse saturation current).',
+      title: 'Bohr Orbit Radius',
+      description: 'Bohr radius relation gives rn proportional to n^2. Simplified exam relation: rn ∝ n^2.'
     },
     {
-      concept: 'Rectifier (Diode Application): Converts AC to DC. Half-wave rectifier uses 1 diode. Full-wave rectifier uses 2 (center-tap) or 4 (bridge). Output DC frequency for HW is f, for FW is 2f.',
-      fact: 'To get steady DC output, we use filter circuits (like capacitors in parallel to load) which suppress the ripple (AC component).',
-      tip: 'Zener Diode: Heavily doped p-n junction operating in Reverse Breakdown region. Voltage across it remains remarkably constant even if current varies widely. Used as Voltage Regulator.',
+      title: 'Energy of Electron in Bohr Orbit',
+      description: 'For hydrogen, En = -13.6/n^2 eV. Energy is negative for bound states.'
     },
     {
-      concept: 'Optoelectronic Devices: LED (Forward Biased): Electron-hole recombination at junction releases photon. Emitted energy hν ≈ Eg. Photodiode (Reverse Biased): Incident light (hν > Eg) breaks bonds, creating pairs, increasing reverse current. Highly sensitive to light.',
-      fact: 'Solar Cell (Works unbiased): An active p-n junction generating EMF when light falls on it. Photons create electron-hole pairs separated by built-in field.',
-      tip: 'Why photodiode in reverse bias? Fractional change in minority carriers is easily measurable, while fraction change in majorities in forward bias is too small to detect steadily.',
+      title: 'Energy Transition and Spectral Series',
+      description: 'Transition energy relation: DeltaE = E2 - E1 = h*nu. Important series: Lyman (UV), Balmer (visible), Paschen (IR).'
     },
     {
-      concept: 'Logic Gates: Digital circuits with defined boolean algebra. NOT (Inverter), OR (A+B, any 1 gives 1), AND (A.B, both 1 give 1).',
-      fact: 'NAND (NOT AND) and NOR (NOT OR) are Universal Gates, because you can build ANY other logic gate using only combinations of NANDs or only NORs.',
-      tip: 'De Morgan\'s Theorems: (A + B)\' = A\' . B\' and (A . B)\' = A\' + B\'. Super useful for evaluating complex logic gate circuits in exams.',
+      title: 'Nuclear Composition and Radius',
+      description: 'Nucleus consists of nucleons (protons + neutrons). Nuclear radius relation: R = R0*A^(1/3).'
     },
+    {
+      title: 'Mass Defect and Binding Energy',
+      description: 'Mass defect is difference between sum of nucleon masses and actual nuclear mass. Binding energy: E = Deltam*c^2. Higher binding energy implies higher stability.'
+    },
+    {
+      title: 'Binding Energy Curve and Stability',
+      description: 'Binding energy per nucleon peaks near iron, indicating maximum stability around this region.'
+    },
+    {
+      title: 'Radioactive Decay and Half Life',
+      description: 'Decay law: N = N0*e^(-lambda t). Half-life relation: T1/2 = 0.693/lambda. Activity: A = lambda*N.'
+    },
+    {
+      title: 'Types of Decay and Nuclear Reactions',
+      description: 'Decay modes: alpha, beta, gamma. Nuclear fission splits heavy nuclei; fusion combines light nuclei.'
+    }
+  ],
+  key_patterns: [
+    'Bohr model numericals: orbit radius and energy level relations.',
+    'Transition-energy based frequency/wavelength questions.',
+    'Spectral-series identification (Lyman, Balmer, Paschen).',
+    'Mass-defect and binding-energy calculation problems.',
+    'Radioactive-decay and half-life numericals.',
+    'Binding-energy curve interpretation and stability comparisons.',
+    'Fission-vs-fusion conceptual and direct-theory questions.'
+  ],
+  formulas_relations: [
+    {
+      formula: 'rn ∝ n^2',
+      meaning: 'Bohr orbit radius dependence on principal quantum number.'
+    },
+    {
+      formula: 'En = -13.6/n^2 eV',
+      meaning: 'Bohr energy of electron in nth orbit (hydrogen atom).'
+    },
+    {
+      formula: 'DeltaE = E2 - E1 = h*nu',
+      meaning: 'Energy emitted or absorbed in electronic transition.'
+    },
+    {
+      formula: 'R = R0*A^(1/3)',
+      meaning: 'Nuclear radius relation.'
+    },
+    {
+      formula: 'Deltam = mass of nucleons - actual mass',
+      meaning: 'Mass defect of a nucleus.'
+    },
+    {
+      formula: 'E = Deltam*c^2',
+      meaning: 'Binding energy relation.'
+    },
+    {
+      formula: 'N = N0*e^(-lambda t)',
+      meaning: 'Radioactive decay law.'
+    },
+    {
+      formula: 'T1/2 = 0.693/lambda',
+      meaning: 'Half-life formula.'
+    },
+    {
+      formula: 'A = lambda*N',
+      meaning: 'Radioactive activity relation.'
+    }
+  ],
+  application_insights: [
+    'Very frequently asked chapter in NEET with formula and concept mix.',
+    'Most asked domains: Bohr energy levels, radioactive decay, and binding energy.',
+    'Many questions are direct-formula based but include one concept-check twist.',
+    'Binding-energy curve interpretation frequently appears in assertion-type asks.',
+    'Half-life numericals are fast scoring if exponential decay relation is remembered.'
+  ],
+  common_mistakes: [
+    {
+      mistake: 'Forgetting Bohr energy is negative',
+      why: 'Bound-state electron energies are negative and sign affects transition calculations.'
+    },
+    {
+      mistake: 'Mixing spectral series',
+      why: 'Lyman, Balmer, and Paschen belong to different final levels and regions.'
+    },
+    {
+      mistake: 'Wrong unit conversion between eV and joule',
+      why: 'Energy conversion errors can invalidate otherwise correct numerical methods.'
+    },
+    {
+      mistake: 'Confusing half-life and decay-constant relations',
+      why: 'T1/2 = 0.693/lambda must be used with correct lambda units.'
+    },
+    {
+      mistake: 'Misinterpreting binding-energy curve',
+      why: 'Higher binding energy per nucleon implies greater stability; peak near iron is key.'
+    }
+  ],
+  quick_revision: [
+    'Bohr postulates: fixed orbits, no radiation in stationary state, transitions emit/absorb energy.',
+    'Bohr radius: rn ∝ n^2.',
+    'Bohr energy: En = -13.6/n^2 eV.',
+    'Transition: DeltaE = h*nu.',
+    'Series: Lyman (UV), Balmer (visible), Paschen (IR).',
+    'Nuclear radius: R = R0*A^(1/3).',
+    'Mass defect and binding energy: E = Deltam*c^2.',
+    'Decay law: N = N0*e^(-lambda t).',
+    'Half life: T1/2 = 0.693/lambda.',
+    'Activity: A = lambda*N, fission splits heavy nuclei, fusion combines light nuclei.'
   ],
   quiz: [
     {
-      question: 'Which of the following describes a p-type semiconductor?',
-      options: ['It is positively charged overall', 'It is negatively charged overall', 'It is electrically neutral', 'It becomes a superconductor at absolute zero'],
+      question: 'In Bohr model for hydrogen atom, energy of nth orbit is:',
+      options: ['En = +13.6/n^2 eV', 'En = -13.6/n^2 eV', 'En = -13.6n^2 eV', 'En = 13.6n^2 eV'],
+      correctAnswer: 1,
+      explanation: 'For hydrogen, En = -13.6/n^2 eV and remains negative for bound states.'
+    },
+    {
+      question: 'Which spectral series lies in visible region?',
+      options: ['Lyman', 'Balmer', 'Paschen', 'Brackett'],
+      correctAnswer: 1,
+      explanation: 'Balmer series transitions terminate at n=2 and are in visible region.'
+    },
+    {
+      question: 'Half-life T1/2 is related to decay constant lambda by:',
+      options: ['T1/2 = lambda/0.693', 'T1/2 = 0.693*lambda', 'T1/2 = 0.693/lambda', 'T1/2 = 1/lambda^2'],
       correctAnswer: 2,
-      explanation: 'A p-type semiconductor is formed by doping pure Si/Ge with a neutral trivalent atom (like Boron). Since the dopant atom is electrically neutral and the Si crystal is neutral, the resulting semiconductor is electrically neutral overall (holes just mean "absence of an electron in a bond", not a net positive charge of the material).',
+      explanation: 'Standard half-life relation is T1/2 = 0.693/lambda.'
     },
     {
-      question: 'In a half-wave rectifier circuit operating from 50 Hz mains frequency, the fundamental frequency in the ripple would be:',
-      options: ['25 Hz', '50 Hz', '100 Hz', '0 Hz'],
+      question: 'Binding energy of a nucleus is given by:',
+      options: ['E = mc', 'E = Deltam*c^2', 'E = Deltam/c^2', 'E = lambda*N'],
       correctAnswer: 1,
-      explanation: 'For a half-wave rectifier, the fundamental frequency of the output ripple matches the input AC frequency which is 50 Hz. For a full-wave rectifier, it is double (100 Hz).',
+      explanation: 'Binding energy equals mass defect times c squared.'
     },
     {
-      question: 'A Zener diode, having breakdown voltage equal to 15V, is used in a voltage regulator circuit. To function effectively, it must be:',
-      options: ['Forward biased', 'Reverse biased', 'Unbiased', 'Connected in series with the load'],
-      correctAnswer: 1,
-      explanation: 'A Zener diode is specifically designed to operate safely in the reverse breakdown region. When reverse biased past its Zener voltage, it acts as a very stable voltage reference/regulator in parallel with the load.',
-    },
-    {
-      question: 'The logic gate that produces a HIGH output ONLY when both of its inputs are HIGH is the:',
-      options: ['OR gate', 'NAND gate', 'AND gate', 'NOR gate'],
+      question: 'Peak of binding-energy-per-nucleon curve is around:',
+      options: ['Hydrogen', 'Helium', 'Iron region', 'Uranium region'],
       correctAnswer: 2,
-      explanation: 'The AND gate performs logical multiplication. Y = A.B. Thus, Y=1 (HIGH) if and only if A=1 AND B=1.',
-    },
-    {
-      question: 'Which device is specifically operated under reverse bias to detect optical signals?',
-      options: ['Light Emitting Diode (LED)', 'Photodiode', 'Solar Cell', 'Zener Diode'],
-      correctAnswer: 1,
-      explanation: 'A photodiode is operated under reverse bias because the fractional change in reverse current (which results strictly from minority carriers generated by incident photons) is highly sensitive and directly proportional to light intensity.',
-    },
-  ],
+      explanation: 'Maximum binding energy per nucleon occurs near iron, indicating highest stability.'
+    }
+  ]
 };
 
 export default {
   id: 'phy-u19',
-  name: 'Unit 19: Electronic Devices',
-  chapters: [electronicDevices],
+  name: 'Unit 19: Atoms and Nuclei',
+  chapters: [atomsNuclei],
 };
+

@@ -20,6 +20,34 @@ const MOTIVATIONAL = [
 
 const TABS = ['Concepts', 'Patterns', 'Formulas', 'Insights', 'Mistakes', 'Quick Revision']
 
+function mergeUniqueStrings(...groups) {
+  const seen = new Set()
+  const merged = []
+  groups.flat().forEach(item => {
+    if (!item) return
+    const key = String(item).trim().toLowerCase()
+    if (!key || seen.has(key)) return
+    seen.add(key)
+    merged.push(item)
+  })
+  return merged
+}
+
+function mergeUniqueObjects(...groups) {
+  const seen = new Set()
+  const merged = []
+  groups.flat().forEach(item => {
+    if (!item || typeof item !== 'object') return
+    const key = `${item.title ?? item.formula ?? item.mistake ?? ''}::${item.description ?? item.meaning ?? item.why ?? ''}`
+      .trim()
+      .toLowerCase()
+    if (!key || seen.has(key)) return
+    seen.add(key)
+    merged.push(item)
+  })
+  return merged
+}
+
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem('neet_progress') || '{}') } catch { return {} }
 }
@@ -160,12 +188,12 @@ export default function App() {
 
   // ── Revision content source (backend or local) ───────────────────────────
   // ── Revision content source (backend + static local overrides) ───────────────────────
-  const revConcepts   = [...(chapterData?.concept_explanations ?? []), ...(revision?.concept_explanations ?? [])]
-  const revPatterns   = [...(chapterData?.key_patterns ?? []), ...(revision?.key_patterns ?? [])]
-  const revFormulas   = [...(chapterData?.formulas_relations ?? []), ...(revision?.formulas_relations ?? [])]
-  const revInsights   = [...(chapterData?.application_insights ?? []), ...(revision?.application_insights ?? [])]
-  const revMistakes   = [...(chapterData?.common_mistakes ?? []), ...(revision?.common_mistakes ?? [])]
-  const revQuick      = [...(chapterData?.quick_revision ?? []), ...(revision?.quick_revision ?? [])]
+  const revConcepts   = mergeUniqueObjects(chapterData?.concept_explanations ?? [], revision?.concept_explanations ?? [])
+  const revPatterns   = mergeUniqueStrings(chapterData?.key_patterns ?? [], revision?.key_patterns ?? [])
+  const revFormulas   = mergeUniqueObjects(chapterData?.formulas_relations ?? [], revision?.formulas_relations ?? [])
+  const revInsights   = mergeUniqueStrings(chapterData?.application_insights ?? [], revision?.application_insights ?? [])
+  const revMistakes   = mergeUniqueObjects(chapterData?.common_mistakes ?? [], revision?.common_mistakes ?? [])
+  const revQuick      = mergeUniqueStrings(chapterData?.quick_revision ?? [], revision?.quick_revision ?? [])
 
   // ── Render ───────────────────────────────────────────────────────────────
   return (
@@ -411,7 +439,7 @@ export default function App() {
                   <ul className="space-y-3">
                     {revFormulas.map((f, i) => (
                       <li key={i} className="flex flex-col gap-1 text-sm leading-relaxed p-3 bg-white border rounded">
-                        <span className="text-ink text-indigo-700 font-mono font-medium">{f.formula}</span>
+                        <span className="text-indigo-700 font-mono font-medium">{f.formula}</span>
                         <span className="text-muted text-xs">{f.meaning}</span>
                       </li>
                     ))}

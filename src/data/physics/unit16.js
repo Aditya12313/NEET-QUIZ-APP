@@ -1,76 +1,147 @@
-// Physics — Unit 16: Optics
+// Physics - Unit 16: Electromagnetic Waves
 
-const optics = {
-  id: 'optics',
-  title: 'Chapter 16: Ray and Wave Optics',
-  notes: [
+const emWaves = {
+  id: 'em-waves',
+  title: 'Chapter 16: Electromagnetic Waves',
+  concept_explanations: [
     {
-      concept: 'Reflection & Spherical Mirrors: Mirror formula: 1/f = 1/v + 1/u. Magnification m = -v/u = h\'/h. Focal length f = R/2. Real images (v negative, inverted), Virtual images (v positive, erect).',
-      fact: 'Convex mirrors always form virtual, erect, and diminished images regardless of object distance (used as rear-view mirrors).',
-      tip: 'By Cartesian sign convention: Incident light direction is positive. Thus, for a concave mirror, focus is in front (f is -ve). For convex, focus is behind (f is +ve).',
+      title: 'Electromagnetic Waves',
+      description: 'Electromagnetic waves consist of oscillating electric and magnetic fields and do not require a material medium for propagation.'
     },
     {
-      concept: 'Refraction & Total Internal Reflection (TIR): Snell\'s Law: n1 sin(i) = n2 sin(r). If light travels from denser to rarer medium and i > i_c (critical angle), it completely reflects back. sin(i_c) = 1/μ.',
-      fact: 'Mirage, brilliance of diamond, exact 90° or 180° bending by prisms, and optical fibers completely rely on Total Internal Reflection (TIR).',
-      tip: 'Apparent depth: A coin at depth \'d\' appears raised by Δd = d(1 - 1/μ).',
+      title: 'Nature of EM Waves',
+      description: 'EM waves are transverse. Electric field E is perpendicular to magnetic field B, and both are perpendicular to direction of propagation.'
     },
     {
-      concept: 'Lenses: Thin lens formula: 1/f = 1/v - 1/u. Lens Maker\'s Formula: 1/f = (μ - 1)[1/R1 - 1/R2]. Power of lens P = 1/f (diopters, f in meters).',
-      fact: 'When two thin lenses are in contact, 1/f_eq = 1/f1 + 1/f2. Power P_eq = P1 + P2. Magnification m_eq = m1 * m2.',
-      tip: 'If a lens of refractive index μ_L is plunged into a liquid of μ_liq > μ_L, the nature of the lens reverses (convex acts like concave and vice-versa).',
+      title: 'Speed of EM Waves',
+      description: 'In vacuum, c = 1/sqrt(mu0*epsilon0) and c = 3 x 10^8 m/s.'
     },
     {
-      concept: 'Optical Instruments: Simple Microscope (magnifying glass) m = 1 + D/f (image at D) or D/f (image at ∞). Compound Microscope: m = (v0/u0) * (D/fe). Telescope: m = f0/fe (normal adjustment), Tube length L = f0 + fe.',
-      fact: 'In a compound microscope, the objective has short focal length & small aperture. In an astronomical telescope, the objective has large focal length & large aperture (for better light gathering & resolution).',
-      tip: 'Prism: At minimum deviation δ_m, the angle of refraction inside the prism is A/2. μ = sin((A+δ_m)/2) / sin(A/2).',
+      title: 'Relation Between E and B',
+      description: 'For EM waves in vacuum, E/B = c.'
     },
     {
-      concept: 'Wave Optics & Interference: Huygens\' principle states each point on a wavefront is a source of secondary wavelets. Young\'s Double Slit Experiment (YDSE) shows interference of light. Fringe width β = λD / d.',
-      fact: 'Constructive interference (Bright fringe): path difference = nλ. Destructive (Dark fringe): path difference = (n+½)λ.',
-      tip: 'If the entire YDSE apparatus is immersed in liquid (refractive index μ), wavelength drops to λ/μ, so fringe width β shrinks to β/μ.',
+      title: 'Maxwell Prediction and Displacement Current',
+      description: 'Changing electric field creates magnetic field and vice versa. Displacement current is Id = epsilon0 (dPhiE/dt), crucial for EM wave propagation.'
     },
     {
-      concept: 'Diffraction and Polarization: Diffraction due to single slit setup: Width of central maximum = 2λD / a (where a is slit width). Unlike YDSE, secondary maxima decrease in intensity.',
-      fact: 'Polarization proves the transverse nature of light waves. Longitudinal waves (like sound) cannot be polarized.',
-      tip: 'Brewster\'s Law: When unpolarized light falls at polarizing angle (i_p), reflected light is totally plane-polarized. μ = tan(i_p). Reflected and refracted rays are exactly perpendicular (90°).',
+      title: 'Electromagnetic Spectrum',
+      description: 'Order from low frequency to high frequency: Radio -> Microwave -> Infrared -> Visible -> Ultraviolet -> X-rays -> Gamma rays.'
     },
+    {
+      title: 'Properties and Uses',
+      description: 'EM waves travel at speed of light, carry energy and momentum, and are not deflected by external electric or magnetic fields. Energy is directly proportional to frequency. Applications vary by region of spectrum.'
+    }
+  ],
+  key_patterns: [
+    'Spectrum-order questions are direct and frequent.',
+    'Theory asks on transverse nature and no-medium propagation.',
+    'Formula checks using c = 1/sqrt(mu0*epsilon0) and E/B = c.',
+    'Application-based questions on uses of each spectral region.',
+    'Energy-frequency direct proportionality conceptual asks.',
+    'Displacement current concept in Maxwell framework.',
+    'Assertion-reason type questions are very common in NEET.'
+  ],
+  formulas_relations: [
+    {
+      formula: 'c = 1/sqrt(mu0*epsilon0)',
+      meaning: 'Speed of electromagnetic waves in vacuum.'
+    },
+    {
+      formula: 'c = 3 x 10^8 m/s',
+      meaning: 'Numerical value of speed of light in vacuum.'
+    },
+    {
+      formula: 'E/B = c',
+      meaning: 'Field-amplitude relation in vacuum EM wave.'
+    },
+    {
+      formula: 'Id = epsilon0 (dPhiE/dt)',
+      meaning: 'Displacement current relation.'
+    },
+    {
+      formula: 'Energy proportional to frequency',
+      meaning: 'Higher-frequency EM waves carry higher photon energy.'
+    }
+  ],
+  application_insights: [
+    'Short chapter but consistently high-scoring in NEET.',
+    'Most asked: spectrum order, core properties, and practical uses.',
+    'Questions are often direct theory plus one conceptual check.',
+    'Spectrum-use matching can be solved quickly if order is memorized well.',
+    'Displacement current is mostly conceptual rather than numerical in NEET level questions.'
+  ],
+  common_mistakes: [
+    {
+      mistake: 'Wrong order of electromagnetic spectrum',
+      why: 'Confusing order leads to errors in frequency, wavelength, and energy-based options.'
+    },
+    {
+      mistake: 'Confusing wavelength and frequency trends',
+      why: 'As frequency increases, wavelength decreases; many options test this directly.'
+    },
+    {
+      mistake: 'Forgetting that EM waves do not need medium',
+      why: 'Unlike mechanical waves, EM waves propagate in vacuum.'
+    },
+    {
+      mistake: 'Mixing uses of different spectral regions',
+      why: 'Application-based options are often close and require exact mapping.'
+    },
+    {
+      mistake: 'Confusing direction of E and B fields',
+      why: 'E, B, and propagation direction are mutually perpendicular.'
+    }
+  ],
+  quick_revision: [
+    'EM waves are oscillating electric and magnetic fields.',
+    'No material medium is required for propagation.',
+    'EM waves are transverse: E perpendicular B perpendicular propagation.',
+    'c = 1/sqrt(mu0*epsilon0), and c = 3 x 10^8 m/s in vacuum.',
+    'E/B = c.',
+    'Displacement current: Id = epsilon0 (dPhiE/dt).',
+    'Spectrum order: Radio -> Microwave -> Infrared -> Visible -> UV -> X-rays -> Gamma.',
+    'EM waves carry energy and momentum.',
+    'They are not deflected by external E or B fields.',
+    'Energy increases with frequency.'
   ],
   quiz: [
     {
-      question: 'Which of the following optical phenomena is responsible for the glittering of diamonds?',
-      options: ['Dispersion', 'Interference', 'Total Internal Reflection', 'Diffraction'],
+      question: 'Correct order from low to high frequency is:',
+      options: ['Radio -> IR -> Microwave -> Visible', 'Radio -> Microwave -> IR -> Visible', 'IR -> Radio -> Microwave -> UV', 'Visible -> IR -> UV -> X-rays'],
+      correctAnswer: 1,
+      explanation: 'The correct spectral order is Radio, Microwave, Infrared, Visible, Ultraviolet, X-rays, Gamma.'
+    },
+    {
+      question: 'For electromagnetic waves in vacuum, the correct field relation is:',
+      options: ['B/E = c', 'E*B = c', 'E/B = c', 'E/B = 1/c^2'],
       correctAnswer: 2,
-      explanation: 'The critical angle for diamond is very low (~24.4°). Light entering the numerous precisely cut faces suffers multiple Total Internal Reflections, causing it to sparkle or glitter brilliantly.',
+      explanation: 'For EM waves in vacuum, E/B equals speed of light c.'
     },
     {
-      question: 'Two convex lenses of focal lengths 10 cm and 20 cm are placed in contact. The equivalent power of the combination is:',
-      options: ['+5 D', '+15 D', '-15 D', '+30 D'],
-      correctAnswer: 1,
-      explanation: 'Power P1 = 1 / 0.1m = 10 D. Power P2 = 1 / 0.2m = 5 D. Both are convex so focal length is positive. P_eq = P1 + P2 = 10 + 5 = 15 D.',
+      question: 'Which statement is true about electromagnetic waves?',
+      options: ['They require medium', 'They are longitudinal', 'They are deflected by electric fields', 'They can propagate in vacuum'],
+      correctAnswer: 3,
+      explanation: 'EM waves are transverse and can travel in vacuum without medium.'
     },
     {
-      question: 'If Young\'s Double Slit Experiment apparatus is moved from air to water, what will happen to the fringe width?',
-      options: ['It will increase', 'It will decrease', 'It will remain unchanged', 'Fringes will disappear entirely'],
-      correctAnswer: 1,
-      explanation: 'Fringe width β = λD/d. In water (or any denser medium), the speed of light drops, reducing its wavelength (λ\' = λ/μ). Since λ decreases, the fringe width β decreases.',
+      question: 'Displacement current is represented by:',
+      options: ['Id = epsilon0 (dPhiE/dt)', 'Id = mu0 (dPhiB/dt)', 'Id = B l v', 'Id = V/R'],
+      correctAnswer: 0,
+      explanation: 'Maxwell introduced displacement current Id = epsilon0 (dPhiE/dt).'
     },
     {
-      question: 'In a single slit diffraction experiment, if the width of the slit is doubled, the width of the central maximum will be:',
-      options: ['Doubled', 'Halved', 'Four times', 'Remains unchanged'],
-      correctAnswer: 1,
-      explanation: 'The width of the central maximum in single-slit diffraction is W = 2λD / a. If slit width \'a\' is doubled, the width of the central max is halved.',
-    },
-    {
-      question: 'Which observation directly confirms that light waves are mutually transverse in nature?',
-      options: ['Interference', 'Diffraction', 'Polarization', 'Refraction'],
+      question: 'Which EM wave is commonly used for medical imaging of bones?',
+      options: ['Infrared', 'Ultraviolet', 'X-rays', 'Microwaves'],
       correctAnswer: 2,
-      explanation: 'Only transverse waves can be polarized (oscillations restricted to one plane perpendicular to direction of propagation). If light were longitudinal, varying the axis of a polarizer wouldn\'t block it.',
-    },
-  ],
+      explanation: 'X-rays are used in medical imaging due to high penetrating power.'
+    }
+  ]
 };
 
 export default {
   id: 'phy-u16',
-  name: 'Unit 16: Optics',
-  chapters: [optics],
+  name: 'Unit 16: Electromagnetic Waves',
+  chapters: [emWaves],
 };
+
