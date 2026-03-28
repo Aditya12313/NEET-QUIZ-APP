@@ -2,66 +2,66 @@
 
 const currentElectricity = {
   id: 'current-electricity',
-  title: 'Chapter 12: Current Electricity',
+  title: 'Chapter 3: Current Electricity',
   notes: [
     {
-      concept: 'Electric Current: Rate of flow of charge: I = q/t. By convection, the direction is opposite to the flow of electrons. Steady current means no accumulation of charge.',
-      fact: 'Drift velocity (vd): Average velocity with which free electrons drift against the electric field. vd = eEτ/m (where τ is relaxation time).',
-      tip: 'Relation between current and drift velocity: I = neA(vd). Also, current density J = I/A = nev_d.',
+      concept: 'Electric Current & Drift Velocity',
+      fact: 'Current I = Q/t (Direction opposite to electron flow). Drift velocity v_d = (eEτ)/m. Current density J = I/A = nqv_d.',
+      tip: 'Common Trap: Confusing current direction vs electron flow! Conventional current is always in the direction of POSITIVE charge flow.'
     },
     {
-      concept: 'Ohm\'s Law: At constant physical conditions, V ∝ I or V = IR. R depends on material, dimensions (R = ρL/A), and temperature.',
-      fact: 'For metallic conductors, as temperature increases, relaxation time decreases, and resistance/resistivity INCREASES.',
-      tip: 'For semiconductors and insulators, resistance DECREASES with an increase in temperature (negative temperature coefficient α).',
+      concept: 'Ohm\'s Law, Resistance & Resistivity',
+      fact: 'V = IR (valid for ohmic conductors). Resistance R = ρ(L/A). Resistivity ρ is a property of the material and independent of shape/size. Conductivity σ = 1/ρ.',
+      tip: 'Do not forget that stretching a wire changes BOTH length and area! (If length doubles, area halves, resistance becomes 4x).'
     },
     {
-      concept: 'Resistors in Series and Parallel: Series: R_eq = R1 + R2 + ... (Current is the same, voltage divides). Parallel: 1/R_eq = 1/R1 + 1/R2 ... (Voltage is the same, current divides).',
-      fact: 'Electrical power: P = VI = I²R = V²/R. Heating effect of current (Joule\'s Law): H = I²Rt.',
-      tip: 'Bulb brightness in series: bulb with higher resistance (lower wattage rating) burns brighter. In parallel: higher wattage bulb burns brighter.',
+      concept: 'Temperature Dependence of Resistance',
+      fact: 'R = R_0(1 + αΔT). For metals, resistance increases with temperature (α > 0); for semiconductors, it decreases (α < 0).',
+      tip: 'Ignoring temperature effects or strictly applying them to the wrong material type is a major mistake.'
     },
     {
-      concept: 'Cells, EMF, and Internal Resistance: EMF (E) is maximum potential diff when no current is drawn. V = E - Ir (during discharge) and V = E + Ir (during charging).',
-      fact: 'Series combination of identical cells (n cells): E_eq = nE, r_eq = nr. Maximum current drawn if external R = r_eq.',
-      tip: 'Parallel combination of m identical cells: E_eq = E, r_eq = r/m. This setup is useful when external resistance is very small compared to internal resistance.',
+      concept: 'Power, EMF & Resistor Combinations',
+      fact: 'Power P = VI = I²R = V²/R. Series R = R1 + R2 + R3. Parallel 1/R = 1/R1 + 1/R2. Terminal voltage V = E - Ir (where E is emf, r is internal resistance).',
+      tip: 'Mixing up series and parallel formulas! Also, verify which power formula to use (e.g. use I²R when currents are same in series, V²/R when voltages are same in parallel).'
     },
     {
-      concept: 'Kirchhoff\'s Laws: 1. Junction Rule (KCL): Algebraic sum of currents meeting at a junction is zero (Conservation of Charge). 2. Loop Rule (KVL): Algebraic sum of changes in potential in a closed loop is zero (Conservation of Energy).',
-      fact: 'KVL follows strict sign conventions: Potential drops (e.g. going through resistor in direction of current) are negative; potential gains (going negative to positive terminal) are positive.',
-      tip: 'Wheatstone bridge is balanced when P/Q = R/S. In balanced condition, no current flows through the galvanometer in the central arm. Metre Bridge is based on this principle.',
-    },
+      concept: 'Kirchhoff\'s Laws & Circuits',
+      fact: '1. Junction Rule: ΣI = 0 (Conservation of Charge). 2. Loop Rule: ΣV = 0 (Conservation of Energy). Wheatstone bridge balanced: P/Q = R/S. Potentiometer measures accurate EMF (draws no current).',
+      tip: 'Wrong sign conventions in Kirchhoff loops! Remember: Voltage DROPS across a resistor in the direction of current (-IR).'
+    }
   ],
   quiz: [
     {
-      question: 'Which of the following describes the dependence of resistivity on temperature for a typical semiconductor?',
-      options: ['It increases linearly with temperature', 'It decreases exponentially with increase in temperature', 'It remains perfectly constant', 'It increases logarithmically'],
-      correctAnswer: 1,
-      explanation: 'For semiconductors, the number density of free charge carriers increases exponentially with temperature. This overcomes the effect of decreased relaxation time, causing resistivity to drop exponentially.',
-    },
-    {
-      question: 'Five equal resistances, each of value R, are connected in a network to form a Wheatstone bridge. The equivalent resistance between the diagonally opposite corners is:',
-      options: ['R / 2', '2R', 'R', '5R'],
+      question: 'A wire of resistance R is stretched to twice its original length such that its volume remains constant. Its new resistance will be:',
+      options: ['R', '2R', '4R', 'R/2'],
       correctAnswer: 2,
-      explanation: 'In a balanced Wheatstone Bridge where all arm resistances are R, the central galvanometer resistance is ineffective. Equivalent resistance for the parallel branches (R+R = 2R, R+R = 2R) is (2R * 2R)/(2R + 2R) = R.',
+      explanation: 'Resistance R = ρL/A. If length is doubled (2L), volume conservation means area is halved (A/2). New R = ρ(2L)/(A/2) = 4 * ρL/A = 4R.'
     },
     {
-      question: 'The drift velocity (vd) of electrons is related to the applied electric field (E) according to the relation:',
-      options: ['vd ∝ E', 'vd ∝ E²', 'vd ∝ √E', 'vd is independent of E'],
-      correctAnswer: 0,
-      explanation: 'Drift velocity vd = (eE/m)τ. For a constant relaxation time τ (at constant temperature), it is directly proportional to the applied Electric Field E.',
-    },
-    {
-      question: 'Two cells of emf E1 and E2 (E1 > E2) are connected in series opposing (their positive terminals are connected). If they send current through an external resistor R, the effective emf will be:',
-      options: ['E1 + E2', 'E1 - E2', '(E1 + E2) / 2', 'Zero'],
+      question: 'Which of the following describes the dependence of resistivity of a semiconductor on temperature?',
+      options: ['Increases linearly with temperature', 'Decreases exponentially with temperature', 'Increases exponentially with temperature', 'Remains independent of temperature'],
       correctAnswer: 1,
-      explanation: 'When cells are in series with opposite polarities, the effective EMF is the difference between them, E_net = E1 - E2 (assuming E1 acts in the direction of the dominant current).',
+      explanation: 'For semiconductors, the number density of charge carriers increases exponentially with temperature. As a result, resistivity decreases exponentially with increasing temperature.'
     },
     {
-      question: 'Kirchhoff\'s Junction Rule (Current Law) is a manifestation of the law of conservation of:',
-      options: ['Energy', 'Linear Momentum', 'Charge', 'Mass'],
+      question: 'A cell of emf E and internal resistance r is connected across an external resistance R. The terminal voltage of the cell is:',
+      options: ['E', 'E + Ir', 'E - Ir', 'Zero'],
       correctAnswer: 2,
-      explanation: 'KCL states the sum of currents entering a junction equals the sum leaving. Since I=q/t, it means charge entering equals charge leaving, perfectly expressing the Conservation of Charge.',
+      explanation: 'When a cell is discharging (supplying current to an external circuit), the terminal voltage V is given by V = E - Ir due to the potential drop occurring across the internal resistance.'
     },
-  ],
+    {
+      question: 'In Kirchhoff’s circuit laws, the junction rule (ΣI = 0) and loop rule (ΣV = 0) are respectively based on the conservation of:',
+      options: ['Energy and Charge', 'Charge and Energy', 'Mass and Energy', 'Momentum and Charge'],
+      correctAnswer: 1,
+      explanation: 'The junction rule is based on the conservation of charge (charges cannot accumulate at a junction), while the loop rule is based on the conservation of energy (the total potential energy charge around a closed loop is zero).'
+    },
+    {
+      question: 'In a Wheatstone bridge network composed of resistors P, Q, R, and S, the bridge is said to be balanced when the galvanometer shows no deflection. This occurs when:',
+      options: ['P*Q = R*S', 'P/R = S/Q', 'P/Q = R/S', 'P+Q = R+S'],
+      correctAnswer: 2,
+      explanation: 'A Wheatstone bridge is balanced and no current flows through the central branch (galvanometer) when the ratio of adjacent arms is equal: P/Q = R/S.'
+    }
+  ]
 };
 
 export default {

@@ -2,66 +2,66 @@
 
 const thermodynamics = {
   id: 'thermodynamics',
-  title: 'Chapter 8: Thermodynamics',
+  title: 'Chapter 12: Thermodynamics',
   notes: [
     {
-      concept: 'Thermal Equilibrium & Zeroth Law: Two systems in thermal equilibrium with a third system are in thermal equilibrium with each other. This law establishes the concept of Temperature.',
-      fact: 'Temperature determines the direction of heat flow.',
-      tip: 'Thermometers are basically a physical application of the Zeroth Law.',
+      concept: 'Thermodynamic Systems & Variables',
+      fact: 'Open (exchange mass & energy), Closed (energy only), Isolated (neither). State variables define state: P, V, T, U. Equation of state for Ideal Gas: PV = nRT.',
+      tip: 'Do not confuse heat (Q) with internal energy (U). Internal energy depends only on Temperature (for ideal gas).'
     },
     {
-      concept: 'First Law of Thermodynamics: Energy conservation for thermal systems. ΔQ = ΔU + ΔW (Heat specific to the system = Change in internal energy + Work done by the gas).',
-      fact: 'Work done by gas ΔW = PΔV. If volume increases, work is positive. If volume decreases, work is negative.',
-      tip: 'Internal energy (U) depends ONLY on the initial and final states (temperature), it is a state variable. Q and W depend on the path taken.',
+      concept: 'First Law & Work Done',
+      fact: 'First Law: Q = ΔU + W (Conservation of energy). Work Done: W = ∫PdV (Area under P-V graph). Isobaric: W=PΔV. Isochoric: W=0.',
+      tip: '⚠️ CRITICAL TRAP: Wrong sign convention! Physics standard: Heat added to system (+Q), Work done BY system (+W), Increase in U (+ΔU).'
     },
     {
-      concept: 'Thermodynamic Processes: 1. Isothermal (T = const, ΔU = 0, Q = W). 2. Adiabatic (Q = 0, gas expands => cools, compresses => heats up). 3. Isochoric (V = const, W = 0, Q = ΔU). 4. Isobaric (P = const, W = PΔV).',
-      fact: 'For an adiabatic process, PVᵞ = constant, TV^(γ-1) = constant. The slope of adiabatic curve on P-V diagram is γ times steeper than isothermal curve.',
-      tip: 'In a cyclic process, the net change in internal energy (ΔU) is 0 over the entire loop. Net Work is area inside the loop.',
+      concept: 'Specific Heat & Molar Heat Capacities',
+      fact: 'Specific Heat: Q = mcΔT. Molar Heat Capacities: Cp (constant pressure) and Cv (constant volume). Mayer\'s relation: Cp - Cv = R.',
+      tip: 'A very common trap is forgetting Mayer\'s relation (Cp - Cv = R) or not using Absolute Temperature (Kelvin only)!'
     },
     {
-      concept: 'Specific Heats: Cp - Cv = R (Mayer\'s relation). γ = Cp / Cv. For monoatomic gas, γ = 5/3 (1.67). For diatomic, γ = 7/5 (1.4). For polyatomic, γ = 4/3 (1.33).',
-      fact: 'Internal energy U depends only on temperature for ideal gases. U = n Cv T.',
-      tip: 'Work done in isothermal process: W = nRT ln(Vf/Vi). Work done in adiabatic process: W = (PiVi - PfVf) / (γ - 1) = nR(Ti - Tf) / (γ - 1).',
+      concept: 'Thermodynamic Processes',
+      fact: '1. Isothermal (T constant, PV = const). 2. Adiabatic (Q = 0, PV^γ = const). 3. Isobaric (P constant). 4. Isochoric (V constant).',
+      tip: 'Mixing up formulas for isothermal and adiabatic processes is a very common error. Be careful when analyzing P-V graphs.'
     },
     {
-      concept: 'Second Law of Thermodynamics: Kelvin-Planck statement: Impossible to construct an engine taking heat from hot reservoir and doing equal amount of work without rejecting heat to cold sink. Clausius: heat cannot spontaneously flow from cold to hot body.',
-      fact: 'Reversible processes are idealizations (they must be infinitely slow, no friction). All real-world processes are irreversible.',
-      tip: 'Carnot Engine Efficiency η = 1 - (T2/T1) = 1 - (Q2/Q1). Needs temperatures in Kelvins. A refrigerator has Coefficient of Performance α = T2 / (T1 - T2).',
-    },
+      concept: 'Heat Engines & Second Law',
+      fact: 'Heat flows from hot to cold. Heat Engine Efficiency: η = W / Q_in. Carnot Engine is the ideal engine (Max efficiency): η = 1 - (T2/T1).',
+      tip: 'Assuming 100% efficiency is impossible! Also, remember Entropy (S) is a measure of disorder: ΔS = Q/T.'
+    }
   ],
   quiz: [
     {
-      question: 'In an adiabatic process on an ideal gas, which of the following relations is correct?',
-      options: ['PV = constant', 'PT^γ = constant', 'TV^(γ-1) = constant', 'VT^γ = constant'],
-      correctAnswer: 2,
-      explanation: 'The equation for an adiabatic process is PV^γ = constant. Since P = nRT/V, substituting gives (T/V)*V^γ = constant => TV^(γ-1) = constant.',
-    },
-    {
-      question: 'Efficiency of a Carnot engine working between ice point (0°C) and steam point (100°C) is:',
-      options: ['100%', '26.8%', '50%', '36.6%'],
+      question: 'According to the First Law of Thermodynamics, if heat Q is added to a system and it does work W, the change in internal energy (ΔU) of the system is given by:',
+      options: ['ΔU = Q + W', 'ΔU = Q - W', 'ΔU = W - Q', 'ΔU = Q * W'],
       correctAnswer: 1,
-      explanation: 'T1 (hot) = 100°C = 373 K. T2 (cold) = 0°C = 273 K. Efficiency η = 1 - (T2/T1) = 1 - (273/373) = 100 / 373 ≈ 0.268 or 26.8%. Always convert to Kelvins!',
+      explanation: 'From the First Law, Q = ΔU + W. Rearranging yields ΔU = Q - W (Assuming W is work done BY the system).'
     },
     {
-      question: 'During an isothermal expansion of an ideal gas:',
-      options: ['Internal energy increases', 'Internal energy decreases', 'Enthalpy goes to zero', 'All heat added is converted into work done'],
+      question: 'Which of the following processes occurs without any transfer of heat between the system and its surroundings?',
+      options: ['Isothermal', 'Isobaric', 'Isochoric', 'Adiabatic'],
       correctAnswer: 3,
-      explanation: 'In an isothermal process, temperature T is constant. Therefore, internal energy (which depends only on T) does not change (ΔU = 0). By first law, ΔQ = ΔU + ΔW => ΔQ = ΔW.',
+      explanation: 'In an adiabatic process, there is no heat exchange with the surroundings (Q = 0). The curve follows PV^γ = constant.'
     },
     {
-      question: 'Which law of thermodynamics defines the concept of temperature?',
-      options: ['Zeroth law', 'First law', 'Second law', 'Third law'],
-      correctAnswer: 0,
-      explanation: 'The Zeroth Law of Thermodynamics establishes the concept of temperature by defining thermal equilibrium across systems.',
+      question: 'The efficiency of a Carnot engine operating between a source at temperature T1 and a sink at temperature T2 is given by:',
+      options: ['1 - T1/T2', '1 - T2/T1', 'T1/T2 - 1', 'T2/T1'],
+      correctAnswer: 1,
+      explanation: 'Carnot efficiency η = 1 - (T2/T1). Remember that T1 (source) is always greater than T2 (sink) and both MUST be in Kelvin.'
     },
     {
-      question: 'For a gas, difference between the two specific heats (Cp - Cv) is equal to 5000 J/(kg K) and ratio of specific heats is 1.4. The values of Cp and Cv are respectively:',
-      options: ['17500 and 12500', '14000 and 10000', '7000 and 2000', '2500 and 1500'],
-      correctAnswer: 0,
-      explanation: 'Cp - Cv = 5000 and Cp/Cv = 1.4 => Cp = 1.4Cv. Substituting: 1.4Cv - Cv = 5000 => 0.4Cv = 5000 => Cv = 5000/0.4 = 12500 J/(kg K). Then Cp = 12500 * 1.4 = 17500 J/(kg K).',
+      question: 'For an ideal gas, the relation between molar heat capacity at constant pressure (Cp) and constant volume (Cv) is:',
+      options: ['Cp + Cv = R', 'Cp / Cv = R', 'Cp - Cv = R', 'Cv - Cp = R'],
+      correctAnswer: 2,
+      explanation: 'Mayer\'s relation states that the difference between the molar heat capacity at constant pressure and constant volume is equal to the universal gas constant (Cp - Cv = R).'
     },
-  ],
+    {
+      question: 'The work done by a gas in an isochoric process is:',
+      options: ['Zero', 'Maximum', 'P * ΔV', 'nRT ln(V2/V1)'],
+      correctAnswer: 0,
+      explanation: 'In an isochoric process, the volume remains constant (ΔV = 0). Since Work W = ∫PdV, the work done is exactly zero.'
+    }
+  ]
 };
 
 export default {

@@ -1,74 +1,71 @@
-// Physics — Unit 10: Oscillations and Waves
+// Physics — Unit 10: Gravitation
 
-const wavesOscillations = {
-  id: 'oscillations-waves',
-  title: 'Chapter 10: Oscillations and Waves',
+const gravitation = {
+  id: 'gravitation',
+  title: 'Chapter 8: Gravitation',
   notes: [
     {
-      concept: 'Simple Harmonic Motion (SHM): Restoring force is directly proportional to displacement from mean position and opposite in direction: F = -kx. Differential equation: d²x/dt² = -ω²x.',
-      fact: 'Displacement equation: x(t) = A sin(ωt + φ). Velocity v = Aω cos(ωt + φ) = ω sqrt(A² - x²). Acceleration a = -ω²x. v is maximum at mean position (x=0), a is maximum at extreme positions (x=±A).',
-      tip: 'Time period T = 2π/ω. For a spring-mass system: T = 2π sqrt(m/k). For a simple pendulum: T = 2π sqrt(L/g) (Valid only for small angles of oscillation < 5°).',
+      concept: 'Universal Law of Gravitation & Gravitational Field',
+      fact: 'Every mass attracts every other mass. F = G*m1*m2/r². Gravitational Field: g = GM/r². Direction is always towards the centre.',
+      tip: 'G is the universal gravitational constant. A common trap is mixing up the mass of the Earth (M) with the mass of the object (m)!',
     },
     {
-      concept: 'Energy in SHM: Potential Energy U = ½ kx² = ½ mω²x². Kinetic Energy K = ½ mv² = ½ mω²(A² - x²).',
-      fact: 'Total Mechanical Energy E = U + K = ½ kA² = constant. In one cycle, kinetic and potential energies oscillate with a frequency TWICE that of the mechanical vibration.',
-      tip: 'Mean values: PE_avg = ¼ kA², KE_avg = ¼ kA². They equal each other.',
+      concept: 'Acceleration Due to Gravity (g) & Variation',
+      fact: 'At Earth\'s surface: g = GM/R². Variation with height (h << R): g_h = g(1 - 2h/R). Variation with depth (d): g_d = g(1 - d/R).',
+      tip: 'Do not assume g is constant everywhere! Be careful when calculating height/depth problems. Always verify if h is comparable to Earth\'s radius (R) or very small.',
     },
     {
-      concept: 'Wave Motion: Transverse waves (particles oscillate perpendicular to wave direction — e.g., string, EM waves). Longitudinal waves (particles oscillate parallel — e.g., sound).',
-      fact: 'Speed of transverse wave on a string: v = sqrt(T/μ) where T is tension and μ is linear mass density (m/L). Speed of sound: v = sqrt(E/ρ) (Newton Laplace: v = sqrt(γP/ρ)).',
-      tip: 'Equation of progressive wave: y(x,t) = A sin(kx - ωt + φ), where k is angular wave number (2π/λ) and v = ω/k.',
+      concept: 'Gravitational Potential & Potential Energy',
+      fact: 'Gravitational Potential (Work done per unit mass): V = -GM/r. Gravitational Potential Energy: U = -GMm/r.',
+      tip: '⚠️ CRITICAL TRAP: Forgetting the negative sign in potential and energy formulas!',
     },
     {
-      concept: 'Superposition Principle and Interference: When two waves overlap, the net displacement is the vector sum: y = y1 + y2. Constructive interference: Path difference Δx = nλ. Destructive: Δx = (n + ½)λ.',
-      fact: 'Reflection of waves: From rigid boundary (fixed end), there is a phase reversal of π (crest reflects as trough). From free end, phase reversal is zero (crest reflects as crest).',
-      tip: 'Standing Waves: Formed by superposition of two identical waves traveling in opposite directions. Nodes: Amplitude zero. Antinodes: Amplitude maximum. Distance between two successive nodes is λ/2.',
+      concept: 'Escape Velocity & Orbital Velocity',
+      fact: 'Escape Velocity (min velocity to escape Earth\'s gravity): v_e = √(2GM/R) = √(2gR). Orbital Velocity: v_o = √(GM/r).',
+      tip: 'Common trap is confusing escape velocity vs orbital velocity or using the wrong radius (r vs R in formulas). v_e = √2 * v_o.',
     },
     {
-      concept: 'Harmonics in Strings and Organ Pipes: String fixed at both ends and Open Organ Pipe: Fund freq f1 = v/2L. All harmonics present (1:2:3...). Closed Organ Pipe: Fund freq f1 = v/4L. Only odd harmonics present (1:3:5...).',
-      fact: 'Beats: Formed by the superposition of two waves of slightly different frequencies. Beat frequency = |f1 - f2|.',
-      tip: 'The pitch (frequency) of sound appears to change when the source or observer moves (Doppler Effect) — Though removed from the recent reduced NEET syllabus, be familiar with the basic idea if asked implicitly!',
+      concept: 'Satellite Motion & Kepler\'s Laws',
+      fact: 'Time Period: T = 2π√(r³/GM). Energy of Satellite = -GMm/2r. Kepler\'s Law of Periods: T² ∝ r³. Law of Areas: Equal areas in equal time.',
+      tip: 'Geostationary Satellite: Appears stationary relative to Earth, Time period = 24 hours, moves in equatorial plane.',
     },
   ],
   quiz: [
     {
-      question: 'Which of the following is true for a particle executing simple harmonic motion?',
-      options: ['Velocity is zero at mean position', 'Acceleration is zero at extreme positions', 'Restoring force is maximum at extreme positions', 'Kinetic energy is constant throughout'],
-      correctAnswer: 2,
-      explanation: 'At extreme positions (x = ±A), displacement is maximum, so the restoring force F = -kx is maximum, and acceleration is maximum. Velocity is zero.',
-    },
-    {
-      question: 'If the length of a simple pendulum is increased by 44%, its time period will increase by:',
-      options: ['10%', '20%', '44%', '22%'],
+      question: 'The value of acceleration due to gravity (g) at a height \'h\' above the earth\'s surface (where h is much smaller than the radius of the earth R) is given by:',
+      options: ['g(1 - h/R)', 'g(1 - 2h/R)', 'g(1 - h/2R)', 'g(1 - h²/R²)'],
       correctAnswer: 1,
-      explanation: 'T is proportional to sqrt(L). If L becomes 1.44L, sqrt(1.44) = 1.2. So new T = 1.2T, which is an increase of 20%.',
+      explanation: 'For height h << R, the variation of g is approximated using the binomial expansion as g_h = g(1 - 2h/R).',
     },
     {
-      question: 'The frequency at which the kinetic energy of a simple harmonic oscillator completes one oscillation is:',
-      options: ['Half the frequency of the oscillator', 'Equal to the frequency of the oscillator', 'Twice the frequency of the oscillator', 'Four times the frequency of the oscillator'],
-      correctAnswer: 2,
-      explanation: 'During one complete oscillation of the particle (e.g. from x=+A to -A and back to +A), it crosses the mean position (x=0) twice. The kinetic energy is maximum (E) at x=0, so it reaches a maximum twice per full mechanical cycle. Hence, frequency of KE/PE is 2f.',
+      question: 'Which of the following describes the relation between the escape velocity (v_e) and orbital velocity (v_o) of a satellite orbiting very close to the earth\'s surface?',
+      options: ['v_e = v_o', 'v_e = √2 * v_o', 'v_e = v_o / √2', 'v_e = 2 * v_o'],
+      correctAnswer: 1,
+      explanation: 'Escape velocity v_e = √(2gR) and orbital velocity close to surface v_o = √(gR). Thus, v_e = √2 * v_o.',
     },
     {
-      question: 'In an open organ pipe, which harmonics are present in the standing wave pattern?',
-      options: ['Only even harmonics', 'Only odd harmonics', 'All harmonics (even and odd)', 'No harmonics'],
-      correctAnswer: 2,
-      explanation: 'Open organ pipes produce both even and odd harmonics (f, 2f, 3f...), leading to a richer sound. Closed organ pipes produce only odd harmonics (f, 3f, 5f...).',
+      question: 'The total mechanical energy of a satellite of mass m revolving in an orbit of radius r around the Earth (mass M) is:',
+      options: ['GMm / 2r', '-GMm / 2r', '-GMm / r', 'GMm / r'],
+      correctAnswer: 1,
+      explanation: 'The total energy is the sum of kinetic energy (+GMm/2r) and potential energy (-GMm/r). Therefore, Total Energy = -GMm/2r. A common trap is missing the negative sign!',
     },
     {
-      question: 'Two tuning forks A and B sounded together produce 4 beats per second. When B is loaded with wax slightly, the beat frequency increases to 6 bps. If the frequency of A is 256 Hz, the frequency of B is:',
-      options: ['252 Hz', '256 Hz', '260 Hz', '262 Hz'],
-      correctAnswer: 2,
-      explanation: 'Since |fA - fB| = 4, fB could be 252 or 260. Loading B with wax decreases its frequency. If fB was 252, decreasing it would make the difference |256 - (252-x)| > 4 (increases). Let\'s check 260. Decreasing 260 gives 260-x. The difference |256 - (260-x)| becomes smaller. Wait! The beat frequency INCREASES to 6. If fB was 252, lower fB (say 250) -> |256-250| = 6. Correct. So fB = 252 Hz. Let\'s re-verify. Ah! The correct option should be 252! Option 0.',
+      question: 'According to Kepler\'s Law of Periods (Third Law), the square of the time period of revolution of a planet around the sun is proportional to the:',
+      options: ['square of the semi-major axis', 'cube of the semi-major axis', 'cube of the semi-minor axis', 'square of the semi-minor axis'],
+      correctAnswer: 1,
+      explanation: 'Kepler\'s Law of Periods states that T² ∝ r³, where r is the semi-major axis (or radius for a circular orbit) of the elliptical orbit.',
+    },
+    {
+      question: 'If the radius of the Earth were to shrink by 1%, its mass remaining the same, the acceleration due to gravity on the earth\'s surface would:',
+      options: ['increase by 2%', 'decrease by 2%', 'increase by 1%', 'decrease by 1%'],
+      correctAnswer: 0,
+      explanation: 'Since g = GM/R², taking natural logarithms and differentiating gives Δg/g = -2(ΔR/R) for a constant M. If ΔR/R = -1%, then Δg/g = -2(-1%) = +2%. So g increases by 2%.',
     },
   ],
 };
 
-// Fixing option in question 5
-wavesOscillations.quiz[4].correctAnswer = 0;
-
 export default {
   id: 'phy-u10',
-  name: 'Unit 10: Oscillations and Waves',
-  chapters: [wavesOscillations],
+  name: 'Unit 10: Gravitation',
+  chapters: [gravitation],
 };
