@@ -31,6 +31,11 @@ export async function getQuestions(req, res) {
         { $sample: { size: needed } }
       ])
 
+      // Ignore legacy generic mock templates so chapter-specific mocks dominate.
+      existingExternal = existingExternal.filter(
+        q => !String(q.question || '').startsWith('Realistic simulated question')
+      )
+
       if (existingExternal.length < needed) {
         // Mocking an external fetch by requesting realistic questions from API
         // In a real app, this would be: await axios.get('https://api.neetpyq.com/...')

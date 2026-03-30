@@ -70,6 +70,59 @@ function mergeUniqueObjects(...groups) {
   return merged
 }
 
+function normalizeQuizQuestion(q) {
+  if (!q || typeof q !== 'object') return null
+  const question = String(q.question ?? '').trim()
+  const options = Array.isArray(q.options)
+    ? q.options.map(opt => String(opt ?? '').trim()).filter(Boolean)
+    : []
+  const explanation = String(q.explanation ?? '').trim()
+  const correctAnswer = Number(q.correctAnswer)
+  const isTemplate = question.startsWith('Realistic simulated question')
+
+  if (!question || isTemplate) return null
+  if (options.length !== 4) return null
+  if (!Number.isInteger(correctAnswer) || correctAnswer < 0 || correctAnswer > 3) return null
+  if (!explanation) return null
+
+  return {
+    ...q,
+    question,
+    options,
+    explanation,
+    correctAnswer,
+  }
+}
+
+function mergeUniqueQuestions(...groups) {
+  const seen = new Set()
+  const merged = []
+  groups.flat().forEach(raw => {
+    const q = normalizeQuizQuestion(raw)
+    if (!q) return
+    const key = q.question.toLowerCase().replace(/\s+/g, ' ').trim()
+    if (!key || seen.has(key)) return
+    seen.add(key)
+    merged.push(q)
+  })
+  return merged
+}
+
+function shuffled(list) {
+  const copy = [...list]
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const tmp = copy[i]
+    copy[i] = copy[j]
+    copy[j] = tmp
+  }
+  return copy
+}
+
+function quizSignature(list) {
+  return list.map(q => String(q.question ?? '').trim().toLowerCase()).join('||')
+}
+
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem('neet_progress') || '{}') } catch { return {} }
 }
@@ -134,15 +187,24 @@ export default function App() {
   // ── Practice PYQs ────────────────────────────────────────────────────────
   async function startQuiz() {
     setQuizLoading(true)
-    let questions = []
+    let apiQuestions = []
     try {
       // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
       const r = await apiFetch(`/questions?chapter=${chapterId}&limit=20&t=${Date.now()}`)
       if (r.ok) {
         const data = await r.json()
-        questions = data.questions ?? []
+        apiQuestions = data.questions ?? []
       }
     } catch { /* offline */ }
+
+    const localQuestions = chapterData?.quiz ?? []
+    const pool = mergeUniqueQuestions(apiQuestions, localQuestions)
+    let questions = shuffled(pool).slice(0, 20)
+
+    // Avoid showing the exact same set/order when user taps refresh repeatedly.
+    if (questions.length > 1 && quizSignature(questions) === quizSignature(quizQ)) {
+      questions = [...questions.slice(1), questions[0]]
+    }
 
     setQuizLoading(false)
     if (!questions.length) return

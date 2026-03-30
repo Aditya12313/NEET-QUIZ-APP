@@ -842,61 +842,268 @@ export const biologySubject = {
           title: 'Unit 6: Reproduction',
           concept_explanations: [
             {
+              title: 'Reproduction in Organisms: Core Idea',
+              description: 'Reproduction is the biological process by which organisms produce offspring similar to themselves, ensuring continuity of species. Lifespan is the period from birth to natural death. Organisms pass through juvenile, reproductive, and senescent phases.'
+            },
+            {
+              title: 'Asexual Reproduction: Types and Examples',
+              description: 'Asexual reproduction involves a single parent and generally produces clones. Key types: binary fission (Amoeba), multiple fission (Plasmodium), budding (Hydra, Yeast), fragmentation, and vegetative propagation (potato, Bryophyllum).' 
+            },
+            {
+              title: 'Sexual Reproduction: Event Sequence',
+              description: 'Sexual reproduction has three sequential events: pre-fertilization (gametogenesis and gamete transfer), fertilization/syngamy (fusion of gametes to form zygote), and post-fertilization (embryogenesis and organismal development).' 
+            },
+            {
+              title: 'Gametes and Fertilization Types',
+              description: 'Gametes may be isogametes (morphologically similar) or heterogametes (male and female gametes distinct, as in sperm and ovum). Fertilization may be external (outside body, as in fish and amphibians) or internal (inside body, as in reptiles, birds, mammals).' 
+            },
+            {
               title: 'Reproduction in Flowering Plants',
-              description: 'Covers flower structure, gametophytes, pollination, fertilization, seed and fruit development, and special modes like apomixis and polyembryony.'
+              description: 'Male reproductive whorl is androecium (stamen = anther + filament) and female reproductive whorl is gynoecium (pistil = stigma + style + ovary). Microsporogenesis produces pollen grains; megasporogenesis produces functional megaspore leading to embryo sac formation.'
             },
             {
-              title: 'Human Reproduction',
-              description: 'Includes male/female reproductive systems, gametogenesis, menstrual cycle, fertilization, implantation, pregnancy, parturition, and lactation.'
+              title: 'Embryo Sac and Pollination',
+              description: 'Typical angiosperm embryo sac is 7-celled and 8-nucleate. Pollination is transfer of pollen from anther to stigma and can be autogamy, geitonogamy, or xenogamy. Outbreeding devices prevent self-pollination and encourage cross-pollination.'
             },
             {
-              title: 'Reproductive Health',
-              description: 'Covers contraception, MTP, STDs prevention, amniocentesis, infertility, and assisted reproductive technologies such as IVF, ZIFT, and GIFT.'
+              title: 'Double Fertilization (Most Important)',
+              description: 'Unique to angiosperms: one male gamete fuses with egg (syngamy) to form diploid zygote, while the second male gamete fuses with two polar nuclei (triple fusion) to form primary endosperm nucleus, leading to endosperm development.'
+            },
+            {
+              title: 'Post-Fertilization Changes',
+              description: 'Zygote develops into embryo through pro-embryo, globular, and heart-shaped stages. Ovule transforms into seed and ovary into fruit. Seeds may be albuminous (endosperm retained) or non-albuminous. Special terms: parthenogenesis, parthenocarpy, and apomixis.'
             }
           ],
           key_patterns: [
-            'Pollination, double fertilization, and embryo development questions.',
-            'Menstrual cycle and gametogenesis sequence questions.',
-            'ART methods and reproductive health awareness asks.'
+            'Definition-based one-liners: reproduction, lifespan, syngamy, pollination.',
+            'Direct match-the-following on asexual mode and organism examples.',
+            'High-yield distinctions: autogamy vs geitonogamy vs xenogamy.',
+            'Diagram-based flower/embryo sac labeling and identification.',
+            'Assertion-reason from double fertilization, outbreeding devices, and endosperm formation.',
+            'Sequence questions: pre-fertilization to post-fertilization event order.',
+            'Conversion questions: ovule to seed and ovary to fruit.'
           ],
           formulas_relations: [
             {
-              formula: 'Double fertilization = syngamy + triple fusion',
-              meaning: 'Unique event in angiosperms.'
+              formula: 'Asexual reproduction -> single parent -> clones (genetically identical offspring)',
+              meaning: 'Core relation used in conceptual and definition-based MCQs.'
+            },
+            {
+              formula: 'Sexual reproduction events: pre-fertilization -> fertilization (syngamy) -> post-fertilization',
+              meaning: 'Most important sequence in event-order questions.'
+            },
+            {
+              formula: 'Pollination types: autogamy (same flower), geitonogamy (different flowers of same plant), xenogamy (different plants)',
+              meaning: 'Most frequently confused classification in MCQs.'
+            },
+            {
+              formula: 'Double fertilization = syngamy (sperm + egg) + triple fusion (sperm + polar nuclei)',
+              meaning: 'Signature angiosperm event repeatedly asked in NEET.'
+            },
+            {
+              formula: 'Post-fertilization conversion: ovule -> seed; ovary -> fruit',
+              meaning: 'Classic direct question area and common mistake zone.'
             }
           ],
           application_insights: [
-            'Reproduction unit has conceptual flow-based NEET questions.',
-            'Plant and human reproduction both are heavily tested.'
+            'Unit 6 is one of the most NCERT-line dependent biology units for NEET.',
+            'PYQ trend strongly favors double fertilization, pollination categories, and embryo sac facts.',
+            'Most scoring strategy: memorize exact examples with each asexual method.',
+            'Diagram literacy for flower and embryo sac increases speed in elimination-based MCQs.',
+            'Revision should prioritize conceptual confusion pairs: autogamy/geitonogamy, parthenogenesis/parthenocarpy/apomixis.'
           ],
           common_mistakes: [
             {
-              mistake: 'Mixing pollination and fertilization events',
-              why: 'Sequence in flowering plants is frequently examined.'
+              mistake: 'Confusing autogamy with geitonogamy',
+              why: 'Both involve same plant context but differ in whether pollen transfer occurs within the same flower or between flowers of the same plant.'
             },
             {
-              mistake: 'Confusing ART techniques',
-              why: 'IVF, ZIFT, and GIFT names are similar.'
+              mistake: 'Forgetting both steps of double fertilization',
+              why: 'Students remember zygote formation but miss triple fusion and endosperm formation.'
+            },
+            {
+              mistake: 'Mixing examples of different asexual methods',
+              why: 'Binary fission, budding, and vegetative propagation are often interchanged under exam pressure.'
+            },
+            {
+              mistake: 'Ignoring embryo sac configuration',
+              why: 'The 7-celled, 8-nucleate detail is a frequent direct ask.'
+            },
+            {
+              mistake: 'Misreading post-fertilization conversions',
+              why: 'Ovule to seed and ovary to fruit conversions are simple but commonly confused.'
+            },
+            {
+              mistake: 'Using parthenocarpy and apomixis interchangeably',
+              why: 'Parthenocarpy is seedless fruit development, while apomixis is seed formation without fertilization.'
             }
           ],
           quick_revision: [
-            'Double fertilization is key angiosperm feature.',
-            'Menstrual cycle and hormonal control are high-yield.',
-            'Contraception and STD prevention are direct-theory topics.',
-            'IVF, ZIFT, GIFT are commonly asked definitions.'
+            'Reproduction: process producing offspring similar to parent; continuity of species depends on it.',
+            'Lifespan: interval between birth and natural death; no multicellular organism is immortal.',
+            'Asexual reproduction: one parent, no gamete fusion, progeny mostly clones.',
+            'Binary fission: Amoeba; multiple fission: Plasmodium; budding: Hydra and yeast.',
+            'Vegetative propagation examples: potato, Bryophyllum.',
+            'Sexual reproduction: fusion of male and female gametes, creates variation.',
+            'Pre-fertilization includes gametogenesis and gamete transfer.',
+            'Fertilization (syngamy) forms zygote.',
+            'Post-fertilization includes embryo and seed/fruit development.',
+            'Isogametes are similar; heterogametes are dissimilar (sperm and ovum).',
+            'External fertilization: fish/frog; internal fertilization: humans/reptiles.',
+            'Flower male part: androecium (stamen = anther + filament).',
+            'Flower female part: gynoecium (pistil = stigma + style + ovary).',
+            'Embryo sac is 7-celled and 8-nucleate.',
+            'Pollination = transfer of pollen from anther to stigma.',
+            'Autogamy: same flower; geitonogamy: different flowers same plant; xenogamy: different plants.',
+            'Outbreeding devices reduce self-pollination.',
+            'Double fertilization = syngamy + triple fusion (unique to angiosperms).',
+            'One male gamete + egg -> zygote; second male gamete + polar nuclei -> endosperm.',
+            'Embryo stages: pro-embryo -> globular -> heart-shaped.',
+            'Ovule -> seed and ovary -> fruit.',
+            'Albuminous seed retains endosperm; non-albuminous seed lacks residual endosperm.',
+            'True fruit forms from ovary; false fruit includes thalamus.',
+            'Parthenogenesis: development without fertilization.',
+            'Parthenocarpy: seedless fruit formation without fertilization.',
+            'Apomixis: seed formation without fertilization.'
           ],
           quiz: [
             {
-              question: 'Double fertilization occurs in:',
-              options: ['Gymnosperms only', 'Angiosperms', 'Pteridophytes only', 'Algae only'],
+              question: 'Asexual reproduction generally results in:',
+              options: ['High genetic variation', 'Clones genetically similar to parent', 'Formation of gametes only', 'Fertilization-dependent offspring'],
               correctAnswer: 1,
-              explanation: 'Double fertilization is characteristic of angiosperms.'
+              explanation: 'Asexual reproduction involves one parent and produces genetically identical or near-identical offspring.'
             },
             {
-              question: 'IVF is related to:',
-              options: ['Plant tissue culture', 'Assisted reproduction', 'Bacterial cloning only', 'Vaccination'],
+              question: 'Binary fission is correctly matched with:',
+              options: ['Hydra', 'Yeast', 'Amoeba', 'Plasmodium'],
+              correctAnswer: 2,
+              explanation: 'Amoeba reproduces by binary fission.'
+            },
+            {
+              question: 'Multiple fission is characteristically seen in:',
+              options: ['Plasmodium', 'Hydra', 'Potato', 'Mango'],
+              correctAnswer: 0,
+              explanation: 'Plasmodium reproduces by multiple fission in suitable stages.'
+            },
+            {
+              question: 'Correct order of events in sexual reproduction is:',
+              options: ['Fertilization -> gamete transfer -> embryo formation', 'Pre-fertilization -> fertilization -> post-fertilization', 'Embryo formation -> fertilization -> gamete transfer', 'Post-fertilization -> pre-fertilization -> fertilization'],
               correctAnswer: 1,
-              explanation: 'IVF is an assisted reproductive technology.'
+              explanation: 'The sequence is pre-fertilization, fertilization, then post-fertilization development.'
+            },
+            {
+              question: 'Embryo sac in angiosperms is typically:',
+              options: ['8-celled and 7-nucleate', '7-celled and 8-nucleate', '4-celled and 8-nucleate', '7-celled and 7-nucleate'],
+              correctAnswer: 1,
+              explanation: 'The common Polygonum-type embryo sac is 7-celled and 8-nucleate.'
+            },
+            {
+              question: 'Which statement is correct for autogamy?',
+              options: ['Pollen transfer between different plants', 'Pollen transfer between different flowers of same plant', 'Pollen transfer within the same flower', 'Pollination by water only'],
+              correctAnswer: 2,
+              explanation: 'Autogamy occurs within the same flower.'
+            },
+            {
+              question: 'Transfer of pollen from one flower to another flower on the same plant is:',
+              options: ['Autogamy', 'Xenogamy', 'Geitonogamy', 'Apomixis'],
+              correctAnswer: 2,
+              explanation: 'Geitonogamy occurs between different flowers of the same plant.'
+            },
+            {
+              question: 'Transfer of pollen to stigma of a different plant is:',
+              options: ['Geitonogamy', 'Xenogamy', 'Autogamy', 'Parthenogenesis'],
+              correctAnswer: 1,
+              explanation: 'Xenogamy involves two genetically different plants of the same species.'
+            },
+            {
+              question: 'Outbreeding devices in flowering plants mainly help in:',
+              options: ['Promoting self-pollination', 'Preventing inbreeding and promoting cross-pollination', 'Stopping pollen formation', 'Converting ovule into fruit'],
+              correctAnswer: 1,
+              explanation: 'Outbreeding devices reduce self-pollination and increase genetic variability.'
+            },
+            {
+              question: 'Double fertilization in flowering plants includes:',
+              options: ['Only syngamy', 'Syngamy and triple fusion', 'Only triple fusion', 'Fertilization without endosperm formation'],
+              correctAnswer: 1,
+              explanation: 'One male gamete fuses with egg (syngamy) and the other with polar nuclei (triple fusion).' 
+            },
+            {
+              question: 'Triple fusion leads to formation of:',
+              options: ['Zygote', 'Embryo', 'Primary endosperm nucleus', 'Seed coat'],
+              correctAnswer: 2,
+              explanation: 'Fusion of male gamete with two polar nuclei forms primary endosperm nucleus.'
+            },
+            {
+              question: 'In post-fertilization changes of angiosperms, ovule develops into:',
+              options: ['Fruit', 'Endosperm', 'Seed', 'Pollen grain'],
+              correctAnswer: 2,
+              explanation: 'After fertilization, ovule becomes seed.'
+            },
+            {
+              question: 'Ovary develops into:',
+              options: ['Seed', 'Fruit', 'Endosperm', 'Embryo sac'],
+              correctAnswer: 1,
+              explanation: 'After fertilization, ovary develops into fruit.'
+            },
+            {
+              question: 'Seedless fruit formation without fertilization is called:',
+              options: ['Apomixis', 'Parthenocarpy', 'Geitonogamy', 'Polyembryony'],
+              correctAnswer: 1,
+              explanation: 'Parthenocarpy refers to development of seedless fruits without fertilization.'
+            },
+            {
+              question: 'Apomixis refers to:',
+              options: ['Seed formation without fertilization', 'Fusion of two male gametes', 'Pollen germination on stigma', 'Fruit formation from thalamus only'],
+              correctAnswer: 1,
+              explanation: 'Apomixis is asexual seed formation without meiosis/fertilization sequence.'
+            },
+            {
+              question: 'Parthenogenesis means:',
+              options: ['Fruit formation from ovary only', 'Embryo development without fertilization', 'Double fertilization in ovule', 'Formation of endosperm without zygote'],
+              correctAnswer: 1,
+              explanation: 'Parthenogenesis is development of an embryo from an unfertilized egg.'
+            },
+            {
+              question: 'Which statement correctly differentiates parthenocarpy and apomixis?',
+              options: ['Both produce seedless fruits only', 'Parthenocarpy forms seedless fruits; apomixis forms seeds without fertilization', 'Apomixis is pollination by insects; parthenocarpy is pollination by wind', 'Both require double fertilization'],
+              correctAnswer: 1,
+              explanation: 'Parthenocarpy is seedless fruit development, whereas apomixis is seed formation without fertilization.'
+            },
+            {
+              question: 'Which pair is correctly matched?',
+              options: ['Hydra - Binary fission', 'Amoeba - Budding', 'Yeast - Budding', 'Plasmodium - Fragmentation'],
+              correctAnswer: 2,
+              explanation: 'Yeast reproduces asexually by budding.'
+            },
+            {
+              question: 'In angiosperms, endosperm develops from:',
+              options: ['Zygote', 'Primary endosperm nucleus formed after triple fusion', 'Nucellus without fertilization', 'Integuments of ovule'],
+              correctAnswer: 1,
+              explanation: 'Triple fusion gives primary endosperm nucleus, which develops into endosperm.'
+            },
+            {
+              question: 'Albuminous seeds are those in which:',
+              options: ['Embryo is absent', 'Endosperm is retained in mature seed', 'Fruit wall is fleshy', 'Seed coat is absent'],
+              correctAnswer: 1,
+              explanation: 'Albuminous seeds retain endosperm at maturity.'
+            },
+            {
+              question: 'A fruit in which thalamus also contributes significantly is called:',
+              options: ['True fruit', 'False fruit', 'Parthenocarpic fruit', 'Dry dehiscent fruit'],
+              correctAnswer: 1,
+              explanation: 'False fruits include accessory floral parts such as thalamus.'
+            },
+            {
+              question: 'Which is the correct sequence of embryo development in dicot embryo?',
+              options: ['Heart-shaped -> globular -> pro-embryo', 'Pro-embryo -> globular -> heart-shaped', 'Globular -> pro-embryo -> heart-shaped', 'Pro-embryo -> heart-shaped -> globular'],
+              correctAnswer: 1,
+              explanation: 'The usual sequence is pro-embryo, globular stage, then heart-shaped stage.'
+            },
+            {
+              question: 'Which statement about geitonogamy is correct?',
+              options: ['It is genetically equivalent to cross-pollination only', 'It occurs between flowers of different plants', 'It occurs between different flowers of the same plant', 'It does not involve pollen transfer'],
+              correctAnswer: 2,
+              explanation: 'Geitonogamy is pollen transfer between different flowers of the same plant.'
             }
           ]
         },
@@ -905,37 +1112,71 @@ export const biologySubject = {
           title: 'Unit 7: Genetics and Evolution',
           concept_explanations: [
             {
-              title: 'Mendelian Inheritance and Variations',
-              description: 'Includes Mendel laws, incomplete dominance, codominance, multiple alleles, pleiotropy, and basic polygenic inheritance.'
+              title: 'Heredity and Variation: Mendelian Genetics',
+              description: 'Mendel is the father of genetics. Inheritance occurs through genes present as alleles. Core laws are dominance, segregation, and independent assortment, which explain transmission of traits from parents to offspring.'
             },
             {
-              title: 'Chromosomal Basis and Sex Determination',
-              description: 'Chromosome theory, linkage, crossing over, sex-linked inheritance, and sex-determination mechanisms in humans, birds, and honey bee.'
+              title: 'Laws of Inheritance and Deviations',
+              description: 'Law of dominance states one allele can mask another in heterozygous condition. Law of segregation states allele pairs separate during gamete formation. Law of independent assortment applies to unlinked genes. Important deviations include incomplete dominance (pink flower), codominance (AB blood group), multiple alleles (ABO), and pleiotropy.'
+            },
+            {
+              title: 'Chromosomal Basis and Human Genetics',
+              description: 'Chromosomal theory states genes are located on chromosomes and their behavior supports Mendelian inheritance. Linked genes tend to be inherited together, while crossing over creates recombination. Human sex determination is XX/XY; honeybee shows haplodiploidy. Major sex-linked disorders include hemophilia and color blindness. Chromosomal disorders include Down, Turner, and Klinefelter syndromes.'
             },
             {
               title: 'Molecular Basis of Inheritance',
-              description: 'DNA as genetic material, DNA/RNA structure, replication, transcription, translation, genetic code, lac operon, and human genome project.'
+              description: 'DNA is the major genetic material, while RNA serves as genetic material in some viruses. DNA has double helix structure with complementary pairing (A=T, G=C). Replication is semi-conservative. Central dogma is DNA to RNA to protein, carried out via transcription and translation. Genetic code is triplet, universal, and degenerate.'
             },
             {
-              title: 'Evolution Concepts',
-              description: 'Covers origin of life, evidences of evolution, Darwinism, modern synthetic theory, Hardy-Weinberg principle, drift, gene flow, and natural selection.'
+              title: 'Gene Regulation and Human Genome Tools',
+              description: 'Lac operon is an inducible gene regulation system in bacteria and is highly important for NEET. Human Genome Project focused on mapping and analyzing human genes. DNA fingerprinting is used in forensic science and paternity analysis.'
+            },
+            {
+              title: 'Evolution: Principles and Mechanisms',
+              description: 'Origin of life is explained by chemical evolution. Evidence for evolution includes fossils, comparative anatomy, embryology, and molecular data. Darwin proposed natural selection and survival of the fittest. Modern evolutionary theory integrates mutation, recombination, natural selection, gene flow, and genetic drift.'
+            },
+            {
+              title: 'Hardy-Weinberg and Adaptive Evolution',
+              description: 'Hardy-Weinberg principle states allele frequencies remain constant in a non-evolving population. Disturbing factors include mutation, migration, genetic drift, and natural selection. Adaptive radiation explains divergence of multiple species from a common ancestor. Human evolution traces from primate ancestors to modern humans.'
             }
           ],
           key_patterns: [
-            'Pedigree and inheritance pattern recognition.',
-            'Dominance and blood group allele-based questions.',
-            'Central dogma and molecular process flow questions.',
-            'Hardy-Weinberg concept and evolution mechanism asks.'
+            'Punnett square-based genotype and phenotype ratio questions.',
+            'ABO blood group inheritance and codominance numericals.',
+            'Distinction questions on dominance vs codominance vs incomplete dominance.',
+            'Direct asks on sex-linked and chromosomal disorders.',
+            'Sequence questions: replication, transcription, and translation.',
+            'Lac operon logic and inducible regulation assertion-reason items.',
+            'Hardy-Weinberg equation and equilibrium-shift conceptual MCQs.',
+            'Evidence of evolution and Darwinian selection match-the-following.'
           ],
           formulas_relations: [
             {
+              formula: 'Mendel laws: dominance + segregation + independent assortment',
+              meaning: 'Core inheritance framework for monohybrid and dihybrid questions.'
+            },
+            {
+              formula: 'ABO system: IA and IB codominant; i recessive',
+              meaning: 'Used in blood group genotype-probability problems.'
+            },
+            {
+              formula: 'Central dogma: DNA -> RNA -> Protein',
+              meaning: 'Flow of genetic information in cells.'
+            },
+            {
               formula: 'Hardy-Weinberg: p^2 + 2pq + q^2 = 1',
               meaning: 'Genotype frequency relation in stable population.'
+            },
+            {
+              formula: 'Allele frequency relation: p + q = 1',
+              meaning: 'Basic allele proportion in a two-allele system.'
             }
           ],
           application_insights: [
-            'Unit 7 is one of the highest weightage biology blocks.',
-            'Genetics and molecular biology are repeatedly tested.'
+            'Unit 7 is one of the highest-weightage and most question-dense units in NEET Biology.',
+            'Repeated PYQ clusters are blood groups, sex-linked inheritance, DNA replication, lac operon, and Hardy-Weinberg.',
+            'Solving inheritance questions requires clean genotype notation and stepwise Punnett approach.',
+            'Molecular biology asks are highly NCERT-line anchored, especially genetic code properties and operon logic.'
           ],
           common_mistakes: [
             {
@@ -945,26 +1186,146 @@ export const biologySubject = {
             {
               mistake: 'Mixing transcription and translation steps',
               why: 'Central dogma sequence is often asked directly.'
+            },
+            {
+              mistake: 'Using wrong ABO notation',
+              why: 'Students confuse IA, IB, and i combinations, causing errors in blood-group probability questions.'
+            },
+            {
+              mistake: 'Ignoring lac operon control logic',
+              why: 'Questions often test when structural genes are switched on/off in presence or absence of inducer.'
+            },
+            {
+              mistake: 'Forgetting assumptions behind Hardy-Weinberg equilibrium',
+              why: 'Equation is remembered, but no-selection/no-mutation/no-migration conditions are missed.'
+            },
+            {
+              mistake: 'Mixing sex-linked and autosomal inheritance patterns',
+              why: 'Pedigree interpretation errors occur when X-linked recessive traits are treated as autosomal.'
             }
           ],
           quick_revision: [
-            'Know all Mendelian deviations with examples.',
-            'Sex-linked disorders are frequent direct asks.',
-            'DNA replication-transcription-translation sequence is core.',
-            'Hardy-Weinberg equation is high-yield.'
+            'Mendel is the father of genetics.',
+            'Genes exist as alleles and govern heredity and variation.',
+            'Law of dominance: dominant allele expresses in heterozygote.',
+            'Law of segregation: allele pairs separate during gamete formation.',
+            'Law of independent assortment: unlinked genes assort independently.',
+            'Incomplete dominance example: red x white flower gives pink in heterozygote.',
+            'Codominance example: blood group AB expresses both IA and IB.',
+            'ABO blood groups show multiple allelism and codominance.',
+            'Pleiotropy: one gene affects multiple phenotypic traits.',
+            'Genes are carried on chromosomes (chromosomal theory).',
+            'Linkage keeps nearby genes inherited together; crossing over causes recombination.',
+            'Human sex determination: XX female, XY male.',
+            'Honeybee follows haplodiploid sex determination.',
+            'Sex-linked disorders: hemophilia, color blindness.',
+            'Chromosomal disorders: Down syndrome, Turner syndrome, Klinefelter syndrome.',
+            'DNA is genetic material in most organisms; RNA in some viruses.',
+            'DNA has double helix with A=T and G=C pairing.',
+            'DNA replication is semi-conservative.',
+            'Central dogma: DNA -> RNA -> Protein.',
+            'Transcription: DNA template to RNA; Translation: mRNA to polypeptide.',
+            'Genetic code is triplet, universal, and degenerate.',
+            'Lac operon is an inducible operon in prokaryotes.',
+            'Human Genome Project mapped human genes.',
+            'DNA fingerprinting applications: forensics and paternity testing.',
+            'Evidence of evolution: fossils, comparative anatomy, embryology, molecular data.',
+            'Darwin: natural selection and survival of the fittest.',
+            'Evolutionary forces: mutation, recombination, gene flow, drift, selection.',
+            'Hardy-Weinberg equilibrium holds when evolutionary forces are absent.',
+            'Hardy-Weinberg equations: p + q = 1 and p^2 + 2pq + q^2 = 1.',
+            'Adaptive radiation: divergence from common ancestor into different species.'
           ],
           quiz: [
             {
-              question: 'Hardy-Weinberg relation is:',
-              options: ['a^2 + b^2 = c^2', 'p^2 + 2pq + q^2 = 1', 'F = ma', 'n = m/M'],
+              question: 'Law of segregation states that:',
+              options: ['Dominant allele always mutates', 'Alleles separate during gamete formation', 'Genes are inherited in linked groups only', 'Only one parent contributes allele'],
               correctAnswer: 1,
-              explanation: 'It describes genotype frequencies in a stable population.'
+              explanation: 'The two alleles of a gene pair separate during gamete formation.'
             },
             {
-              question: 'Color blindness is typically:',
-              options: ['Autosomal dominant', 'X-linked recessive', 'Y-linked', 'Mitochondrial only'],
+              question: 'AB blood group in humans is an example of:',
+              options: ['Incomplete dominance', 'Codominance', 'Pleiotropy', 'Linkage'],
               correctAnswer: 1,
-              explanation: 'Color blindness follows X-linked recessive inheritance.'
+              explanation: 'Both IA and IB alleles express together in AB blood group.'
+            },
+            {
+              question: 'Which one is a sex-linked recessive disorder?',
+              options: ['Down syndrome', 'Sickle-cell anemia', 'Color blindness', 'Turner syndrome'],
+              correctAnswer: 2,
+              explanation: 'Color blindness is classically inherited as an X-linked recessive trait.'
+            },
+            {
+              question: 'Klinefelter syndrome is associated with chromosomal constitution:',
+              options: ['XO', 'XXY', 'XYY', 'XXX'],
+              correctAnswer: 1,
+              explanation: 'Klinefelter syndrome commonly has 47, XXY karyotype.'
+            },
+            {
+              question: 'DNA replication in organisms is:',
+              options: ['Conservative', 'Semi-conservative', 'Dispersive only', 'Random'],
+              correctAnswer: 1,
+              explanation: 'Each daughter DNA contains one parental and one newly synthesized strand.'
+            },
+            {
+              question: 'Correct central dogma flow is:',
+              options: ['RNA -> DNA -> Protein', 'DNA -> RNA -> Protein', 'Protein -> RNA -> DNA', 'DNA -> Protein -> RNA'],
+              correctAnswer: 1,
+              explanation: 'Genetic information generally flows from DNA to RNA to protein.'
+            },
+            {
+              question: 'Transcription is:',
+              options: ['RNA to DNA synthesis', 'DNA to RNA synthesis', 'RNA to protein synthesis', 'Protein to RNA synthesis'],
+              correctAnswer: 1,
+              explanation: 'Transcription uses DNA template to synthesize RNA.'
+            },
+            {
+              question: 'Translation is:',
+              options: ['DNA replication', 'mRNA to polypeptide synthesis', 'DNA to mRNA synthesis', 'rRNA to tRNA conversion'],
+              correctAnswer: 1,
+              explanation: 'Ribosomes decode mRNA codons to synthesize proteins.'
+            },
+            {
+              question: 'Which statement about genetic code is correct?',
+              options: ['It is always overlapping', 'It is triplet and nearly universal', 'It is species-specific only', 'Each codon codes for multiple amino acids'],
+              correctAnswer: 1,
+              explanation: 'Genetic code is triplet, degenerate, and largely universal.'
+            },
+            {
+              question: 'Lac operon is best described as:',
+              options: ['A repressible operon for amino acid synthesis', 'An inducible operon for lactose metabolism', 'A eukaryotic chromosome region', 'A DNA repair pathway'],
+              correctAnswer: 1,
+              explanation: 'Lac operon turns on in presence of inducer and helps metabolize lactose.'
+            },
+            {
+              question: 'Hardy-Weinberg equilibrium is represented by:',
+              options: ['p^2 + 2pq + q^2 = 1', 'a^2 + b^2 = c^2', 'F = ma', 'PV = nRT'],
+              correctAnswer: 0,
+              explanation: 'It gives expected genotype frequencies in a non-evolving population.'
+            },
+            {
+              question: 'If frequency of recessive allele q is 0.2, then p equals:',
+              options: ['0.2', '0.4', '0.8', '1.2'],
+              correctAnswer: 2,
+              explanation: 'Using p + q = 1, p = 1 - 0.2 = 0.8.'
+            },
+            {
+              question: 'Which is NOT an evidence for evolution?',
+              options: ['Fossils', 'Comparative anatomy', 'Embryological similarities', 'Independent assortment law only'],
+              correctAnswer: 3,
+              explanation: 'Fossils, anatomy, embryology, and molecular data support evolution; independent assortment is a genetic inheritance law.'
+            },
+            {
+              question: 'Natural selection was primarily proposed by:',
+              options: ['Mendel', 'Darwin', 'Watson', 'Hardy'],
+              correctAnswer: 1,
+              explanation: 'Darwin proposed natural selection as a major mechanism of evolution.'
+            },
+            {
+              question: 'Adaptive radiation refers to:',
+              options: ['Convergent evolution from unrelated ancestors', 'Divergence of many species from a common ancestor', 'Only mutation accumulation without selection', 'Sudden chromosome duplication'],
+              correctAnswer: 1,
+              explanation: 'Adaptive radiation is diversification from a common ancestral stock into different ecological niches.'
             }
           ]
         },
@@ -973,56 +1334,199 @@ export const biologySubject = {
           title: 'Unit 8: Biology and Human Welfare',
           concept_explanations: [
             {
-              title: 'Health and Disease Basics',
-              description: 'Covers common pathogens and diseases such as malaria, filariasis, typhoid, pneumonia, common cold, amoebiasis, ringworm, dengue, and chikungunya.'
+              title: 'Human Health and Disease: Core Concepts',
+              description: 'Health means physical, mental, and social well-being. Diseases are broadly infectious (communicable) and non-infectious (non-communicable). Infectious diseases spread via pathogens such as bacteria, viruses, fungi, and parasites.'
             },
             {
-              title: 'Immunity, Vaccines, and Major Disorders',
-              description: 'Includes basic immunology, vaccination, cancer, HIV/AIDS, adolescence health, and substance abuse awareness.'
+              title: 'Major Infectious Diseases and Causative Agents',
+              description: 'High-yield diseases include malaria (Plasmodium, vector female Anopheles), filariasis (Wuchereria), ascariasis (Ascaris), typhoid (Salmonella typhi), pneumonia, amoebiasis (Entamoeba histolytica), common cold (viral), and dengue/chikungunya (Aedes mosquito vector).'
             },
             {
-              title: 'Microbes in Human Welfare',
-              description: 'Application of microbes in food processing, industry, sewage treatment, biogas, biocontrol, and biofertilizers.'
+              title: 'Immunity, Vaccination, and Immune Disorders',
+              description: 'Innate immunity provides non-specific first-line defense, while acquired immunity is specific and memory-based. Antibodies are produced by B-lymphocytes. Vaccination works through immune memory. AIDS is caused by HIV and targets immune function.'
+            },
+            {
+              title: 'Cancer, Substance Abuse, and Lifestyle Risks',
+              description: 'Cancer involves uncontrolled cell division and may be triggered by carcinogens or radiation. Drug and alcohol abuse causes harmful physiological and neurological effects and is an important health-risk topic in NEET.'
+            },
+            {
+              title: 'Microbes in Household and Industry',
+              description: 'Lactobacillus converts milk into curd; yeast is used in bread making. Industrial microbes are used for production of alcohol and organic acids at large scale.'
+            },
+            {
+              title: 'Microbes in Sewage, Energy, and Agriculture',
+              description: 'Microbes degrade organic waste during sewage treatment. Methanogens are used in biogas production. Biofertilizers such as Rhizobium improve soil fertility, and biocontrol agents provide eco-friendly pest management.'
             }
           ],
           key_patterns: [
-            'Disease-causative agent matching questions.',
-            'Vaccine/immunity direct-theory questions.',
-            'Microbe application in industry and agriculture.'
+            'Match-the-following on disease, pathogen, and vector.',
+            'Vector-based direct questions (Anopheles vs Aedes).',
+            'Immunity classification and antibody-based concept asks.',
+            'Vaccination and memory-cell assertion-reason questions.',
+            'Application-based MCQs on microbes in household, industry, and sewage treatment.',
+            'Biogas, biofertilizer, and biocontrol use-case questions.'
           ],
           formulas_relations: [
             {
               formula: 'Pathogen -> Disease -> Transmission route',
               meaning: 'Common memory pattern in NEET biology welfare questions.'
+            },
+            {
+              formula: 'Innate immunity = non-specific defense; Acquired immunity = specific + memory',
+              meaning: 'Most tested conceptual distinction in immunity section.'
+            },
+            {
+              formula: 'Vaccination -> memory cell formation -> faster secondary response',
+              meaning: 'Core logic behind preventive immunization asks.'
+            },
+            {
+              formula: 'Biogas production <- methanogenic microbes',
+              meaning: 'Frequently repeated direct concept in microbes chapter.'
             }
           ],
           application_insights: [
-            'Mostly direct-memory unit with consistent PYQ trend.',
-            'Microbes and disease chapters are easy scoring with revision.'
+            'Unit 8 is memory-dense but highly scoring with proper disease-pathogen-vector mapping.',
+            'Most repeated PYQ zones are malaria, AIDS, vaccination, and industrial/household microbes.',
+            'Question styles are typically direct NCERT lines, match-the-following, and assertion-reason.',
+            'Microbe applications are easy marks if examples are revised with exact organism names.'
           ],
           common_mistakes: [
             {
               mistake: 'Confusing disease names and pathogens',
               why: 'Similar symptom-based conditions create confusion.'
+            },
+            {
+              mistake: 'Mixing up vector and pathogen',
+              why: 'Students often treat mosquito species as causative organism instead of carrier.'
+            },
+            {
+              mistake: 'Confusing innate and acquired immunity',
+              why: 'Innate is non-specific while acquired is antigen-specific and memory-based.'
+            },
+            {
+              mistake: 'Ignoring microbial application examples',
+              why: 'Direct questions ask specific organism-use pairs like Lactobacillus-curd and methanogens-biogas.'
+            },
+            {
+              mistake: 'Assuming all diseases are communicable',
+              why: 'Non-infectious disorders such as cancer are not transmitted person-to-person.'
             }
           ],
           quick_revision: [
-            'Focus on disease-agent-transmission triads.',
-            'Vaccination and immunity basics are important.',
-            'Microbes are useful in food, industry, and agriculture.'
+            'Health includes physical, mental, and social well-being.',
+            'Infectious diseases are communicable; non-infectious diseases are not transmissible.',
+            'Pathogens include bacteria, viruses, fungi, and parasites.',
+            'Malaria: pathogen Plasmodium; vector female Anopheles mosquito.',
+            'Filariasis: pathogen Wuchereria; mosquito-borne.',
+            'Ascariasis: caused by Ascaris (roundworm).',
+            'Typhoid: caused by Salmonella typhi.',
+            'Amoebiasis: caused by Entamoeba histolytica.',
+            'Dengue and chikungunya are transmitted by Aedes mosquito.',
+            'Common cold is viral; pneumonia mainly affects lungs.',
+            'Innate immunity is non-specific and immediate.',
+            'Acquired immunity is specific and involves memory.',
+            'B-lymphocytes produce antibodies.',
+            'Vaccination develops memory response for future protection.',
+            'Cancer is uncontrolled cell division; carcinogens and radiation are major causes.',
+            'AIDS is caused by HIV and weakens immune system.',
+            'Drug and alcohol abuse adversely affect body and nervous system.',
+            'Lactobacillus is used in curd formation; yeast in bread making.',
+            'Industrial microbes produce alcohol and organic acids.',
+            'Microbes help in sewage treatment by degrading waste.',
+            'Methanogens are used in biogas production.',
+            'Rhizobium is a biofertilizer and enhances soil fertility.',
+            'Biocontrol agents are eco-friendly alternatives for pest control.'
           ],
           quiz: [
             {
-              question: 'Biogas production in sewage treatment mainly involves:',
-              options: ['Algae only', 'Methanogenic microbes', 'Viruses', 'Lichens'],
-              correctAnswer: 1,
-              explanation: 'Methanogens play major role in anaerobic digestion.'
+              question: 'Causative agent of malaria is:',
+              options: ['Wuchereria', 'Entamoeba histolytica', 'Plasmodium', 'Salmonella typhi'],
+              correctAnswer: 2,
+              explanation: 'Malaria is caused by protozoan parasites of genus Plasmodium.'
             },
             {
-              question: 'Vaccines are primarily linked to:',
-              options: ['Immediate cure only', 'Preventive immunity', 'Nutrient storage', 'Gene mutation'],
+              question: 'Vector responsible for transmission of malaria is:',
+              options: ['Male Anopheles mosquito', 'Female Anopheles mosquito', 'Aedes mosquito', 'Housefly'],
               correctAnswer: 1,
-              explanation: 'Vaccination induces protective immune memory.'
+              explanation: 'Female Anopheles mosquito transmits Plasmodium.'
+            },
+            {
+              question: 'Typhoid is caused by:',
+              options: ['Ascaris lumbricoides', 'Salmonella typhi', 'Plasmodium vivax', 'HIV'],
+              correctAnswer: 1,
+              explanation: 'Typhoid fever is caused by bacterium Salmonella typhi.'
+            },
+            {
+              question: 'Disease caused by Entamoeba histolytica is:',
+              options: ['Ascariasis', 'Filariasis', 'Amoebiasis', 'Typhoid'],
+              correctAnswer: 2,
+              explanation: 'Entamoeba histolytica causes amoebiasis.'
+            },
+            {
+              question: 'Which mosquito transmits dengue and chikungunya?',
+              options: ['Culex', 'Anopheles', 'Aedes', 'Mansonia'],
+              correctAnswer: 2,
+              explanation: 'Aedes mosquito is the known vector for both dengue and chikungunya.'
+            },
+            {
+              question: 'Innate immunity is:',
+              options: ['Acquired after infection only', 'Specific and memory-based', 'Non-specific first-line defense', 'Mediated only by B-cells'],
+              correctAnswer: 2,
+              explanation: 'Innate immunity provides immediate non-specific protection.'
+            },
+            {
+              question: 'Antibodies are mainly produced by:',
+              options: ['T-lymphocytes', 'B-lymphocytes', 'Neutrophils', 'Macrophages only'],
+              correctAnswer: 1,
+              explanation: 'B-cells differentiate into plasma cells that secrete antibodies.'
+            },
+            {
+              question: 'Vaccination protects primarily by:',
+              options: ['Destroying all pathogens instantly', 'Producing memory cells and secondary response', 'Increasing RBC count', 'Blocking all mutations'],
+              correctAnswer: 1,
+              explanation: 'Vaccines induce immunological memory for faster and stronger response.'
+            },
+            {
+              question: 'AIDS is caused by:',
+              options: ['HBV', 'HIV', 'H1N1', 'Mycobacterium tuberculosis'],
+              correctAnswer: 1,
+              explanation: 'HIV infection leads to acquired immunodeficiency syndrome (AIDS).'
+            },
+            {
+              question: 'Uncontrolled cell division is characteristic of:',
+              options: ['Asthma', 'Cancer', 'Typhoid', 'Filariasis'],
+              correctAnswer: 1,
+              explanation: 'Cancer is marked by uncontrolled proliferation of cells.'
+            },
+            {
+              question: 'Curd formation is associated with:',
+              options: ['Yeast', 'Lactobacillus', 'Rhizobium', 'Methanogens'],
+              correctAnswer: 1,
+              explanation: 'Lactobacillus converts milk into curd through lactic fermentation.'
+            },
+            {
+              question: 'Bread making commonly uses:',
+              options: ['Lactobacillus', 'Yeast', 'Aspergillus', 'Rhizobium'],
+              correctAnswer: 1,
+              explanation: 'Yeast ferments sugars and helps dough rise.'
+            },
+            {
+              question: 'Biogas is mainly produced by:',
+              options: ['Nitrifying bacteria', 'Methanogens', 'Lichens', 'Blue-green algae'],
+              correctAnswer: 1,
+              explanation: 'Methanogenic microbes produce methane-rich biogas.'
+            },
+            {
+              question: 'Biofertilizer Rhizobium is important because it:',
+              options: ['Causes root rot', 'Fixes atmospheric nitrogen in symbiosis', 'Produces lactic acid', 'Controls mosquitoes'],
+              correctAnswer: 1,
+              explanation: 'Rhizobium in legume root nodules improves soil nitrogen status.'
+            },
+            {
+              question: 'Biocontrol agents are preferred because they are:',
+              options: ['Highly toxic chemical pesticides', 'Eco-friendly pest management tools', 'Only laboratory contaminants', 'Used only in hospitals'],
+              correctAnswer: 1,
+              explanation: 'Biocontrol uses biological organisms/methods and reduces chemical load.'
             }
           ]
         },
@@ -1031,57 +1535,190 @@ export const biologySubject = {
           title: 'Unit 9: Biotechnology and Its Applications',
           concept_explanations: [
             {
-              title: 'Biotechnology Principles',
-              description: 'Biotechnology uses living systems and recombinant DNA technology for useful products and processes.'
+              title: 'Principles of Biotechnology',
+              description: 'Biotechnology uses living organisms, cells, or biomolecular systems to develop useful products. Two core techniques are genetic engineering and recombinant DNA (rDNA) technology.'
             },
             {
-              title: 'Health Applications',
-              description: 'Includes insulin production, vaccines, gene therapy, and therapeutic molecules.'
+              title: 'Recombinant DNA Technology: Steps and Tools',
+              description: 'Standard rDNA workflow includes isolation of DNA, cutting with restriction enzymes, insertion into vector (for example plasmid), transfer into host (commonly E. coli), and expression of the foreign gene. Major tools are restriction enzymes, vectors, and host organisms.'
             },
             {
-              title: 'Agriculture Applications and Biosafety',
-              description: 'Covers GM crops, transgenic animals, biopiracy, and patent-related biosafety issues.'
+              title: 'Applications in Human Health',
+              description: 'Recombinant insulin (Humulin) is produced using engineered microbes. Gene therapy targets correction of defective genes. Recombinant vaccines are safer and effective. Molecular diagnosis includes PCR for DNA amplification and ELISA for antigen/antibody detection.'
+            },
+            {
+              title: 'Applications in Agriculture and Animal Biotechnology',
+              description: 'Genetically modified crops such as Bt cotton provide insect resistance and improved productivity. Transgenic animals carry foreign genes and are used for disease research and pharmaceutical production.'
+            },
+            {
+              title: 'Biosafety, Biopiracy, and Ethics',
+              description: 'Biopiracy is unauthorized use of biological resources and traditional knowledge. Patents provide legal protection for inventions. Ethical and environmental concerns are important in use of GM organisms.'
             }
           ],
           key_patterns: [
-            'rDNA process sequence-based direct questions.',
-            'Bt crop and transgenic application asks.',
-            'Biopiracy and patent conceptual questions.'
+            'Step-order questions in recombinant DNA technology.',
+            'Match-the-following on restriction enzyme, vector, and host roles.',
+            'Application-based MCQs on recombinant insulin, PCR, and ELISA.',
+            'Bt cotton and transgenic crop concept questions.',
+            'Statement and assertion-reason items on PCR amplification.',
+            'Biopiracy, patent, and biosafety ethics direct asks.'
           ],
           formulas_relations: [
             {
               formula: 'Biotechnology = Genetic manipulation + Controlled biological process',
               meaning: 'High-level conceptual relation often tested.'
+            },
+            {
+              formula: 'rDNA flow: DNA isolation -> restriction digestion -> ligation into vector -> transfer into host -> gene expression',
+              meaning: 'Most asked sequence-based biotechnology question.'
+            },
+            {
+              formula: 'PCR = exponential amplification of target DNA',
+              meaning: 'Core diagnostic principle repeatedly tested in NEET.'
+            },
+            {
+              formula: 'ELISA = antigen-antibody interaction based detection',
+              meaning: 'Used for diagnosis and immunological testing.'
             }
           ],
           application_insights: [
-            'Unit 9 is concise and high-scoring when definitions are clear.',
-            'Bt crops and gene therapy are top recurring topics.'
+            'Unit 9 is compact but highly scoring due to repeated direct-concept PYQs.',
+            'Most repeated asks are Bt cotton, PCR, recombinant insulin, and rDNA steps.',
+            'Application-oriented questions are frequent in both health and agriculture contexts.',
+            'One-line clarity on vector versus host and PCR versus ELISA prevents common errors.'
           ],
           common_mistakes: [
             {
-              mistake: 'Confusing GMO applications and ethical concerns',
-              why: 'Use-case and biosafety points are often mixed.'
+              mistake: 'Confusing PCR and ELISA',
+              why: 'PCR amplifies nucleic acid while ELISA detects antigen-antibody interaction.'
+            },
+            {
+              mistake: 'Forgetting rDNA sequence of steps',
+              why: 'Sequence-based MCQs require strict order of isolation, digestion, vector insertion, transfer, and expression.'
+            },
+            {
+              mistake: 'Mixing up vector and host organism',
+              why: 'Vector carries recombinant DNA while host cell expresses and replicates it.'
+            },
+            {
+              mistake: 'Treating all GM applications as risk-only or benefit-only',
+              why: 'NEET often balances utility (yield, resistance) with biosafety and ethics.'
+            },
+            {
+              mistake: 'Confusing biopiracy with patent rights',
+              why: 'Biopiracy is unauthorized exploitation; patents are legal protection mechanisms.'
             }
           ],
           quick_revision: [
-            'rDNA technology is core biotechnology principle.',
-            'Human insulin production is classic application.',
-            'Bt crops and transgenic animals are frequent MCQ topics.',
-            'Biopiracy and patents are direct NCERT questions.'
+            'Biotechnology uses living systems or cells to produce useful products.',
+            'Core biotechnology tools: restriction enzymes, vectors, and host organisms.',
+            'Common vector: plasmid; common host: E. coli.',
+            'Restriction enzymes cut DNA at specific recognition sites.',
+            'rDNA steps: DNA isolation, cutting, vector insertion, transfer to host, expression.',
+            'Genetic engineering manipulates DNA directly.',
+            'Recombinant insulin (Humulin) is produced using engineered microbes.',
+            'Gene therapy aims to correct defective genes.',
+            'Recombinant vaccines are safer and efficient.',
+            'PCR amplifies specific DNA segments.',
+            'ELISA detects antigen-antibody interaction.',
+            'PCR and ELISA are both molecular diagnostics but based on different principles.',
+            'Bt cotton carries Bt gene for insect resistance.',
+            'GM crops can improve yield and reduce pesticide requirement.',
+            'Transgenic animals are used for disease study and biopharmaceutical production.',
+            'Biopiracy is unauthorized use of bioresources or indigenous knowledge.',
+            'Patents legally protect inventions and innovations.',
+            'Biosafety includes ecological and ethical evaluation of GM organisms.'
           ],
           quiz: [
             {
-              question: 'Bt crops are examples of:',
-              options: ['Hybrid breeding only', 'Genetically modified organisms', 'Natural mutants only', 'Biofertilizers'],
+              question: 'Recombinant DNA technology primarily involves:',
+              options: ['Only selective breeding', 'Manipulation and transfer of DNA using molecular tools', 'Only tissue staining', 'Only hybridization'],
               correctAnswer: 1,
-              explanation: 'Bt crops are transgenic plants carrying specific genes.'
+              explanation: 'rDNA technology includes DNA manipulation, cloning, and expression in host systems.'
             },
             {
-              question: 'Gene therapy is mainly used for:',
-              options: ['Coloring flowers', 'Correcting defective genes', 'Making compost', 'Improving photosynthesis only'],
+              question: 'Correct sequence in rDNA process is:',
+              options: ['DNA insertion -> DNA cutting -> host transfer -> expression', 'DNA isolation -> restriction digestion -> ligation into vector -> transfer to host -> expression', 'Host transfer -> DNA isolation -> digestion -> expression', 'Vector preparation -> expression -> DNA isolation -> transfer'],
               correctAnswer: 1,
-              explanation: 'Gene therapy targets genetic defects at molecular level.'
+              explanation: 'The rDNA process follows isolation, cutting, ligation, host transfer, and expression.'
+            },
+            {
+              question: 'Restriction enzymes are used to:',
+              options: ['Synthesize proteins', 'Cut DNA at specific sequences', 'Join amino acids', 'Amplify RNA only'],
+              correctAnswer: 1,
+              explanation: 'Restriction endonucleases recognize specific sequences and cleave DNA.'
+            },
+            {
+              question: 'A plasmid in biotechnology mainly acts as:',
+              options: ['A host organism', 'A vector carrying foreign DNA', 'A restriction enzyme', 'An antibody'],
+              correctAnswer: 1,
+              explanation: 'Plasmids are vectors used to deliver recombinant DNA into host cells.'
+            },
+            {
+              question: 'Commonly used host organism in recombinant studies is:',
+              options: ['E. coli', 'Plasmodium', 'Rhizobium only', 'Anopheles'],
+              correctAnswer: 0,
+              explanation: 'E. coli is frequently used as host in recombinant DNA experiments.'
+            },
+            {
+              question: 'Humulin is:',
+              options: ['A biofertilizer', 'Recombinant human insulin', 'A Bt toxin', 'A viral vaccine adjuvant'],
+              correctAnswer: 1,
+              explanation: 'Humulin is recombinant insulin produced via genetic engineering.'
+            },
+            {
+              question: 'Gene therapy is best described as:',
+              options: ['Replacement/correction of defective genes', 'Only antibiotic treatment', 'DNA fingerprinting of criminals', 'Detection of antibodies by ELISA'],
+              correctAnswer: 0,
+              explanation: 'Gene therapy aims to treat disease by correcting abnormal genes.'
+            },
+            {
+              question: 'PCR technique is used to:',
+              options: ['Detect antibodies only', 'Amplify DNA', 'Cut DNA with enzymes', 'Transfer genes into plants directly'],
+              correctAnswer: 1,
+              explanation: 'PCR generates millions of copies of a target DNA sequence.'
+            },
+            {
+              question: 'ELISA is primarily used for:',
+              options: ['DNA amplification', 'Detection of antigen-antibody interaction', 'Gene insertion into vectors', 'Cell fusion'],
+              correctAnswer: 1,
+              explanation: 'ELISA relies on immunological binding for diagnostic detection.'
+            },
+            {
+              question: 'Bt cotton is resistant to insects because it has:',
+              options: ['Extra chlorophyll', 'Bt gene producing insecticidal protein', 'Higher sucrose content', 'Thicker cuticle only'],
+              correctAnswer: 1,
+              explanation: 'Bt cotton contains cry genes from Bacillus thuringiensis for pest resistance.'
+            },
+            {
+              question: 'A transgenic animal is one that:',
+              options: ['Is produced by cloning only', 'Contains and expresses foreign gene', 'Has no mutations', 'Is always sterile'],
+              correctAnswer: 1,
+              explanation: 'Transgenic animals carry introduced foreign DNA for research or product formation.'
+            },
+            {
+              question: 'Biopiracy refers to:',
+              options: ['Legal patent filing', 'Unauthorized exploitation of bioresources/indigenous knowledge', 'Standard drug testing', 'Organic farming'],
+              correctAnswer: 1,
+              explanation: 'Biopiracy is misuse of biological resources without consent or benefit sharing.'
+            },
+            {
+              question: 'Patents in biotechnology are related to:',
+              options: ['Disease diagnosis only', 'Legal rights over inventions', 'Pest resistance only', 'Bacterial culture growth'],
+              correctAnswer: 1,
+              explanation: 'Patents protect innovation and intellectual property rights.'
+            },
+            {
+              question: 'Which pair is correctly matched?',
+              options: ['PCR - antigen detection', 'ELISA - DNA amplification', 'Plasmid - vector', 'Restriction enzyme - protein synthesis'],
+              correctAnswer: 2,
+              explanation: 'Plasmids are vectors; PCR amplifies DNA while ELISA detects antigen-antibody interaction.'
+            },
+            {
+              question: 'A major benefit of GM crops like Bt cotton is:',
+              options: ['No need for any farming practice', 'Improved pest resistance and potential yield benefits', 'Complete immunity to all diseases', 'Elimination of seed production'],
+              correctAnswer: 1,
+              explanation: 'GM crops can improve pest resistance and agricultural productivity when used appropriately.'
             }
           ]
         },
@@ -1090,55 +1727,149 @@ export const biologySubject = {
           title: 'Unit 10: Ecology and Environment',
           concept_explanations: [
             {
-              title: 'Organisms and Population Interactions',
-              description: 'Key interactions include mutualism, competition, predation, and parasitism with population attributes like growth rate and age distribution.'
+              title: 'Organisms and Environment: Core Ecology',
+              description: 'Ecology is the study of interactions between organisms and environment. Levels of ecological organization are organism, population, community, ecosystem, and biosphere. Important abiotic factors include temperature, water, light, and soil. Organisms show morphological, physiological, and behavioral adaptations.'
             },
             {
-              title: 'Ecosystem Components and Energy Flow',
-              description: 'Ecosystem structure includes producers, consumers, and decomposers with productivity, decomposition, and unidirectional energy flow.'
+              title: 'Population Interactions and Growth',
+              description: 'Major population interactions are mutualism (+,+), commensalism (+,0), parasitism (+,-), predation (+,-), and competition (-,-). Population attributes include birth rate, death rate, and age distribution. Growth can be exponential under unlimited resources and logistic under limited resources.'
             },
             {
-              title: 'Ecological Pyramids',
-              description: 'Pyramids of number, biomass, and energy represent trophic organization.'
+              title: 'Ecosystem Structure and Function',
+              description: 'Ecosystem has biotic components (producers, consumers, decomposers) and abiotic components. Energy flow is unidirectional from sun to producers to consumers. Food chains can be grazing or detritus based; interconnected chains form food webs. Decomposition and primary productivity are core ecosystem processes.'
+            },
+            {
+              title: 'Ecological Pyramids and Productivity',
+              description: 'Ecological pyramids include pyramid of number, pyramid of biomass, and pyramid of energy. Pyramid of energy is always upright because energy is lost at each trophic transfer. Primary productivity is rate of biomass synthesis by producers.'
             },
             {
               title: 'Biodiversity and Conservation',
-              description: 'Includes biodiversity patterns, importance, threats, conservation measures, hotspots, endangered species, red data book, and protected areas.'
+              description: 'Biodiversity means variety of life forms and is essential for ecological and economic stability. Biodiversity loss occurs due to habitat destruction, pollution, and climate change. Conservation methods include in-situ (national parks, wildlife sanctuaries) and ex-situ (zoos, botanical gardens).'
+            },
+            {
+              title: 'Hotspots, Endangered Species, and Protection',
+              description: 'Biodiversity hotspots are regions with high species richness and endemism under threat. Endangered species face extinction risk and are listed in Red Data Book. Sacred groves are traditionally protected forest patches that conserve biodiversity.'
             }
           ],
           key_patterns: [
-            'Population interaction type identification.',
-            'Energy flow and trophic-level concept questions.',
-            'Biodiversity hotspot and conservation tool asks.',
-            'Pyramid type conceptual MCQs.'
+            'Interaction-type identification with sign conventions (+,+), (+,0), (+,-), (-,-).',
+            'Graph-based population growth questions (J-curve and S-curve).',
+            'Conceptual MCQs on logistic growth under resource limitation.',
+            'Energy-flow and trophic-level pathway questions.',
+            'Ecological pyramid interpretation, especially energy pyramid logic.',
+            'Conservation-based direct asks: in-situ vs ex-situ, hotspot, Red Data Book.',
+            'Assertion-reason on biodiversity loss and conservation strategies.'
           ],
           formulas_relations: [
             {
-              formula: 'Population growth forms: exponential and logistic',
-              meaning: 'Foundational concept in ecology numericals/concepts.'
+              formula: 'Ecological levels: Organism -> Population -> Community -> Ecosystem -> Biosphere',
+              meaning: 'Fundamental hierarchy repeatedly tested in one-line questions.'
+            },
+            {
+              formula: 'Interaction signs: mutualism (+,+), commensalism (+,0), parasitism (+,-), predation (+,-), competition (-,-)',
+              meaning: 'Common match-the-following and conceptual elimination area.'
+            },
+            {
+              formula: 'Population growth: exponential (J-curve) and logistic (S-curve)',
+              meaning: 'Most important graph-based ecology ask in NEET.'
+            },
+            {
+              formula: 'Energy flow: Sun -> Producers -> Consumers (unidirectional)',
+              meaning: 'Energy transfer never cycles back in ecosystem food pathways.'
+            },
+            {
+              formula: 'Pyramid of energy is always upright',
+              meaning: 'High-frequency direct statement question.'
             }
           ],
           application_insights: [
-            'Ecology has many direct NCERT facts and predictable PYQs.',
-            'Conservation terms are frequent one-liner questions.'
+            'Unit 10 is one of the most scoring NCERT-direct units when examples are revised.',
+            'Most repeated PYQs target population interactions, energy flow, and conservation methods.',
+            'Graph interpretation from logistic curve and pyramid diagrams is highly test-relevant.',
+            'Conservation terms are often tested as direct one-liners with confusing options.'
           ],
           common_mistakes: [
             {
-              mistake: 'Confusing interaction types',
-              why: 'Mutualism and commensal-like scenarios are mixed in options.'
+              mistake: 'Confusing mutualism and commensalism',
+              why: 'Both involve benefit to one species, but in mutualism both benefit while in commensalism one is unaffected.'
             },
             {
-              mistake: 'Mixing protected area definitions',
-              why: 'National park, sanctuary, and biosphere reserve are distinct.'
+              mistake: 'Forgetting that energy pyramid is always upright',
+              why: 'Students overgeneralize inverted patterns from number/biomass pyramids to energy pyramid.'
+            },
+            {
+              mistake: 'Mixing food chain and food web',
+              why: 'Food chain is linear while food web is networked and interconnected.'
+            },
+            {
+              mistake: 'Ignoring examples in interaction and conservation questions',
+              why: 'NEET frequently asks concept with examples (for example lichen, sacred groves, hotspot).'
+            },
+            {
+              mistake: 'Treating exponential and logistic growth as same',
+              why: 'Logistic growth includes carrying capacity limitation, unlike exponential growth.'
             }
           ],
           quick_revision: [
-            'Know interaction types with examples.',
-            'Energy flow is unidirectional in ecosystem.',
-            'Pyramids of number, biomass, and energy are high-yield.',
-            'Hotspots and conservation terms are frequently asked.'
+            'Ecology studies interactions between organisms and their environment.',
+            'Hierarchy: organism -> population -> community -> ecosystem -> biosphere.',
+            'Abiotic factors: temperature, water, light, and soil.',
+            'Adaptations can be morphological, physiological, or behavioral.',
+            'Mutualism (+,+): both species benefit (for example lichen association).',
+            'Commensalism (+,0): one benefits and other unaffected.',
+            'Parasitism (+,-): parasite benefits and host is harmed.',
+            'Predation (+,-): predator feeds on prey.',
+            'Competition (-,-): both populations suffer due to shared limited resources.',
+            'Population attributes: natality, mortality, and age structure.',
+            'Exponential growth occurs under unlimited resources.',
+            'Logistic growth occurs under limited resources and gives S-shaped curve.',
+            'Ecosystem biotic components: producers, consumers, decomposers.',
+            'Energy flow is unidirectional through trophic levels.',
+            'Food chains are linear; food webs are interconnected networks.',
+            'Detritus chain starts from dead organic matter.',
+            'Ecological pyramids: number, biomass, and energy.',
+            'Pyramid of energy is always upright.',
+            'Decomposition breaks complex organic matter into simpler inorganic forms.',
+            'Primary productivity is biomass produced by autotrophs.',
+            'Biodiversity is the variety of species in a region.',
+            'Major causes of biodiversity loss: habitat destruction, pollution, climate change.',
+            'In-situ conservation: national parks and wildlife sanctuaries.',
+            'Ex-situ conservation: zoos and botanical gardens.',
+            'Hotspots are biodiversity-rich and threatened regions.',
+            'Red Data Book lists endangered species.',
+            'Sacred groves are community-protected natural forests.'
           ],
           quiz: [
+            {
+              question: 'Correct ecological hierarchy is:',
+              options: ['Population -> organism -> community -> ecosystem -> biosphere', 'Organism -> population -> community -> ecosystem -> biosphere', 'Organism -> community -> population -> biosphere -> ecosystem', 'Biosphere -> ecosystem -> organism -> community -> population'],
+              correctAnswer: 1,
+              explanation: 'The standard ascending ecological organization is organism to biosphere.'
+            },
+            {
+              question: 'In mutualism, interaction sign is:',
+              options: ['(+,+)', '(+,0)', '(+,-)', '(-,-)'],
+              correctAnswer: 0,
+              explanation: 'In mutualism, both interacting species gain benefit.'
+            },
+            {
+              question: 'Relationship where one species benefits and the other is unaffected is:',
+              options: ['Parasitism', 'Predation', 'Commensalism', 'Competition'],
+              correctAnswer: 2,
+              explanation: 'Commensalism is represented as (+,0).'
+            },
+            {
+              question: 'Which interaction is represented as (-,-)?',
+              options: ['Mutualism', 'Commensalism', 'Competition', 'Predation'],
+              correctAnswer: 2,
+              explanation: 'In competition both species are negatively affected.'
+            },
+            {
+              question: 'S-shaped population growth curve is characteristic of:',
+              options: ['Exponential growth', 'Logistic growth', 'Zero growth only', 'Predator growth only'],
+              correctAnswer: 1,
+              explanation: 'Logistic growth occurs under resource limitation and forms an S-curve.'
+            },
             {
               question: 'Energy flow in ecosystem is:',
               options: ['Bidirectional', 'Unidirectional', 'Random', 'Cyclic only'],
@@ -1146,10 +1877,58 @@ export const biologySubject = {
               explanation: 'Energy flows one-way from sun to producers to consumers.'
             },
             {
+              question: 'Which ecological pyramid is always upright?',
+              options: ['Pyramid of number', 'Pyramid of biomass', 'Pyramid of energy', 'All pyramids can be inverted equally'],
+              correctAnswer: 2,
+              explanation: 'Energy transfer loses heat at each level, so energy pyramid is always upright.'
+            },
+            {
+              question: 'Food web differs from food chain because food web is:',
+              options: ['Always shorter', 'Interconnected network of food chains', 'Limited to decomposers only', 'Present only in aquatic habitats'],
+              correctAnswer: 1,
+              explanation: 'Food web consists of multiple interconnected feeding pathways.'
+            },
+            {
+              question: 'Detritus food chain begins with:',
+              options: ['Green plants', 'Herbivores', 'Dead organic matter', 'Top carnivores'],
+              correctAnswer: 2,
+              explanation: 'Detritus chain starts from dead remains and detritus.',
+            },
+            {
+              question: 'Primary productivity refers to:',
+              options: ['Rate of biomass production by producers', 'Rate of decomposition only', 'Rate of energy loss by consumers', 'Birth rate of predators'],
+              correctAnswer: 0,
+              explanation: 'Primary productivity is production by autotrophs per unit area/time.'
+            },
+            {
+              question: 'In-situ conservation includes:',
+              options: ['Zoos and seed banks', 'National parks and wildlife sanctuaries', 'Cryopreservation only', 'Botanical gardens only'],
+              correctAnswer: 1,
+              explanation: 'In-situ conservation protects species in natural habitats.'
+            },
+            {
+              question: 'Ex-situ conservation includes:',
+              options: ['Sacred groves', 'National parks', 'Zoos and botanical gardens', 'Wildlife corridors'],
+              correctAnswer: 2,
+              explanation: 'Ex-situ methods conserve species outside natural habitat.'
+            },
+            {
+              question: 'Biodiversity hotspots are regions with:',
+              options: ['Only high rainfall', 'High biodiversity and high threat level', 'Only endemic mammals', 'No human interference'],
+              correctAnswer: 1,
+              explanation: 'Hotspots combine high richness/endemism with serious habitat threat.'
+            },
+            {
               question: 'Red Data Book is associated with:',
               options: ['Fertilizer records', 'Endangered species listing', 'Weather reports', 'Soil pH tables'],
               correctAnswer: 1,
               explanation: 'It lists threatened and endangered species.'
+            },
+            {
+              question: 'Sacred groves are important because they:',
+              options: ['Are industrial forests', 'Act as traditional biodiversity conservation sites', 'Are used only for logging', 'Contain only invasive species'],
+              correctAnswer: 1,
+              explanation: 'Sacred groves are community-protected patches preserving native biodiversity.'
             }
           ]
         }

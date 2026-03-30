@@ -73,6 +73,120 @@ export function fetchMocks(chapter, needed) {
         explanation: 'Prions are infectious proteins that cause neurodegenerative diseases like BSE.',
         tags: ['Prions', 'Proteins', 'Diseases']
       }
+    ],
+    'reproduction': [
+      {
+        question: 'Which one is NOT an asexual reproductive method?',
+        options: ['Binary fission', 'Budding', 'Syngamy', 'Vegetative propagation'],
+        correctAnswer: 2,
+        explanation: 'Syngamy is fusion of gametes and belongs to sexual reproduction.',
+        tags: ['Asexual reproduction', 'Syngamy']
+      },
+      {
+        question: 'Multiple fission is characteristically observed in:',
+        options: ['Amoeba', 'Hydra', 'Plasmodium', 'Yeast'],
+        correctAnswer: 2,
+        explanation: 'Plasmodium commonly reproduces by multiple fission in relevant life stages.',
+        tags: ['Multiple fission', 'Plasmodium']
+      },
+      {
+        question: 'The transfer of pollen grains from anther to stigma of the same flower is called:',
+        options: ['Geitonogamy', 'Xenogamy', 'Autogamy', 'Apogamy'],
+        correctAnswer: 2,
+        explanation: 'Autogamy is pollination within the same flower.',
+        tags: ['Pollination', 'Autogamy']
+      },
+      {
+        question: 'Which pollination type occurs between two flowers of the same plant?',
+        options: ['Autogamy', 'Geitonogamy', 'Xenogamy', 'Hydrophily'],
+        correctAnswer: 1,
+        explanation: 'Geitonogamy involves different flowers of the same plant.',
+        tags: ['Pollination', 'Geitonogamy']
+      },
+      {
+        question: 'Xenogamy refers to transfer of pollen between:',
+        options: ['Same flower', 'Different flowers of same plant', 'Flowers of different plants of same species', 'Flowers of different species'],
+        correctAnswer: 2,
+        explanation: 'Xenogamy is transfer between different plants of the same species.',
+        tags: ['Pollination', 'Xenogamy']
+      },
+      {
+        question: 'Typical angiosperm embryo sac is:',
+        options: ['7-celled, 8-nucleate', '8-celled, 7-nucleate', '7-celled, 7-nucleate', '8-celled, 8-nucleate'],
+        correctAnswer: 0,
+        explanation: 'Most angiosperms have a 7-celled, 8-nucleate embryo sac.',
+        tags: ['Embryo sac', 'Female gametophyte']
+      },
+      {
+        question: 'Double fertilization is a characteristic feature of:',
+        options: ['Bryophytes', 'Gymnosperms', 'Angiosperms', 'Pteridophytes'],
+        correctAnswer: 2,
+        explanation: 'Double fertilization is unique to flowering plants (angiosperms).',
+        tags: ['Double fertilization', 'Angiosperms']
+      },
+      {
+        question: 'Triple fusion in angiosperms forms:',
+        options: ['Zygote', 'Primary endosperm nucleus', 'Embryo', 'Seed coat'],
+        correctAnswer: 1,
+        explanation: 'Male gamete fuses with two polar nuclei to form primary endosperm nucleus.',
+        tags: ['Triple fusion', 'Endosperm']
+      },
+      {
+        question: 'In flowering plants, ovule transforms into:',
+        options: ['Fruit', 'Seed', 'Embryo', 'Endosperm'],
+        correctAnswer: 1,
+        explanation: 'After fertilization, ovule develops into seed.',
+        tags: ['Post fertilization', 'Seed formation']
+      },
+      {
+        question: 'After fertilization, ovary typically develops into:',
+        options: ['Seed', 'Fruit', 'Cotyledon', 'Perisperm'],
+        correctAnswer: 1,
+        explanation: 'Ovary matures into fruit after fertilization.',
+        tags: ['Post fertilization', 'Fruit formation']
+      },
+      {
+        question: 'Parthenocarpy leads to formation of:',
+        options: ['Seeds without fertilization', 'Seedless fruits', 'Embryo sac', 'Pollen grains'],
+        correctAnswer: 1,
+        explanation: 'Parthenocarpy is development of fruit without fertilization and usually without seeds.',
+        tags: ['Parthenocarpy', 'Seedless fruits']
+      },
+      {
+        question: 'Apomixis in plants means:',
+        options: ['Embryo formation from zygote only', 'Seed formation without fertilization', 'Pollination by insects only', 'Formation of pollen without meiosis'],
+        correctAnswer: 1,
+        explanation: 'Apomixis is asexual seed formation without fertilization.',
+        tags: ['Apomixis', 'Asexual seed formation']
+      },
+      {
+        question: 'Which one is an outbreeding device?',
+        options: ['Cleistogamy', 'Dichogamy', 'Autogamy', 'Parthenogenesis'],
+        correctAnswer: 1,
+        explanation: 'Dichogamy reduces chances of self-pollination by asynchronous maturation of sex organs.',
+        tags: ['Outbreeding devices', 'Dichogamy']
+      },
+      {
+        question: 'Fragmentation as a mode of asexual reproduction is classically seen in:',
+        options: ['Hydra', 'Mango', 'Human', 'Frog'],
+        correctAnswer: 0,
+        explanation: 'Hydra can show fragmentation and regeneration-based asexual propagation in simplified school-level examples.',
+        tags: ['Fragmentation', 'Asexual reproduction']
+      },
+      {
+        question: 'Which phase in life cycle is associated with active reproduction?',
+        options: ['Juvenile phase', 'Reproductive phase', 'Senescence', 'Dormancy only'],
+        correctAnswer: 1,
+        explanation: 'Organisms reproduce during the reproductive phase, after juvenile period.',
+        tags: ['Life cycle', 'Reproductive phase']
+      },
+      {
+        question: 'Parthenogenesis is development of:',
+        options: ['Fruit from ovary wall', 'Embryo from unfertilized egg', 'Endosperm from nucellus', 'Pollen tube from style'],
+        correctAnswer: 1,
+        explanation: 'Parthenogenesis is development without fertilization.',
+        tags: ['Parthenogenesis', 'Fertilization']
+      }
     ]
   };
 
@@ -82,8 +196,16 @@ export function fetchMocks(chapter, needed) {
   // If we have highly realistic mock questions, return them.
   // Otherwise, fallback to a sensible generic template.
   for (let i = 0; i < needed; i++) {
-    if (i < pool.length) {
-      results.push({ ...pool[i], year: 2024, difficulty: 'medium', source: 'external', verified: false, chapter });
+    if (pool.length > 0) {
+      const base = pool[i % pool.length]
+      results.push({
+        ...base,
+        chapter,
+        year: 2020 + (i % 5),
+        difficulty: 'medium',
+        source: 'external',
+        verified: false,
+      })
     } else {
       results.push({
         chapter,
