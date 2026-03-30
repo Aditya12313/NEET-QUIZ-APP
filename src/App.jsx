@@ -2,7 +2,29 @@ import { useMemo, useState, useEffect, useCallback } from 'react'
 import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
-const API = 'http://localhost:5000/api'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+
+async function apiFetch(path, options) {
+  const primary = `${API}${path}`
+  const fallbacks = API.includes('5000') ? [primary, `${API.replace('5000', '5001')}${path}`] : [primary]
+  let lastError = null
+
+  for (const url of fallbacks) {
+    try {
+      const response = await fetch(url, options)
+      if (response.ok) return response
+      if (response.status >= 500) {
+        lastError = new Error(`Server error ${response.status}`)
+        continue
+      }
+      return response
+    } catch (err) {
+      lastError = err
+    }
+  }
+
+  throw lastError || new Error('API request failed')
+}
 
 const SUBJECTS = [
   { id: 'biology',   label: 'Biology',   emoji: '🧬' },
@@ -115,7 +137,7 @@ export default function App() {
     let questions = []
     try {
       // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
-      const r = await fetch(`${API}/questions?chapter=${chapterId}&limit=20&t=${Date.now()}`)
+      const r = await apiFetch(`/questions?chapter=${chapterId}&limit=20&t=${Date.now()}`)
       if (r.ok) {
         const data = await r.json()
         questions = data.questions ?? []
@@ -134,9 +156,9 @@ export default function App() {
     setRevLoading(true)
     try {
       // Pre-fetch questions to ensure the backend auto-generates external mocks if DB is empty
-      await fetch(`${API}/questions?chapter=${chapterId}&limit=20`)
+      await apiFetch(`/questions?chapter=${chapterId}&limit=20`)
 
-      const r = await fetch(`${API}/revision`, {
+      const r = await apiFetch('/revision', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chapter: chapterId }),
@@ -176,7 +198,7 @@ export default function App() {
       // Submit to backend (fire-and-forget)
       const weakTags = quizQ.filter((_, i) => i !== quizIdx || !correct).flatMap(qi => qi.tags ?? [])
       try {
-        await fetch(`${API}/submit`, {
+        await apiFetch('/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chapter: chapterId, score: finalScore, total: quizQ.length, weakTags }),

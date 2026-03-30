@@ -2570,9 +2570,529 @@ export const chemistrySubject = {
             }
           ]
         },
-        { id: 'organic-nitrogen-compounds', title: 'Unit 18: Organic Compounds Containing Nitrogen' },
-        { id: 'biomolecules', title: 'Unit 19: Biomolecules' },
-        { id: 'practical-chemistry-principles', title: 'Unit 20: Principles Related to Practical Chemistry' }
+        {
+          id: 'organic-nitrogen-compounds',
+          title: 'Unit 18: Organic Compounds Containing Nitrogen (Amines)',
+          concept_explanations: [
+            {
+              title: 'Structure of Amines',
+              description: 'Amines are nitrogen-containing derivatives of ammonia with general formula R-NH2, R2NH, or R3N.'
+            },
+            {
+              title: 'Classification of Amines',
+              description: 'Primary (1 degree): R-NH2, Secondary (2 degree): R2NH, Tertiary (3 degree): R3N based on number of alkyl/aryl groups attached to nitrogen.'
+            },
+            {
+              title: 'Basic Nature of Amines',
+              description: 'Amines behave as bases due to the lone pair of electrons on nitrogen which can accept a proton.'
+            },
+            {
+              title: 'Basicity Order of Amines',
+              description: 'In aqueous solution, common order is 2 degree > 1 degree > 3 degree > NH3 due to both +I effect and solvation. In gas phase, order is typically 3 degree > 2 degree > 1 degree due to electron donation dominance.'
+            },
+            {
+              title: 'Preparation Methods of Amines',
+              description: 'Important preparation routes include reduction of nitro compounds, ammonolysis/substitution from haloalkanes, and Gabriel phthalimide synthesis for primary aliphatic amines.'
+            },
+            {
+              title: 'Alkylation and Acylation Reactions',
+              description: 'Amines undergo alkylation with alkyl halides to form higher amines and acylation with acid derivatives to form amides.'
+            },
+            {
+              title: 'Carbylamine Reaction',
+              description: 'Only primary amines respond to carbylamine test with chloroform and alcoholic KOH to produce foul-smelling isocyanides.'
+            },
+            {
+              title: 'Hinsberg Test',
+              description: 'Hinsberg reagent distinguishes 1 degree, 2 degree, and 3 degree amines based on sulfonamide formation and solubility behavior in alkali.'
+            },
+            {
+              title: 'Aromatic Amines and Basicity of Aniline',
+              description: 'Aniline is less basic than aliphatic amines because nitrogen lone pair is partly delocalized into benzene ring by resonance.'
+            },
+            {
+              title: 'Reactions of Aniline',
+              description: 'Aniline is ortho/para directing in electrophilic substitution and undergoes diazotization with nitrous acid at low temperature to form benzenediazonium salt.'
+            },
+            {
+              title: 'Diazonium Salts and Coupling',
+              description: 'Aryl diazonium salts are highly reactive intermediates used for substitution (Cl, Br, I, OH, CN) and azo coupling to form colored azo dyes.'
+            }
+          ],
+          key_patterns: [
+            'Basicity order comparison among 1 degree, 2 degree, 3 degree amines and NH3.',
+            'Aliphatic vs aromatic amine basic strength conceptual questions.',
+            'Identification tests: carbylamine and Hinsberg-based discrimination.',
+            'Preparation-method objective questions including Gabriel method.',
+            'Reaction mechanism questions on diazotization and coupling.',
+            'Product prediction from diazonium salt substitution reactions.',
+            'Direct theory questions on structure, classification, and resonance effects.'
+          ],
+          formulas_relations: [
+            {
+              formula: 'Primary amine: R-NH2; Secondary amine: R2NH; Tertiary amine: R3N',
+              meaning: 'Classification based on number of carbon groups attached to nitrogen.'
+            },
+            {
+              formula: 'Aqueous basicity order (aliphatic): 2 degree > 1 degree > 3 degree > NH3',
+              meaning: 'Combined influence of +I effect and solvation in water.'
+            },
+            {
+              formula: 'Gas-phase basicity order: 3 degree > 2 degree > 1 degree',
+              meaning: 'Without solvation, electron-donating alkyl groups dominate basicity trend.'
+            },
+            {
+              formula: 'Carbylamine test: R-NH2 + CHCl3 + 3KOH -> R-NC + 3KCl + 3H2O',
+              meaning: 'Diagnostic test for primary amines giving foul-smelling isocyanide.'
+            },
+            {
+              formula: 'Diazotization: Ar-NH2 + NaNO2 + HCl (0-5 C) -> Ar-N2+Cl- + 2H2O',
+              meaning: 'Formation of aryl diazonium salt from primary aromatic amine.'
+            }
+          ],
+          application_insights: [
+            'Unit 18 has very high NEET weightage with repeated questions on basicity and identification tests.',
+            'Diazonium-salt reactions are frequently asked as product-prediction and conversion pathways.',
+            'Carbylamine and Hinsberg tests are common one-step elimination tools in MCQs.',
+            'Resonance-based basicity difference between aniline and aliphatic amines is a frequent concept question.',
+            'NEET pattern in this chapter is typically concept plus reaction, not rote memory alone.'
+          ],
+          common_mistakes: [
+            {
+              mistake: 'Confusing basicity order in aqueous medium',
+              why: 'Students often ignore solvation and incorrectly place tertiary amine highest in water.'
+            },
+            {
+              mistake: 'Forgetting aniline is less basic than aliphatic amines',
+              why: 'Resonance delocalization reduces lone-pair availability on nitrogen.'
+            },
+            {
+              mistake: 'Applying carbylamine test to all amines',
+              why: 'Only primary amines give positive carbylamine test.'
+            },
+            {
+              mistake: 'Mixing Hinsberg outcomes for 1 degree, 2 degree, and 3 degree amines',
+              why: 'Solubility and sulfonamide formation behavior differs for each class.'
+            },
+            {
+              mistake: 'Using diazotization conditions incorrectly',
+              why: 'Aryl diazonium salt formation requires low temperature and controlled acidic conditions.'
+            },
+            {
+              mistake: 'Misapplying diazonium substitution reactions',
+              why: 'Reagents and reaction conditions determine whether Cl, Br, I, OH, or CN is introduced.'
+            }
+          ],
+          quick_revision: [
+            'Amines are derivatives of ammonia containing nitrogen lone pair.',
+            'Primary: R-NH2, Secondary: R2NH, Tertiary: R3N.',
+            'Amines are basic because nitrogen lone pair accepts proton.',
+            'Aqueous basicity trend: 2 degree > 1 degree > 3 degree > NH3 (common order).',
+            'Gas-phase basicity trend: 3 degree > 2 degree > 1 degree.',
+            'Preparation routes: nitro reduction, haloalkane substitution, Gabriel method.',
+            'Alkylation forms higher amines; acylation forms amides.',
+            'Carbylamine test is positive only for primary amines and gives foul odor.',
+            'Hinsberg test distinguishes 1 degree, 2 degree, and 3 degree amines.',
+            'Aniline is less basic than aliphatic amines due to resonance.',
+            'Aniline is ortho/para directing in electrophilic substitution.',
+            'Diazotization of aromatic primary amine gives diazonium salt at low temperature.',
+            'Diazonium salts undergo substitution and coupling to form azo dyes.'
+          ],
+          quiz: [
+            {
+              question: 'Which amine gives positive carbylamine test?',
+              options: ['Primary amine only', 'Secondary amine only', 'Tertiary amine only', 'All amines'],
+              correctAnswer: 0,
+              explanation: 'Carbylamine reaction is specific to primary amines.'
+            },
+            {
+              question: 'In aqueous medium, the common basicity order for simple aliphatic amines is:',
+              options: ['3 degree > 2 degree > 1 degree > NH3', '2 degree > 1 degree > 3 degree > NH3', '1 degree > 2 degree > 3 degree > NH3', 'NH3 > 1 degree > 2 degree > 3 degree'],
+              correctAnswer: 1,
+              explanation: 'In water, both +I effect and solvation are considered; 2 degree amines are commonly most basic.'
+            },
+            {
+              question: 'Aniline is less basic than methylamine mainly because:',
+              options: ['aniline has no lone pair', 'nitrogen lone pair is delocalized by resonance', 'aniline has higher molecular mass', 'methylamine is aromatic'],
+              correctAnswer: 1,
+              explanation: 'Resonance in aniline reduces availability of lone pair for protonation.'
+            },
+            {
+              question: 'Hinsberg test is used to distinguish among:',
+              options: ['alkenes and alkynes', 'aldehydes and ketones', '1 degree, 2 degree, and 3 degree amines', 'alcohols and phenols'],
+              correctAnswer: 2,
+              explanation: 'Hinsberg reaction behavior differs for each class of amine.'
+            },
+            {
+              question: 'Diazotization of aniline is carried out at:',
+              options: ['high temperature above 60 C', 'room temperature in base', '0-5 C in acidic medium', 'reflux with alkali'],
+              correctAnswer: 2,
+              explanation: 'Benzenediazonium salts are formed under cold acidic conditions (0-5 C).'
+            },
+            {
+              question: 'Aryl diazonium salts are important because they can be converted into:',
+              options: ['only alkanes', 'only alcohols', 'multiple substituted products such as Cl, Br, I, OH, CN', 'only ketones'],
+              correctAnswer: 2,
+              explanation: 'Diazonium group can be replaced by several groups using suitable reagents.'
+            },
+            {
+              question: 'The reaction of diazonium salt with activated aromatic ring gives:',
+              options: ['alkane', 'azo dye', 'carboxylic acid', 'amide only'],
+              correctAnswer: 1,
+              explanation: 'Coupling reaction forms azo compounds (azo dyes).'
+            }
+          ]
+        },
+        {
+          id: 'biomolecules',
+          title: 'Unit 19: Biomolecules',
+          concept_explanations: [
+            {
+              title: 'Biomolecules Overview',
+              description: 'Biomolecules are organic compounds present in living organisms. Major groups include carbohydrates, proteins, vitamins, and nucleic acids.'
+            },
+            {
+              title: 'Carbohydrates Classification',
+              description: 'Monosaccharides: glucose, fructose. Disaccharides: sucrose, lactose, maltose. Polysaccharides: starch, cellulose.'
+            },
+            {
+              title: 'Glucose Basics',
+              description: 'Glucose is an aldohexose and exists in both open-chain and cyclic forms.'
+            },
+            {
+              title: 'Reducing and Non-Reducing Sugars',
+              description: 'Reducing sugars include glucose and lactose. Sucrose is a common non-reducing sugar.'
+            },
+            {
+              title: 'Proteins and Amino Acids',
+              description: 'Proteins are macromolecules formed by amino acids linked through peptide bonds.'
+            },
+            {
+              title: 'Levels of Protein Structure',
+              description: 'Primary: amino acid sequence. Secondary: alpha-helix/beta-structures. Tertiary: 3D folding of one chain. Quaternary: association of multiple polypeptide chains.'
+            },
+            {
+              title: 'Denaturation and Enzymes',
+              description: 'Denaturation causes loss of native protein structure and activity. Enzymes are biological catalysts that speed up biochemical reactions.'
+            },
+            {
+              title: 'Vitamins Classification',
+              description: 'Fat-soluble vitamins are A, D, E, K. Water-soluble vitamins are B-complex and C.'
+            },
+            {
+              title: 'Nucleic Acids: DNA and RNA',
+              description: 'Nucleic acids are polymers of nucleotides. DNA is generally double helical while RNA is generally single stranded.'
+            },
+            {
+              title: 'Nucleotide Components and Nitrogen Bases',
+              description: 'Each nucleotide has sugar, phosphate, and base. DNA bases: A, T, G, C. RNA bases: A, U, G, C.'
+            },
+            {
+              title: 'Important Bond Concepts',
+              description: 'Glycosidic bond links sugar units in carbohydrates. Hydrogen bonds stabilize base pairing in DNA.'
+            },
+            {
+              title: 'Essential Amino Acids',
+              description: 'Essential amino acids cannot be synthesized adequately by human body and must be obtained through diet.'
+            }
+          ],
+          key_patterns: [
+            'Reducing vs non-reducing sugar identification questions.',
+            'Open-chain and cyclic form concepts in glucose/fructose discussions.',
+            'Protein structure level matching: primary, secondary, tertiary, quaternary.',
+            'Vitamins classification into fat-soluble and water-soluble groups.',
+            'DNA vs RNA structural comparison and base-difference questions.',
+            'Bond-based conceptual questions: peptide, glycosidic, and hydrogen bonds.',
+            'Direct NCERT-line memory questions are frequent in this chapter.'
+          ],
+          formulas_relations: [
+            {
+              formula: 'Carbohydrate classes: Mono-, Di-, Polysaccharides',
+              meaning: 'Basic classification based on number of sugar units.'
+            },
+            {
+              formula: 'Reducing sugars: glucose, lactose; Non-reducing sugar: sucrose',
+              meaning: 'Common NEET distinction from functional group availability.'
+            },
+            {
+              formula: 'Peptide bond: -CO-NH-',
+              meaning: 'Amide linkage joining amino acids in proteins.'
+            },
+            {
+              formula: 'DNA bases: A, T, G, C; RNA bases: A, U, G, C',
+              meaning: 'Thymine in DNA is replaced by uracil in RNA.'
+            },
+            {
+              formula: 'DNA: double helix; RNA: generally single strand',
+              meaning: 'Core structural comparison asked in theory questions.'
+            }
+          ],
+          application_insights: [
+            'Biomolecules is a high-weightage NEET chapter with many direct-theory questions.',
+            'Most repeated asks include reducing sugars, vitamin classes, and DNA/RNA differences.',
+            'Protein structure levels and bond types are common conceptual MCQ patterns.',
+            'Questions are frequently memory plus concept, with strong NCERT-line dependence.',
+            'Exam questions often test one-word differences like thymine vs uracil and reducing vs non-reducing.'
+          ],
+          common_mistakes: [
+            {
+              mistake: 'Confusing glucose and fructose classification',
+              why: 'Students mix aldose and ketose properties in objective questions.'
+            },
+            {
+              mistake: 'Forgetting sucrose is non-reducing',
+              why: 'Reducing-sugar logic is repeatedly asked and often misremembered.'
+            },
+            {
+              mistake: 'Mixing DNA and RNA nitrogen bases',
+              why: 'Thymine is DNA-specific while uracil is RNA-specific.'
+            },
+            {
+              mistake: 'Ignoring vitamin solubility classes',
+              why: 'A, D, E, K are fat-soluble while B and C are water-soluble.'
+            },
+            {
+              mistake: 'Interchanging protein structure levels',
+              why: 'Primary sequence and higher-order folding descriptions are often confused.'
+            },
+            {
+              mistake: 'Skipping direct NCERT statements',
+              why: 'This chapter has many direct memory-based NEET questions from core text lines.'
+            }
+          ],
+          quick_revision: [
+            'Biomolecules include carbohydrates, proteins, vitamins, and nucleic acids.',
+            'Monosaccharides: glucose, fructose; disaccharides: sucrose, lactose, maltose; polysaccharides: starch, cellulose.',
+            'Glucose is an aldohexose with open-chain and cyclic forms.',
+            'Reducing sugars: glucose and lactose; non-reducing: sucrose.',
+            'Proteins are made of amino acids linked by peptide bonds (-CO-NH-).',
+            'Protein structure levels: primary, secondary, tertiary, quaternary.',
+            'Denaturation is loss of native protein structure and activity.',
+            'Enzymes are biological catalysts.',
+            'Fat-soluble vitamins: A, D, E, K.',
+            'Water-soluble vitamins: B-complex and C.',
+            'DNA is generally double helical; RNA is generally single stranded.',
+            'Nucleotides contain sugar, base, and phosphate.',
+            'DNA bases: A, T, G, C; RNA bases: A, U, G, C.',
+            'Glycosidic bond links sugar units; hydrogen bonds stabilize DNA base pairing.',
+            'Essential amino acids must be supplied through diet.'
+          ],
+          quiz: [
+            {
+              question: 'Which one is a non-reducing sugar?',
+              options: ['Glucose', 'Lactose', 'Sucrose', 'Maltose'],
+              correctAnswer: 2,
+              explanation: 'Sucrose is a non-reducing sugar in standard NEET-level context.'
+            },
+            {
+              question: 'Glucose is classified as:',
+              options: ['Ketohexose', 'Aldohexose', 'Pentose', 'Disaccharide'],
+              correctAnswer: 1,
+              explanation: 'Glucose is an aldohexose.'
+            },
+            {
+              question: 'The linkage between two amino acids is called:',
+              options: ['Glycosidic bond', 'Hydrogen bond', 'Peptide bond', 'Phosphodiester bond'],
+              correctAnswer: 2,
+              explanation: 'A peptide (amide) bond links amino acids in proteins.'
+            },
+            {
+              question: 'Which level of protein structure represents amino acid sequence?',
+              options: ['Primary', 'Secondary', 'Tertiary', 'Quaternary'],
+              correctAnswer: 0,
+              explanation: 'Primary structure is the linear sequence of amino acids.'
+            },
+            {
+              question: 'Which vitamin group is fat-soluble?',
+              options: ['B and C', 'A, D, E, K', 'Only C', 'Only B12'],
+              correctAnswer: 1,
+              explanation: 'A, D, E, and K are fat-soluble vitamins.'
+            },
+            {
+              question: 'RNA contains which base in place of thymine?',
+              options: ['Guanine', 'Cytosine', 'Uracil', 'Adenine'],
+              correctAnswer: 2,
+              explanation: 'Uracil replaces thymine in RNA.'
+            },
+            {
+              question: 'DNA structure is commonly described as:',
+              options: ['Single helix', 'Double helix', 'Triple helix', 'Random coil only'],
+              correctAnswer: 1,
+              explanation: 'DNA is classically represented as a double helix.'
+            }
+          ]
+        },
+        {
+          id: 'practical-chemistry-principles',
+          title: 'Unit 20: Principles Related to Practical Chemistry',
+          concept_explanations: [
+            {
+              title: 'Detection of Elements: Lassaigne Test',
+              description: 'Lassaigne extract is used to detect hetero elements in organic compounds. Nitrogen gives Prussian blue color, sulphur gives black PbS precipitate, and halogens are identified by AgNO3 precipitate colors.'
+            },
+            {
+              title: 'Detection of Nitrogen, Sulphur, and Halogens',
+              description: 'Nitrogen: Prussian blue test. Sulphur: black PbS with lead acetate. Halogens with silver nitrate: Cl gives white ppt, Br gives pale yellow ppt, I gives yellow ppt.'
+            },
+            {
+              title: 'Functional Group Test: Alcohol and Phenol',
+              description: 'Alcohols react with sodium metal to evolve H2 gas. Phenol gives violet color with neutral FeCl3 solution.'
+            },
+            {
+              title: 'Functional Group Test: Aldehyde and Ketone',
+              description: 'Aldehydes give Tollens silver mirror and Fehling red precipitate. Methyl ketones give yellow iodoform precipitate.'
+            },
+            {
+              title: 'Functional Group Test: Carboxylic Acid and Amines',
+              description: 'Carboxylic acids react with NaHCO3 liberating CO2. Primary amines give carbylamine test with foul smell.'
+            },
+            {
+              title: 'Preparation of Important Inorganic Compounds',
+              description: 'Common practical preparations include Mohr salt and potash alum, focusing on crystallization and purity.'
+            },
+            {
+              title: 'Preparation of Important Organic Compounds',
+              description: 'Frequent practical preparations include acetanilide, p-nitroacetanilide, aniline yellow, and iodoform.'
+            },
+            {
+              title: 'Titration Principles',
+              description: 'Acid-base titrations rely on indicator color changes. Redox titrations often involve KMnO4 as oxidizing agent.'
+            },
+            {
+              title: 'Salt Analysis Basics',
+              description: 'Cations such as Pb2+, Cu2+, Fe3+, Zn2+ and anions such as CO3 2-, SO4 2-, Cl- are identified using confirmatory tests and observations.'
+            },
+            {
+              title: 'Important Practical Experiments',
+              description: 'Key experiments include enthalpy of solution, enthalpy of neutralization, kinetics of iodide with H2O2, and colloid behavior (lyophilic vs lyophobic sols).'
+            }
+          ],
+          key_patterns: [
+            'Identification-test questions based on color change and precipitate observation.',
+            'Lassaigne test questions for N, S, and halogen detection.',
+            'Functional group identification from reagent-result pairs.',
+            'Salt analysis objective questions on cation/anion confirmation.',
+            'Acid-base and redox titration principle-based questions.',
+            'Reaction observation questions involving gas evolution or precipitate color.',
+            'Direct NCERT practical-table questions are frequent in NEET.'
+          ],
+          formulas_relations: [
+            {
+              formula: 'AgNO3 test: Cl- -> white ppt, Br- -> pale yellow ppt, I- -> yellow ppt',
+              meaning: 'Standard halogen identification in Lassaigne-based analysis.'
+            },
+            {
+              formula: 'R-COOH + NaHCO3 -> CO2 gas evolution',
+              meaning: 'Carboxylic acid confirmation via brisk effervescence.'
+            },
+            {
+              formula: 'Alcohol + Na metal -> H2 gas',
+              meaning: 'Hydrogen evolution indicates acidic hydrogen in alcohol/phenol context.'
+            },
+            {
+              formula: 'Aldehyde + Tollens reagent -> silver mirror',
+              meaning: 'Characteristic oxidation-reduction test for aldehydes.'
+            },
+            {
+              formula: 'Iodoform test -> yellow CHI3 precipitate',
+              meaning: 'Important test for methyl ketone type functionality.'
+            }
+          ],
+          application_insights: [
+            'Practical chemistry is a low-effort, high-scoring chapter in NEET when test observations are memorized well.',
+            'Most asked patterns include functional-group identification and salt-analysis observation questions.',
+            'Color and precipitate-memory questions appear repeatedly in direct-theory format.',
+            'Gas evolution clues (H2, CO2) are often used to eliminate options quickly.',
+            'NEET questions are usually direct plus memory-driven from NCERT practical tables.'
+          ],
+          common_mistakes: [
+            {
+              mistake: 'Confusing precipitate colors in halogen test',
+              why: 'Cl, Br, and I colors are close and commonly mixed in exam pressure.'
+            },
+            {
+              mistake: 'Mixing similar functional-group tests',
+              why: 'Tollens, Fehling, iodoform, and FeCl3 tests are often interchanged.'
+            },
+            {
+              mistake: 'Ignoring gas evolution observations',
+              why: 'NaHCO3 and sodium metal tests rely on visible gas evolution clues.'
+            },
+            {
+              mistake: 'Misidentifying cations/anions in salt analysis',
+              why: 'Incomplete recall of confirmatory tests leads to wrong final ion identification.'
+            },
+            {
+              mistake: 'Skipping NCERT practical tables',
+              why: 'Many questions are direct memory-based from listed observations and principles.'
+            },
+            {
+              mistake: 'Confusing aldehyde and ketone observations',
+              why: 'Aldehydes respond to Tollens/Fehling while ketones usually do not, except specific iodoform-positive cases.'
+            }
+          ],
+          quick_revision: [
+            'Lassaigne test helps detect N, S, and halogens in organic compounds.',
+            'Nitrogen gives Prussian blue; sulphur gives black PbS precipitate.',
+            'Halogen AgNO3 colors: Cl white, Br pale yellow, I yellow.',
+            'Alcohol plus sodium metal releases H2 gas.',
+            'Phenol gives violet color with FeCl3.',
+            'Aldehyde gives silver mirror with Tollens and red ppt with Fehling.',
+            'Methyl ketone gives yellow iodoform precipitate.',
+            'Carboxylic acid with NaHCO3 gives CO2 effervescence.',
+            'Primary amines show carbylamine test with foul smell.',
+            'Inorganic preparations: Mohr salt and potash alum.',
+            'Organic preparations: acetanilide, p-nitroacetanilide, aniline yellow, iodoform.',
+            'Acid-base titration uses indicators for endpoint detection.',
+            'Redox titration commonly uses KMnO4 reaction principles.',
+            'Salt analysis includes common cations like Pb2+, Cu2+, Fe3+, Zn2+ and anions like CO3 2-, SO4 2-, Cl-.',
+            'Important practical experiments include enthalpy studies, kinetics, and colloid behavior.'
+          ],
+          quiz: [
+            {
+              question: 'In silver nitrate test, chloride ion gives:',
+              options: ['Yellow ppt', 'Pale yellow ppt', 'White ppt', 'Black ppt'],
+              correctAnswer: 2,
+              explanation: 'Cl- forms white AgCl precipitate in the standard halogen test.'
+            },
+            {
+              question: 'Phenol gives which characteristic observation with FeCl3?',
+              options: ['Green gas', 'Violet color', 'Brown ring', 'Silver mirror'],
+              correctAnswer: 1,
+              explanation: 'Phenol gives violet color with neutral ferric chloride solution.'
+            },
+            {
+              question: 'Aldehyde is identified by Tollens reagent through:',
+              options: ['Yellow ppt', 'Blue solution', 'Silver mirror', 'Black precipitate'],
+              correctAnswer: 2,
+              explanation: 'Aldehydes reduce Tollens reagent to metallic silver mirror.'
+            },
+            {
+              question: 'Iodoform test gives:',
+              options: ['Red ppt', 'White fumes', 'Yellow precipitate', 'Violet ring'],
+              correctAnswer: 2,
+              explanation: 'Iodoform (CHI3) appears as yellow precipitate.'
+            },
+            {
+              question: 'Carboxylic acid with NaHCO3 shows:',
+              options: ['No change', 'CO2 gas evolution', 'H2 gas evolution', 'Silver mirror'],
+              correctAnswer: 1,
+              explanation: 'Effervescence due to CO2 confirms acidic carboxyl group.'
+            },
+            {
+              question: 'Lassaigne test for nitrogen gives:',
+              options: ['Prussian blue color', 'Yellow ring', 'White precipitate', 'Violet color'],
+              correctAnswer: 0,
+              explanation: 'Nitrogen in Lassaigne extract is confirmed by Prussian blue complex formation.'
+            },
+            {
+              question: 'A common redox titration oxidant in school practical chemistry is:',
+              options: ['NaCl', 'KMnO4', 'NaOH', 'FeSO4 only'],
+              correctAnswer: 1,
+              explanation: 'Potassium permanganate is a widely used oxidizing agent in redox titrations.'
+            }
+          ]
+        }
       ],
     },
   ],
