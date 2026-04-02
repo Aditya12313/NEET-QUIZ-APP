@@ -15,7 +15,6 @@ import revisionRoutes  from './routes/revision.js'
 const app  = express()
 // Railway provides process.env.PORT automatically
 const PORT = process.env.PORT || 5000
-const MAX_PORT_RETRIES = Number(process.env.PORT_RETRY_ATTEMPTS || 10)
 
 // Global crash handlers
 process.on('uncaughtException', (err) => {
@@ -77,32 +76,20 @@ app.use((err, req, res, next) => {
 
 
 // ── Start Express Server Independently ──────────────────────────────────────────
-const startServer = (initialPort) => {
-  const basePort = Number(initialPort)
-  let retries = 0
+const startServer = (portToTry) => {
+  // Railway requires binding exactly to 0.0.0.0 and specifically on process.env.PORT
+  // Port hopping locally breaks Railway's ability to proxy traffic!
+  const server = app.listen(portToTry, '0.0.0.0', () => {
+    console.log(`🚀 Production Server successfully running and accepting connections!`)
+    console.log(`📡 Listening strictly on host: 0.0.0.0, port: ${portToTry}`)
+    console.log(`🌍 Health check available at: /api/health`)
+  })
 
-  const tryListen = (portToTry) => {
-    // Railway requires binding to 0.0.0.0 so the app is accessible externally!
-    const server = app.listen(portToTry, '0.0.0.0', () => {
-      console.log(`🚀 Production Server successfully running and accepting connections!`)
-      console.log(`📡 Listening on host: 0.0.0.0, port: ${portToTry}`)
-      console.log(`🌍 Health check available at: /api/health`)
-    })
-
-    server.on('error', (err) => {
-      if (err.code === 'EADDRINUSE' && retries < MAX_PORT_RETRIES) {
-        retries += 1
-        const nextPort = portToTry + 1
-        console.warn(`⚠️ Port ${portToTry} is in use. Retrying on ${nextPort}...`)
-        tryListen(nextPort)
-        return
-      }
-      console.error('❌ Server failed to start:', err.message)
-      process.exit(1)
-    })
-  }
-  
-  tryListen(basePort)
+  server.on('error', (err) => {
+    console.error('❌ Server failed to start on exact port:', err.message)
+    // Server must intentionally crash here so Railway orchestrator restarts it cleanly
+    process.exit(1)
+  })
 }
 
 // ── Connect to MongoDB ────────────────────────────────────────────────────────
