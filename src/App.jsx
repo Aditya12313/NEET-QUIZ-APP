@@ -3,7 +3,7 @@ import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-
+console.log("FINAL API:", API);
 async function apiFetch(path, options) {
   const primary = `${API}${path}`
   const fallbacks = API.includes('5000') ? [primary, `${API.replace('5000', '5001')}${path}`] : [primary]
