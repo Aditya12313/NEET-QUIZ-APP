@@ -1,7 +1,7 @@
 // Physics — Unit 10: Gravitation
 
 const gravitation = {
-  id: 'gravitation',
+  id: 'gravitation-orbits',
   title: 'Chapter 8: Gravitation',
   notes: [
     {

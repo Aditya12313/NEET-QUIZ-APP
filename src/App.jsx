@@ -41,6 +41,7 @@ const MOTIVATIONAL = [
 ]
 
 const TABS = ['Concepts', 'Patterns', 'Formulas', 'Insights', 'Mistakes', 'Quick Revision']
+const QUIZ_SIZE = 15
 
 function mergeUniqueStrings(...groups) {
   const seen = new Set()
@@ -123,6 +124,216 @@ function quizSignature(list) {
   return list.map(q => String(q.question ?? '').trim().toLowerCase()).join('||')
 }
 
+function hashText(text) {
+  const value = String(text ?? '')
+  let hash = 0
+  for (let i = 0; i < value.length; i++) {
+    hash = ((hash << 5) - hash) + value.charCodeAt(i)
+    hash |= 0
+  }
+  return hash
+}
+
+function chunkQuestions(list, size) {
+  if (!Array.isArray(list) || size <= 0 || !list.length) return []
+  if (list.length <= size) return [list.slice(0, size)]
+
+  const chunks = []
+  for (let i = 0; i < list.length; i += size) {
+    const chunk = list.slice(i, i + size)
+    if (chunk.length < size) {
+      const needed = size - chunk.length
+      chunks.push([...chunk, ...list.slice(0, needed)])
+    } else {
+      chunks.push(chunk)
+    }
+  }
+  return chunks
+}
+
+function getNextQuestionSet(pool, { subjectId, chapterId, size }) {
+  const fallback = { questions: [], setIndex: 0, totalSets: 0 }
+  if (!Array.isArray(pool) || !pool.length) return fallback
+
+  const seed = `${subjectId ?? ''}:${chapterId ?? ''}`
+  const ordered = [...pool].sort((a, b) => {
+    const aKey = `${seed}:${a.question ?? ''}`
+    const bKey = `${seed}:${b.question ?? ''}`
+    return hashText(aKey) - hashText(bKey)
+  })
+
+  const sets = chunkQuestions(ordered, size)
+  if (!sets.length) return fallback
+
+  const storageKey = `neet_quiz_set_idx:${seed}`
+  let previousIndex = -1
+  try {
+    const stored = Number.parseInt(localStorage.getItem(storageKey) ?? '-1', 10)
+    if (Number.isInteger(stored) && stored >= -1) previousIndex = stored
+  } catch {
+    previousIndex = -1
+  }
+
+  const nextIndex = (previousIndex + 1) % sets.length
+
+  try {
+    localStorage.setItem(storageKey, String(nextIndex))
+  } catch {
+    // ignore storage failures (private mode, quota, etc.)
+  }
+
+  return {
+    questions: sets[nextIndex],
+    setIndex: nextIndex + 1,
+    totalSets: sets.length,
+  }
+}
+
+function parseLabeledItems(section) {
+  const cleaned = String(section ?? '').replace(/\s+/g, ' ').trim()
+  if (!cleaned) return { items: [], trailingText: '' }
+
+  const labelRegex = /([A-Za-z0-9]+)[\.)]\s*/g
+  const labels = []
+  let labelMatch
+
+  while ((labelMatch = labelRegex.exec(cleaned)) !== null) {
+    labels.push({
+      label: labelMatch[1],
+      start: labelMatch.index,
+      contentStart: labelRegex.lastIndex,
+    })
+  }
+
+  if (labels.length) {
+    const items = []
+    let trailingText = ''
+
+    for (let i = 0; i < labels.length; i++) {
+      const current = labels[i]
+      const next = labels[i + 1]
+      const rawText = cleaned.slice(current.contentStart, next ? next.start : cleaned.length).replace(/^;\s*/, '').trim()
+      if (!rawText) continue
+
+      if (!next) {
+        const split = rawText.match(/^(.*?)(\b(?:Choose|Select|Match)\b.*)$/i)
+        if (split) {
+          const itemText = split[1].trim().replace(/[;,.]\s*$/, '')
+          trailingText = split[2].trim()
+          if (itemText) items.push({ label: current.label, text: itemText })
+          continue
+        }
+      }
+
+      items.push({ label: current.label, text: rawText })
+    }
+
+    return { items, trailingText }
+  }
+
+  return {
+    items: cleaned
+      .split(';')
+      .map(part => part.trim())
+      .filter(Boolean)
+      .map((text, index) => ({ label: String(index + 1), text })),
+    trailingText: '',
+  }
+}
+
+function QuestionStem({ text }) {
+  const question = String(text ?? '').trim()
+  if (!question) return null
+
+  const isMatchType = /list i:/i.test(question) && /list ii:/i.test(question)
+  if (isMatchType) {
+    const intro = (question.match(/^(.*?)(?=List I:)/i)?.[1] ?? '').trim()
+    const listISection = (question.match(/List I:\s*(.*?)(?=List II:)/i)?.[1] ?? '').trim()
+    const listIISection = (question.match(/List II:\s*(.*)$/i)?.[1] ?? '').trim()
+
+    const listIParsed = parseLabeledItems(listISection)
+    const listIIParsed = parseLabeledItems(listIISection)
+    const listI = listIParsed.items
+    const listII = listIIParsed.items
+    const matchPrompt = [listIParsed.trailingText, listIIParsed.trailingText].filter(Boolean).join(' ')
+    const rowCount = Math.max(listI.length, listII.length)
+
+    if (!rowCount) {
+      return <p className="text-ink font-medium leading-snug text-sm">{question}</p>
+    }
+
+    return (
+      <div className="space-y-3 text-sm text-ink leading-relaxed">
+        {intro && <p className="font-medium">{intro}</p>}
+        <div className="overflow-x-auto">
+          <table className="w-full border border-rule rounded-lg overflow-hidden text-left">
+            <thead className="bg-slate-50">
+              <tr>
+                <th className="px-3 py-2 text-xs uppercase tracking-wide text-muted font-semibold">List I</th>
+                <th className="px-3 py-2 text-xs uppercase tracking-wide text-muted font-semibold">List II</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: rowCount }).map((_, idx) => {
+                const left = listI[idx]
+                const right = listII[idx]
+                return (
+                  <tr key={idx} className="border-t border-rule align-top">
+                    <td className="px-3 py-2">
+                      {left ? (
+                        <span>
+                          <span className="font-semibold mr-2">{left.label}.</span>
+                          {left.text}
+                        </span>
+                      ) : null}
+                    </td>
+                    <td className="px-3 py-2">
+                      {right ? (
+                        <span>
+                          <span className="font-semibold mr-2">{right.label}.</span>
+                          {right.text}
+                        </span>
+                      ) : null}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        {matchPrompt && <p className="text-xs text-muted">{matchPrompt}</p>}
+      </div>
+    )
+  }
+
+  const isStatementType = /statement i:/i.test(question) && /statement ii:/i.test(question)
+  if (isStatementType) {
+    const intro = (question.match(/^(.*?)(?=Statement I:)/i)?.[1] ?? '').trim()
+    const statementI = (question.match(/Statement I:\s*(.*?)(?=Statement II:)/i)?.[1] ?? '').trim()
+    const statementII = (question.match(/Statement II:\s*(.*)$/i)?.[1] ?? '').trim()
+
+    return (
+      <div className="space-y-3 text-sm text-ink leading-relaxed">
+        {intro && <p className="font-medium">{intro}</p>}
+        {statementI && (
+          <div className="rounded-lg border border-rule p-3 bg-slate-50/60">
+            <p className="text-xs uppercase tracking-wide text-muted font-semibold mb-1">Statement I</p>
+            <p>{statementI}</p>
+          </div>
+        )}
+        {statementII && (
+          <div className="rounded-lg border border-rule p-3 bg-slate-50/60">
+            <p className="text-xs uppercase tracking-wide text-muted font-semibold mb-1">Statement II</p>
+            <p>{statementII}</p>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  return <p className="text-ink font-medium leading-snug text-sm">{question}</p>
+}
+
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem('neet_progress') || '{}') } catch { return {} }
 }
@@ -145,6 +356,7 @@ export default function App() {
   const [revision,     setRevision]    = useState(null)
   const [revLoading,   setRevLoading]  = useState(false)
   const [quizLoading,  setQuizLoading] = useState(false)
+  const [quizSetInfo,  setQuizSetInfo] = useState({ setIndex: 0, totalSets: 0 })
   const [motiIdx]                      = useState(() => Math.floor(Math.random() * MOTIVATIONAL.length))
   const [sidebarOpen,  setSidebarOpen] = useState(false)
 
@@ -189,8 +401,10 @@ export default function App() {
     setQuizLoading(true)
     let apiQuestions = []
     try {
+      const chapterParam = encodeURIComponent(chapterId ?? '')
+      const subjectParam = encodeURIComponent(subjectId ?? '')
       // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
-      const r = await apiFetch(`/questions?chapter=${chapterId}&limit=20&t=${Date.now()}`)
+      const r = await apiFetch(`/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}&t=${Date.now()}`)
       if (r.ok) {
         const data = await r.json()
         apiQuestions = data.questions ?? []
@@ -199,15 +413,27 @@ export default function App() {
 
     const localQuestions = chapterData?.quiz ?? []
     const pool = mergeUniqueQuestions(apiQuestions, localQuestions)
-    let questions = shuffled(pool).slice(0, 20)
+    let { questions, setIndex, totalSets } = getNextQuestionSet(pool, {
+      subjectId,
+      chapterId,
+      size: QUIZ_SIZE,
+    })
 
-    // Avoid showing the exact same set/order when user taps refresh repeatedly.
-    if (questions.length > 1 && quizSignature(questions) === quizSignature(quizQ)) {
+    // Safety fallback: if set rotation fails for any reason, keep old random behavior.
+    if (!questions.length && pool.length) {
+      questions = shuffled(pool).slice(0, QUIZ_SIZE)
+      setIndex = 1
+      totalSets = Math.max(1, Math.ceil(pool.length / QUIZ_SIZE))
+    }
+
+    // Avoid showing the exact same set/order when only one set exists.
+    if (questions.length > 1 && totalSets <= 1 && quizSignature(questions) === quizSignature(quizQ)) {
       questions = [...questions.slice(1), questions[0]]
     }
 
     setQuizLoading(false)
     if (!questions.length) return
+    setQuizSetInfo({ setIndex, totalSets })
     setQuizQ(questions)
     setQuizIdx(0); setPicked(null); setRevealed(false); setScore(0)
     setView('quiz')
@@ -217,8 +443,10 @@ export default function App() {
   async function generateRevision() {
     setRevLoading(true)
     try {
+      const chapterParam = encodeURIComponent(chapterId ?? '')
+      const subjectParam = encodeURIComponent(subjectId ?? '')
       // Pre-fetch questions to ensure the backend auto-generates external mocks if DB is empty
-      await apiFetch(`/questions?chapter=${chapterId}&limit=20`)
+      await apiFetch(`/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}`)
 
       const r = await apiFetch('/revision', {
         method: 'POST',
@@ -590,6 +818,9 @@ export default function App() {
                   >
                     {quizLoading ? '↻ Loading...' : '↻ New Questions'}
                   </button>
+                  {quizSetInfo.totalSets > 0 && (
+                    <span className="text-muted text-xs">Set {quizSetInfo.setIndex}/{quizSetInfo.totalSets}</span>
+                  )}
                   <span className="text-muted text-sm">{quizIdx + 1}/{quizQ.length}</span>
                 </div>
               </div>
@@ -598,7 +829,7 @@ export default function App() {
               </div>
               {q.year && <p className="text-xs text-muted mb-2">NEET {q.year}</p>}
               <div className="border border-rule rounded-xl p-5 mb-4 bg-white">
-                <p className="text-ink font-medium leading-snug text-sm">{q.question}</p>
+                <QuestionStem text={q.question} />
               </div>
               <div className="space-y-2 mb-4">
                 {q.options.map((opt, i) => {

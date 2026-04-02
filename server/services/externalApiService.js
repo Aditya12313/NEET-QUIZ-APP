@@ -1,4 +1,90 @@
-export function fetchMocks(chapter, needed) {
+import { generateChapterQuestions } from './chapterQuestionFactory.js'
+
+function buildGenericFallbackQuestion(chapter, subject, index) {
+  const chapterLabel = String(chapter || 'this chapter').replace(/-/g, ' ')
+  const subjectLabel = String(subject || 'biology').toLowerCase()
+
+  if (subjectLabel === 'physics') {
+    const patterns = [
+      {
+        question: `In ${chapterLabel}, which statement is dimensionally valid for a physical law style expression?`,
+        options: [
+          'Every additive term must have identical dimensions.',
+          'Only the final answer needs correct dimensions.',
+          'Dimensions can be ignored in trigonometric expressions only.',
+          'Units can differ if constants are present.'
+        ],
+        correctAnswer: 0,
+        explanation: 'By the homogeneity principle, quantities being added or compared must share dimensions in valid physical equations.',
+        tags: ['Dimensional Analysis', 'Homogeneity', chapter]
+      },
+      {
+        question: `A ${chapterLabel} problem asks for the safest strategy first. What should you do?`,
+        options: [
+          'Check unit consistency and known limiting behavior.',
+          'Memorize one numerical value and apply blindly.',
+          'Ignore sign conventions to save time.',
+          'Skip dimensional checks for objective questions.'
+        ],
+        correctAnswer: 0,
+        explanation: 'Unit consistency and limiting-case checks are robust first-pass filters for eliminating incorrect options in physics MCQs.',
+        tags: ['Problem Solving', 'Unit Consistency', chapter]
+      },
+      {
+        question: `For ${chapterLabel}, which option reflects correct treatment of SI units in calculations?`,
+        options: [
+          'Convert all inputs to SI before substitution.',
+          'Mix CGS and SI as long as numbers are small.',
+          'Use any unit system without conversion if dimensions match by eye.',
+          'Round constants before unit conversion.'
+        ],
+        correctAnswer: 0,
+        explanation: 'Using one consistent unit system (preferably SI) avoids hidden conversion errors and sign/dimension mistakes.',
+        tags: ['SI Units', 'Conversions', chapter]
+      }
+    ]
+
+    return patterns[index % patterns.length]
+  }
+
+  const generic = [
+    {
+      question: `In ${chapterLabel}, which option best follows standard textbook conceptual reasoning?`,
+      options: [
+        'Use established definitions, assumptions, and validated relations.',
+        'Prefer extreme exceptions over the base rule.',
+        'Ignore data constraints when options look similar.',
+        'Treat all distractors as partially correct.'
+      ],
+      correctAnswer: 0,
+      explanation: 'Objective questions are generally grounded in standard definitions and validated textbook relationships.',
+      tags: ['Conceptual Clarity', chapter]
+    },
+    {
+      question: `A direct question from ${chapterLabel} is most reliably solved by:`,
+      options: [
+        'Identifying the key concept and matching it to the exact statement.',
+        'Choosing the longest option automatically.',
+        'Eliminating options randomly under time pressure.',
+        'Assuming previous-year option patterns repeat exactly.'
+      ],
+      correctAnswer: 0,
+      explanation: 'Concept-to-statement mapping is the most consistent method for direct NCERT-aligned objective questions.',
+      tags: ['Exam Strategy', chapter]
+    }
+  ]
+
+  return generic[index % generic.length]
+}
+
+export function fetchMocks(chapter, needed, options = {}) {
+  const { subject = 'biology' } = options
+
+  const generated = generateChapterQuestions(chapter, needed, { subject, seed: Date.now() })
+  if (generated.length >= needed) {
+    return generated
+  }
+
   const chapterContent = {
     'living-world': [
       {
@@ -207,18 +293,15 @@ export function fetchMocks(chapter, needed) {
         verified: false,
       })
     } else {
+      const fallback = buildGenericFallbackQuestion(chapter, subject, i)
       results.push({
+        ...fallback,
         chapter,
         year: 2020 + (i % 5),
-        question: `Realistic simulated question ${i + 1} sourced externally for module ${chapter}. Which logic applies?`,
-        options: ['Law of Segregation', 'Thermodynamics', 'Metabolic processes', 'Genetic Drift'],
-        correctAnswer: 2,
-        explanation: `External dataset explanation: This concept tests the fundamental principles relevant to ${chapter}. Ensure you do not confuse thermodynamics with metabolic processes.`,
-        tags: ['Core Concept', 'External API', chapter],
         difficulty: 'medium',
         verified: false,
         source: 'external'
-      });
+      })
     }
   }
 

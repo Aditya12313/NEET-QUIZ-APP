@@ -14,3 +14,4 @@ export function adaptChapter(ch) {
     summary:    notes.map(n => `${n.concept} ${n.tip ?? ''}`.trim()).filter(Boolean),
   }
 }
+

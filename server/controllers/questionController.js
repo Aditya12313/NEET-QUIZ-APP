@@ -7,12 +7,12 @@ import { fetchMocks } from '../services/externalApiService.js'
  */
 export async function getQuestions(req, res) {
   try {
-    const { chapter, limit = 20 } = req.query
+    const { chapter, subject, limit = 20 } = req.query
     if (!chapter) {
       return res.status(400).json({ error: 'chapter query parameter is required' })
     }
 
-    const cap = Math.min(Math.max(parseInt(limit) || 20, 10), 20)
+    const cap = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 20)
 
     // Step 1: Fetch verified questions randomly
     const verifiedQs = await Question.aggregate([
@@ -20,15 +20,20 @@ export async function getQuestions(req, res) {
       { $sample: { size: cap } }
     ])
 
-    // Step 2: Check if < 15, if so mock "external" questions
+    // Step 2: Top up with external questions when verified coverage is low.
+    // Keep a slightly larger external pool so refresh can rotate question sets.
     let externalQs = []
-    if (verifiedQs.length < 15) {
-      const needed = 15 - verifiedQs.length
+    if (verifiedQs.length < cap) {
+      const inferredSubject = verifiedQs[0]?.subject || subject || 'biology'
+      const needed = cap - verifiedQs.length
+      const externalPoolTarget = inferredSubject === 'physics'
+        ? Math.max(cap * 3, 45)
+        : Math.max(cap, needed * 2)
 
-      // Only check if we ALREADY fetched external ones randomly
+      // Fetch from existing external pool for this chapter.
       let existingExternal = await Question.aggregate([
         { $match: { chapter, source: 'external' } },
-        { $sample: { size: needed } }
+        { $sample: { size: externalPoolTarget } }
       ])
 
       // Ignore legacy generic mock templates so chapter-specific mocks dominate.
@@ -36,25 +41,26 @@ export async function getQuestions(req, res) {
         q => !String(q.question || '').startsWith('Realistic simulated question')
       )
 
-      if (existingExternal.length < needed) {
-        // Mocking an external fetch by requesting realistic questions from API
-        // In a real app, this would be: await axios.get('https://api.neetpyq.com/...')
-        const toGenerate = needed - existingExternal.length
-        
-        let mocks = fetchMocks(chapter, toGenerate);
-        
+      if (existingExternal.length < externalPoolTarget) {
+        // Mocking an external fetch by requesting realistic questions from API.
+        const toGenerate = externalPoolTarget - existingExternal.length
+        const mocks = fetchMocks(chapter, toGenerate, { subject: inferredSubject })
+
         const mocksWithMeta = mocks.map(m => ({
           ...m,
-          subject: verifiedQs[0]?.subject || 'biology',
+          subject: inferredSubject,
           unit: verifiedQs[0]?.unit || 'Unknown Unit',
+          chapter,
         }))
 
         // Step 4: Save unverified questions to DB
         const inserted = await Question.insertMany(mocksWithMeta)
         existingExternal = [...existingExternal, ...inserted.map(d => d.toObject ? d.toObject() : d)]
       }
-      
+
       externalQs = existingExternal
+        .sort(() => Math.random() - 0.5)
+        .slice(0, needed)
     }
 
     // Combine datasets, ensuring maximum cap is respected, then shuffle them
