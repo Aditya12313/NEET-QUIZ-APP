@@ -2,29 +2,8 @@ import { useMemo, useState, useEffect, useCallback } from 'react'
 import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-console.log("FINAL API:", API);
-async function apiFetch(path, options) {
-  const primary = `${API}${path}`
-  const fallbacks = API.includes('5000') ? [primary, `${API.replace('5000', '5001')}${path}`] : [primary]
-  let lastError = null
-
-  for (const url of fallbacks) {
-    try {
-      const response = await fetch(url, options)
-      if (response.ok) return response
-      if (response.status >= 500) {
-        lastError = new Error(`Server error ${response.status}`)
-        continue
-      }
-      return response
-    } catch (err) {
-      lastError = err
-    }
-  }
-
-  throw lastError || new Error('API request failed')
-}
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+console.log("Using API:", API);
 
 const SUBJECTS = [
   { id: 'biology',   label: 'Biology',   emoji: '🧬' },
@@ -404,12 +383,16 @@ export default function App() {
       const chapterParam = encodeURIComponent(chapterId ?? '')
       const subjectParam = encodeURIComponent(subjectId ?? '')
       // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
-      const r = await apiFetch(`/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}&t=${Date.now()}`)
+      const r = await fetch(`${API}/api/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}&t=${Date.now()}`)
       if (r.ok) {
         const data = await r.json()
         apiQuestions = data.questions ?? []
+      } else {
+        console.error("API error while fetching questions:", r.statusText)
       }
-    } catch { /* offline */ }
+    } catch (err) {
+      console.error("Fetch failed parsing questions:", err.message)
+    }
 
     const localQuestions = chapterData?.quiz ?? []
     const pool = mergeUniqueQuestions(apiQuestions, localQuestions)
@@ -446,9 +429,9 @@ export default function App() {
       const chapterParam = encodeURIComponent(chapterId ?? '')
       const subjectParam = encodeURIComponent(subjectId ?? '')
       // Pre-fetch questions to ensure the backend auto-generates external mocks if DB is empty
-      await apiFetch(`/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}`)
+      await fetch(`${API}/api/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}`).catch(err => console.error(err))
 
-      const r = await apiFetch('/revision', {
+      const r = await fetch(`${API}/api/revision`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chapter: chapterId }),
@@ -458,8 +441,12 @@ export default function App() {
         if (data.count > 0 || data.concepts?.length > 0) { 
           setRevision(data); goRevision(); setRevLoading(false); return 
         }
+      } else {
+        console.error("API error while fetching revision:", r.statusText)
       }
-    } catch { /* offline */ }
+    } catch (err) {
+      console.error("Fetch failed generating revision:", err.message)
+    }
     setRevision(null)
     goRevision()
     setRevLoading(false)
@@ -488,12 +475,14 @@ export default function App() {
       // Submit to backend (fire-and-forget)
       const weakTags = quizQ.filter((_, i) => i !== quizIdx || !correct).flatMap(qi => qi.tags ?? [])
       try {
-        await apiFetch('/submit', {
+        await fetch(`${API}/api/submit`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chapter: chapterId, score: finalScore, total: quizQ.length, weakTags }),
-        })
-      } catch { /* offline */ }
+        }).catch(err => console.error("Submit API error:", err.message))
+      } catch (err) {
+        console.error("Fetch failed submittting data:", err.message)
+      }
       setView('result')
     }
   }
