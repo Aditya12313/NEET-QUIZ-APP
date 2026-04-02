@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect, useCallback } from 'react'
 import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API = import.meta.env.VITE_API_URL || 'https://neet-quiz-app-production.up.railway.app/api'
 
 async function apiFetch(path, options) {
   const primary = `${API}${path}`
