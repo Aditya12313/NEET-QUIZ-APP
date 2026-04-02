@@ -2,6 +2,11 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 import questionRoutes  from './routes/questions.js'
 import submitRoutes    from './routes/submit.js'
@@ -23,8 +28,16 @@ app.use('/api/revision',  revisionRoutes)
 // Health check
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', time: new Date() }))
 
-// 404 fallback
-app.use((_req, res) => res.status(404).json({ error: 'Not found' }))
+// Serve static frontend files in production
+app.use(express.static(path.join(__dirname, '../dist')))
+
+// Catch-all for frontend routing
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'Not found' })
+  }
+  res.sendFile(path.join(__dirname, '../dist/index.html'))
+})
 
 // ── Connect to MongoDB then start server ──────────────────────────────────────
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/neet'
