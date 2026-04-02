@@ -26,6 +26,7 @@ process.on('unhandledRejection', (err) => {
   console.error('❌ UNHANDLED REJECTION: Server shutting down...', err)
   process.exit(1)
 })
+
 // ── Middleware ────────────────────────────────────────────────────────────────
 // Request logging middleware
 app.use((req, res, next) => {
@@ -73,51 +74,59 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal Server Error', message: err.message })
 })
 
-// ── Connect to MongoDB then start server ──────────────────────────────────────
-const MONGO_URI = process.env.MONGO_URI
 
-if (!MONGO_URI) {
-  console.error('❌ CRITICAL ERROR: MONGO_URI environment variable is missing!')
-  console.error('Please set MONGO_URI in your Railway project variables.')
-  process.exit(1)
+// ── Start Express Server Independently ──────────────────────────────────────────
+const startServer = (initialPort) => {
+  const basePort = Number(initialPort)
+  let retries = 0
+
+  const tryListen = (portToTry) => {
+    const server = app.listen(portToTry, () => {
+      console.log(`🚀 Production Server successfully running and accepting connections!`)
+      console.log(`📡 Listening on port: ${portToTry}`)
+      console.log(`🌍 Health check available at: /api/health`)
+    })
+
+    server.on('error', (err) => {
+      if (err.code === 'EADDRINUSE' && retries < MAX_PORT_RETRIES) {
+        retries += 1
+        const nextPort = portToTry + 1
+        console.warn(`⚠️ Port ${portToTry} is in use. Retrying on ${nextPort}...`)
+        tryListen(nextPort)
+        return
+      }
+      console.error('❌ Server failed to start:', err.message)
+      process.exit(1)
+    })
+  }
+  
+  tryListen(basePort)
 }
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
-    console.log(`✅ MongoDB connected: ${MONGO_URI}`)
+// ── Connect to MongoDB ────────────────────────────────────────────────────────
+const connectDB = async () => {
+  const MONGO_URI = process.env.MONGO_URI
 
-    const startServer = (initialPort) => {
-      const basePort = Number(initialPort)
-      let retries = 0
+  if (!MONGO_URI) {
+    console.warn('⚠️ WARNING: MONGO_URI environment variable is missing!')
+    console.warn('Database features will not work until set in Railway variables.')
+    return
+  }
 
-      const tryListen = (portToTry) => {
-        const server = app.listen(portToTry, () => {
-          console.log(`🚀 Production Server successfully running and accepting connections!`)
-          console.log(`📡 Listening on port: ${portToTry}`)
-          console.log(`🌍 Health check available at: /api/health`)
-        })
-
-        server.on('error', (err) => {
-          if (err.code === 'EADDRINUSE' && retries < MAX_PORT_RETRIES) {
-            retries += 1
-            const nextPort = portToTry + 1
-            console.warn(`⚠️ Port ${portToTry} is in use. Retrying on ${nextPort}...`)
-            tryListen(nextPort)
-            return
-          }
-
-          console.error('❌ Server failed to start:', err.message)
-          process.exit(1)
-        })
-      }
-
-      tryListen(basePort)
-    }
-
-    startServer(PORT)
-  })
-  .catch(err => {
+  try {
+    await mongoose.connect(MONGO_URI)
+    // Extract cluster part safely safely without exposing passwords:
+    const safeUrl = MONGO_URI.includes('@') ? MONGO_URI.split('@')[1].split('/')[0] : 'localhost'
+    console.log(`✅ MongoDB successfully connected to: ${safeUrl}`)
+  } catch (err) {
     console.error('❌ MongoDB connection failed:', err.message)
-    process.exit(1)
-  })
+    console.error('⚠️ NOTE: The server is still running, but database routes will fail.')
+    console.error('👉 Ensure you have whitelisted 0.0.0.0/0 in MongoDB Atlas Network Access.')
+  }
+}
+
+// 1. Start Web Server
+startServer(PORT)
+
+// 2. Connect to Database (Async, Non-Blocking)
+connectDB()
