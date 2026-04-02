@@ -2,10 +2,8 @@ import { useMemo, useState, useEffect, useCallback } from 'react'
 import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
-// In production (Vercel), we want relative URL '' so it fetches /api/... triggering our Edge Proxy.
-// In dev (localhost), we want to hit the local backend directly.
-const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000' : '')
-console.log("Using Database API Route:", API ? API : "Vercel Proxy (/api)");
+const API = "/api";
+
 
 const SUBJECTS = [
   { id: 'biology',   label: 'Biology',   emoji: '🧬' },
@@ -385,7 +383,7 @@ export default function App() {
       const chapterParam = encodeURIComponent(chapterId ?? '')
       const subjectParam = encodeURIComponent(subjectId ?? '')
       // Adding a timestamp to bust cache in case backend doesn't randomize aggressively
-      const r = await fetch(`${API}/api/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}&t=${Date.now()}`)
+      const r = await fetch(`${API}/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}&t=${Date.now()}`)
       if (r.ok) {
         const data = await r.json()
         apiQuestions = data.questions ?? []
@@ -431,9 +429,9 @@ export default function App() {
       const chapterParam = encodeURIComponent(chapterId ?? '')
       const subjectParam = encodeURIComponent(subjectId ?? '')
       // Pre-fetch questions to ensure the backend auto-generates external mocks if DB is empty
-      await fetch(`${API}/api/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}`).catch(err => console.error(err))
+      await fetch(`${API}/questions?chapter=${chapterParam}&subject=${subjectParam}&limit=${QUIZ_SIZE}`).catch(err => console.error("Fetch failed pre-fetching questions:", err))
 
-      const r = await fetch(`${API}/api/revision`, {
+      const r = await fetch(`${API}/revision`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chapter: chapterId }),
@@ -477,7 +475,7 @@ export default function App() {
       // Submit to backend (fire-and-forget)
       const weakTags = quizQ.filter((_, i) => i !== quizIdx || !correct).flatMap(qi => qi.tags ?? [])
       try {
-        await fetch(`${API}/api/submit`, {
+        await fetch(`${API}/submit`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chapter: chapterId, score: finalScore, total: quizQ.length, weakTags }),
