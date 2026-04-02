@@ -13,6 +13,7 @@ import submitRoutes    from './routes/submit.js'
 import revisionRoutes  from './routes/revision.js'
 
 const app  = express()
+// Railway provides process.env.PORT automatically
 const PORT = process.env.PORT || 5000
 const MAX_PORT_RETRIES = Number(process.env.PORT_RETRY_ATTEMPTS || 10)
 
@@ -81,9 +82,10 @@ const startServer = (initialPort) => {
   let retries = 0
 
   const tryListen = (portToTry) => {
-    const server = app.listen(portToTry, () => {
+    // Railway requires binding to 0.0.0.0 so the app is accessible externally!
+    const server = app.listen(portToTry, '0.0.0.0', () => {
       console.log(`🚀 Production Server successfully running and accepting connections!`)
-      console.log(`📡 Listening on port: ${portToTry}`)
+      console.log(`📡 Listening on host: 0.0.0.0, port: ${portToTry}`)
       console.log(`🌍 Health check available at: /api/health`)
     })
 
