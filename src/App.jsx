@@ -2,8 +2,10 @@ import { useMemo, useState, useEffect, useCallback } from 'react'
 import content from './data/neetContent.js'
 import { adaptChapter } from './utils/chapterAdapter.js'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-console.log("Using API:", API);
+// In production (Vercel), we want relative URL '' so it fetches /api/... triggering our Edge Proxy.
+// In dev (localhost), we want to hit the local backend directly.
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000' : '')
+console.log("Using Database API Route:", API ? API : "Vercel Proxy (/api)");
 
 const SUBJECTS = [
   { id: 'biology',   label: 'Biology',   emoji: '🧬' },
