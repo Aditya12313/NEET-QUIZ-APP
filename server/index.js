@@ -51,23 +51,13 @@ app.use('/api/revision',  revisionRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ 
-    status: 'ok', 
-    environment: process.env.NODE_ENV || 'development',
-    time: new Date().toISOString() 
-  })
-})
+  res.json({ status: "ok" });
+});
 
-// Serve static frontend files in production
-app.use(express.static(path.join(__dirname, '../dist')))
-
-// Catch-all for frontend routing
-app.get('*', (req, res) => {
-  if (req.path.startsWith('/api')) {
-    return res.status(404).json({ error: 'Not found' })
-  }
-  res.sendFile(path.join(__dirname, '../dist/index.html'))
-})
+// Catch-all for unhandled routes (API only)
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
 
 // Global Express error handler
 app.use((err, req, res, next) => {
