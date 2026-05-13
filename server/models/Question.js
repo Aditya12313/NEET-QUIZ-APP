@@ -15,4 +15,21 @@ const questionSchema = new mongoose.Schema({
   source:        { type: String, default: 'manual' }, // 'manual', 'external'
 }, { timestamps: true })
 
-export default mongoose.model('Question', questionSchema)
+const DefaultQuestion = mongoose.model('Question', questionSchema)
+
+export function getModelForSubject(subject) {
+  let collectionName = 'questions'
+  const sub = String(subject || '').toLowerCase()
+  
+  if (sub === 'physics') collectionName = 'seed_physics'
+  else if (sub === 'biology' || sub === 'bio') collectionName = 'seed_bio'
+  else if (sub === 'chemistry' || sub === 'chem') collectionName = 'seed_chem'
+
+  const modelName = `Question_${collectionName}`
+  if (mongoose.models[modelName]) {
+    return mongoose.models[modelName]
+  }
+  return mongoose.model(modelName, questionSchema, collectionName)
+}
+
+export default DefaultQuestion

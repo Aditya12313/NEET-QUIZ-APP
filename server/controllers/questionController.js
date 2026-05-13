@@ -1,4 +1,4 @@
-import Question from '../models/Question.js'
+import DefaultQuestion, { getModelForSubject } from '../models/Question.js'
 import { fetchMocks } from '../services/externalApiService.js'
 
 /**
@@ -14,8 +14,11 @@ export async function getQuestions(req, res) {
 
     const cap = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 20)
 
+    const inferredSubject = subject || 'biology'
+    const QuestionModel = getModelForSubject(inferredSubject)
+
     // Step 1: Fetch verified questions randomly
-    const verifiedQs = await Question.aggregate([
+    const verifiedQs = await QuestionModel.aggregate([
       { $match: { chapter, verified: true } },
       { $sample: { size: cap } }
     ])
@@ -24,14 +27,14 @@ export async function getQuestions(req, res) {
     // Keep a slightly larger external pool so refresh can rotate question sets.
     let externalQs = []
     if (verifiedQs.length < cap) {
-      const inferredSubject = verifiedQs[0]?.subject || subject || 'biology'
+      const realInferredSubject = verifiedQs[0]?.subject || inferredSubject
       const needed = cap - verifiedQs.length
-      const externalPoolTarget = inferredSubject === 'physics'
+      const externalPoolTarget = realInferredSubject === 'physics'
         ? Math.max(cap * 3, 45)
         : Math.max(cap, needed * 2)
 
       // Fetch from existing external pool for this chapter.
-      let existingExternal = await Question.aggregate([
+      let existingExternal = await QuestionModel.aggregate([
         { $match: { chapter, source: 'external' } },
         { $sample: { size: externalPoolTarget } }
       ])
@@ -44,17 +47,17 @@ export async function getQuestions(req, res) {
       if (existingExternal.length < externalPoolTarget) {
         // Mocking an external fetch by requesting realistic questions from API.
         const toGenerate = externalPoolTarget - existingExternal.length
-        const mocks = fetchMocks(chapter, toGenerate, { subject: inferredSubject })
+        const mocks = fetchMocks(chapter, toGenerate, { subject: realInferredSubject })
 
         const mocksWithMeta = mocks.map(m => ({
           ...m,
-          subject: inferredSubject,
+          subject: realInferredSubject,
           unit: verifiedQs[0]?.unit || 'Unknown Unit',
           chapter,
         }))
 
         // Step 4: Save unverified questions to DB
-        const inserted = await Question.insertMany(mocksWithMeta)
+        const inserted = await QuestionModel.insertMany(mocksWithMeta)
         existingExternal = [...existingExternal, ...inserted.map(d => d.toObject ? d.toObject() : d)]
       }
 
@@ -72,6 +75,8 @@ export async function getQuestions(req, res) {
 
     // Randomize the final combined array so verified and external questions are mixed
     questions.sort(() => Math.random() - 0.5)
+
+    console.log(`[questionController] Fetched ${questions.length} questions for chapter: ${chapter} from ${QuestionModel.collection.name}`)
 
     return res.json({ chapter, count: questions.length, questions })
   } catch (err) {

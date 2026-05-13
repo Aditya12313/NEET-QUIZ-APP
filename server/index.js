@@ -12,6 +12,8 @@ const __dirname = path.dirname(__filename)
 import questionRoutes  from './routes/questions.js'
 import submitRoutes    from './routes/submit.js'
 import revisionRoutes  from './routes/revision.js'
+import quizRoutes      from './routes/quiz.js'
+import chaptersRoutes  from './routes/chapters.js'
 
 const app  = express()
 // Render uses process.env.PORT automatically
@@ -48,6 +50,8 @@ app.use(express.json())
 app.use('/api/questions', questionRoutes)
 app.use('/api/submit',    submitRoutes)
 app.use('/api/revision',  revisionRoutes)
+app.use('/api/quiz',      quizRoutes)
+app.use('/api/chapters',  chaptersRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -75,7 +79,7 @@ const connectDB = async () => {
 
   if (!MONGO_URI) {
     console.warn('⚠️ WARNING: MONGO_URI environment variable is missing!')
-    console.warn('Database features will not work until set in Railway variables.')
+    console.warn('Database features will not work until set in Render environment variables.')
     return
   }
 
