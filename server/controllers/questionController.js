@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import DefaultQuestion, { getModelForSubject } from '../models/Question.js'
 import { fetchMocks } from '../services/externalApiService.js'
 
@@ -7,21 +8,45 @@ import { fetchMocks } from '../services/externalApiService.js'
  */
 export async function getQuestions(req, res) {
   try {
+    console.log(`[GET /api/questions] Incoming request: chapter=${req.query.chapter}, subject=${req.query.subject}, limit=${req.query.limit}`);
+    
+    // Check if database is connected before proceeding
+    if (mongoose.connection.readyState !== 1) {
+      console.error(`[GET /api/questions] Database not connected. ReadyState: ${mongoose.connection.readyState}`);
+      return res.status(500).json({ error: 'Database connection is not established' })
+    }
+
     const { chapter, subject, limit = 20 } = req.query
     if (!chapter) {
+      console.warn(`[GET /api/questions] Missing chapter parameter`);
       return res.status(400).json({ error: 'chapter query parameter is required' })
     }
 
     const cap = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 20)
 
     const inferredSubject = subject || 'biology'
-    const QuestionModel = getModelForSubject(inferredSubject)
+    
+    let QuestionModel;
+    try {
+      QuestionModel = getModelForSubject(inferredSubject)
+      console.log(`[GET /api/questions] Selected model for subject '${inferredSubject}': mapped to collection '${QuestionModel.collection.name}'`);
+    } catch (modelErr) {
+      console.error(`[GET /api/questions] Error getting model for subject '${inferredSubject}':`, modelErr);
+      return res.status(500).json({ error: 'Failed to initialize database model', message: modelErr.message, stack: modelErr.stack });
+    }
 
     // Step 1: Fetch verified questions randomly
-    const verifiedQs = await QuestionModel.aggregate([
-      { $match: { chapter, verified: true } },
-      { $sample: { size: cap } }
-    ])
+    let verifiedQs = [];
+    try {
+      verifiedQs = await QuestionModel.aggregate([
+        { $match: { chapter, verified: true } },
+        { $sample: { size: cap } }
+      ])
+      console.log(`[GET /api/questions] Step 1: Fetched ${verifiedQs.length} verified questions from ${QuestionModel.collection.name}`);
+    } catch (aggErr) {
+      console.error(`[GET /api/questions] Error in aggregate query for verified questions:`, aggErr);
+      return res.status(500).json({ error: 'Database query failed', message: aggErr.message, stack: aggErr.stack });
+    }
 
     // Step 2: Top up with external questions when verified coverage is low.
     // Keep a slightly larger external pool so refresh can rotate question sets.
@@ -76,11 +101,11 @@ export async function getQuestions(req, res) {
     // Randomize the final combined array so verified and external questions are mixed
     questions.sort(() => Math.random() - 0.5)
 
-    console.log(`[questionController] Fetched ${questions.length} questions for chapter: ${chapter} from ${QuestionModel.collection.name}`)
+    console.log(`[GET /api/questions] Success: Returning ${questions.length} questions for chapter: ${chapter}`);
 
     return res.json({ chapter, count: questions.length, questions })
   } catch (err) {
-    console.error('getQuestions error:', err)
-    return res.status(500).json({ error: 'Failed to fetch questions' })
+    console.error('[GET /api/questions] UNEXPECTED ERROR:', err)
+    return res.status(500).json({ error: 'Failed to fetch questions', message: err.message, stack: err.stack })
   }
 }

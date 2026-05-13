@@ -1,4 +1,5 @@
-import Question from '../models/Question.js'
+import mongoose from 'mongoose'
+import DefaultQuestion, { getModelForSubject } from '../models/Question.js'
 
 /**
  * POST /api/revision
@@ -17,18 +18,34 @@ import Question from '../models/Question.js'
  */
 export async function generateRevision(req, res) {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      console.error(`[POST /api/revision] Database not connected. ReadyState: ${mongoose.connection.readyState}`);
+      return res.status(500).json({ error: 'Database connection is not established' })
+    }
+
     const { chapter } = req.body
     if (!chapter) {
       return res.status(400).json({ error: 'chapter is required' })
     }
 
-    let questions = await Question.find({ chapter, verified: true })
+    let inferredSubject = 'biology'
+    if (chapter.includes('physics')) inferredSubject = 'physics'
+    else if (chapter.includes('chem')) inferredSubject = 'chemistry'
+    
+    let QuestionModel;
+    try {
+      QuestionModel = getModelForSubject(inferredSubject)
+    } catch (e) {
+      QuestionModel = DefaultQuestion
+    }
+
+    let questions = await QuestionModel.find({ chapter, verified: true })
       .limit(20)
       .lean()
 
     // Optional fallback: use unverified mock questions if no verified ones exist
     if (!questions.length) {
-      questions = await Question.find({ chapter }).limit(20).lean()
+      questions = await QuestionModel.find({ chapter }).limit(20).lean()
     }
 
     if (!questions.length) {

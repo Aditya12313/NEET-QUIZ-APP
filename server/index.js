@@ -14,6 +14,7 @@ import submitRoutes    from './routes/submit.js'
 import revisionRoutes  from './routes/revision.js'
 import quizRoutes      from './routes/quiz.js'
 import chaptersRoutes  from './routes/chapters.js'
+import debugRoutes     from './routes/debug.js'
 
 const app  = express()
 // Render uses process.env.PORT automatically
@@ -52,6 +53,7 @@ app.use('/api/submit',    submitRoutes)
 app.use('/api/revision',  revisionRoutes)
 app.use('/api/quiz',      quizRoutes)
 app.use('/api/chapters',  chaptersRoutes)
+app.use('/api/debug',     debugRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {

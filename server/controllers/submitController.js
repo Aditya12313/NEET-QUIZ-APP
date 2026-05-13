@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import UserProgress from '../models/UserProgress.js'
 
 /**
@@ -7,6 +8,11 @@ import UserProgress from '../models/UserProgress.js'
  */
 export async function submitQuiz(req, res) {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      console.error(`[POST /api/submit] Database not connected. ReadyState: ${mongoose.connection.readyState}`);
+      return res.status(500).json({ error: 'Database connection is not established' })
+    }
+
     const { chapter, score, total, weakTags = [] } = req.body
     if (!chapter || score === undefined || total === undefined) {
       return res.status(400).json({ error: 'chapter, score and total are required' })
